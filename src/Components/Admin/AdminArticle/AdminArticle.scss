@@ -1,0 +1,101 @@
+.admin {
+    &__article {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        &--item {
+            margin-bottom: 35px;
+            position: relative;
+            width: 513px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        &--btn {
+            padding: 5px;
+            position: absolute;
+            z-index: 2;
+            top: 15px;
+            right: 15px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            border-radius: 40%;
+            transition: 0.3s;
+
+            &:hover {
+                background-color: #303055;
+            }
+        }
+
+        &--subbox {
+            width: 147px;
+            position: absolute;
+            top: 0;
+            right: 30px;
+            z-index: 3;
+            padding: 8px 0;
+            background: #303047;
+            box-shadow: 0px 12px 40px rgba(0, 0, 0, 0.35);
+            border-radius: 8px;
+            display: none;
+            flex-direction: column;
+
+            &-open {
+                display: flex;
+            }
+        }
+
+        &--subbtn {
+            padding: 8px 16px;
+            width: 100%;
+            border: none;
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #303055;
+            }
+
+            & img {
+                width: 16px;
+                height: 16px;
+            }
+
+            & p {
+                margin-left: 8px;
+                font-size: 14px;
+                line-height: 150%;
+                color: #A3A3AD;
+            }
+        }
+
+        &--title {
+            font-weight: 600;
+            font-size: 22px;
+            line-height: 44px;
+            color: #FFFFFF;
+        }
+
+        &--subtitle {
+            margin: 20px 0 15px;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+
+        &--text {
+            font-size: 14px;
+            line-height: 16px;
+            color: #FFFFFF;
+            opacity: 0.7;
+        }
+    }
+}
