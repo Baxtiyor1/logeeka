@@ -3,6 +3,7 @@
 import './ArticleForm.scss'
 
 //IMAGES
+import file_icon from '../../../Assets/img/file_upload.svg'
 import search from '../../../Assets/img/search.svg'
 
 //COMPONENTS
@@ -27,7 +28,7 @@ function ArticleForm() {
                             </div>
                         </div>
                         <div className="admin__area">
-                            <AdminNav />
+                            <AdminNav search={'delete'}/>
                             <div className='article__wrapper'>
                                 <form className='article__form' method='multipart/form-data'>
                                     <label className='article__form--label'>
@@ -62,6 +63,10 @@ function ArticleForm() {
                                     </label>
                                     <label className='article__form--label'>
                                         upload pdf
+                                        <div className='article__form--subbox'>
+                                            <p>pdf</p>
+                                            <img src={file_icon} alt="file_icon" />
+                                        </div>
                                         <input className='article__form--file' type="file" placeholder='pdf' accept="image/*" />
                                     </label>
                                     <button className='article__form--btn' type='submit'>Save</button>

@@ -1,0 +1,48 @@
+.conf {
+    &__list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__item {
+        padding: 15px 0;
+        display: flex;
+        position: relative;
+        align-items: center;
+        border-bottom: 1px solid rgba(163, 163, 173, 0.1)       ;
+        &:hover .conf__text{
+            color: #ffffff;
+        }
+    }
+
+    &__btn {
+        position: static;
+    }
+    &__text {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+        color: #A3A3AD;
+    }
+    &__title {
+        margin-right: 50px;
+        width: 450px;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 150%;
+        color: #A3A3AD;
+    }
+
+    &__name {
+        margin-right: 50px;
+        width: 150px;
+    }
+    &__type{
+        width: 100px;
+        margin-right: 50px;
+    }
+    &__time{
+        margin-right: 50px;
+    }
+}

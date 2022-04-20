@@ -1,0 +1,61 @@
+.jintro{
+    background-image: url('../../Assets/img/journal-bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+    &__wrapper {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    &__title {
+        margin-bottom: 45px;
+        font-weight: 700;
+        font-size: 96px;
+        line-height: 112px;
+        color: #FFFFFF;
+    }
+    &__subtitle{
+        max-width: 844px;
+        width: 100%;
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 45px;
+        text-align: center;
+        color: #FFFFFF;
+    }
+}
+@media screen and (max-width: 900px) {
+    .jintro{
+        &__title {
+            font-weight: 700;
+            font-size: 52px;
+            line-height: 55px;
+        }
+        &__subtitle{
+            max-width: 700px;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 28px;
+        }
+    }
+}
+@media screen and (max-width: 428px) {
+    .jintro{
+        &__title {
+            font-weight: 700;
+            font-size: 52px;
+            line-height: 55px;
+        }
+        &__subtitle{
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 34px;
+            text-align: left;
+        }
+    }
+}

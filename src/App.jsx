@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import './App.scss'
 
 //Components
+import Private from './Route/Private';
+import Public from './Route/Public'
 import Admin from './Components/Admin/Admin';
 import AdminArticle from './Components/Admin/AdminArticle/AdminArticle';
 import ArticleForm from './Components/Admin/ArticleForm/ArticleForm';
@@ -14,22 +16,55 @@ import JournalForm from './Components/Admin/JournalForm/JournalForm';
 import CertificateForm from './Components/Admin/CertificatesForm/CertificatesForm';
 import ConferemceForm from './Components/Admin/ConferenceForm/ConferenceForm';
 import PriceForm from './Components/Admin/PriceForm/PriceForm';
+//public
+import Home from './Pages/Home';
+import Conference from './Pages/Conference';
+import Articles from './Pages/Articles';
+import Journal from './Pages/Journal';
+import News from './Pages/News';
+import Certificates from './Pages/Certificates';
+import Contacts from './Pages/Contacts';
+import Aboutus from './Pages/Aboutus';
+import AboutStaff from './Pages/AboutStaff';
+import Pricing from './Pages/Pricing';
+import InnerConference from './Pages/InnerConference';
+import InnerArticles from './Pages/InnerArticles';
+import Login from './Components/login/login';
+import NotFound from './Components/404/404';
 
 
 function App() {
   return (
     <Routes>
-      <Route path='/admin' element={<Admin />}/>
-      <Route path='/admin/article' element={<AdminArticle />}/>
-      <Route path='/admin/article/form' element={<ArticleForm />}/>
-      <Route path='/admin/journal' element={<AdminJournal />}/>
-      <Route path='/admin/journal/form' element={<JournalForm />}/>
-      <Route path='/admin/price' element={<AdminPricing />}/>
-      <Route path='/admin/price/form' element={<PriceForm />}/>
-      <Route path='/admin/conference' element={<AdminConference />}/>
-      <Route path='/admin/conference/form' element={<ConferemceForm />}/>
-      <Route path='/admin/certificate' element={<AdminCertificates />}/>
-      <Route path='/admin/certificate/form' element={<CertificateForm />}/>
+      {/* <Route path='/'> */}
+        <Route path="/" element={<Home />} />
+        <Route path="/conference" element={<Conference />} />
+        <Route path="/conference/1" element={<InnerConference />} />
+        <Route path="/articles" element={<Articles />} />
+        <Route path="/articles/1" element={<InnerArticles />} />
+        <Route path="/journal" element={<Journal />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/contacts" element={<Contacts />} />
+        <Route path="/about" element={<Aboutus />} />
+        <Route path="/staffs" element={<AboutStaff />} />
+        <Route path="/certificates" element={<Certificates />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/*" element={<NotFound />} />
+      {/* </Route>
+      <Route path='/'> */}
+        <Route path='/admin' element={<Admin />} />
+        <Route path='/admin/article' element={<AdminArticle />} />
+        <Route path='/admin/article/form' element={<ArticleForm />} />
+        <Route path='/admin/journal' element={<AdminJournal />} />
+        <Route path='/admin/journal/form' element={<JournalForm />} />
+        <Route path='/admin/price' element={<AdminPricing />} />
+        <Route path='/admin/price/form' element={<PriceForm />} />
+        <Route path='/admin/conference' element={<AdminConference />} />
+        <Route path='/admin/conference/form' element={<ConferemceForm />} />
+        <Route path='/admin/certificate' element={<AdminCertificates />} />
+        <Route path='/admin/certificate/form' element={<CertificateForm />} />
+      {/* </Route> */}
     </Routes>
   )
 }

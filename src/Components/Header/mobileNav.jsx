@@ -1,17 +1,17 @@
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 //IMAGES
 
 function MobileNav() {
     return (
         <>
-            <NavLink className='header__link header__mobile--link' to='/'>Conference</NavLink>
-            <NavLink className='header__link header__mobile--link' to='/'>Articles</NavLink>
-            <NavLink className='header__link header__mobile--link' to='/'>Certificates</NavLink>
-            <NavLink className='header__link header__mobile--link' to='/'>Pricing</NavLink>
-            <NavLink className='header__link header__mobile--link' to='/'>Contacts</NavLink>
-            <NavLink className='header__link header__mobile--link' to='/'>Journal</NavLink>
-            <NavLink className='header__link header__mobile--link' to='/'>About us</NavLink>
+            <Link className='header__link header__mobile--link' to='/'>Conference</Link>
+            <Link className='header__link header__mobile--link' to='/'>Articles</Link>
+            <Link className='header__link header__mobile--link' to='/'>Certificates</Link>
+            <Link className='header__link header__mobile--link' to='/'>Pricing</Link>
+            <Link className='header__link header__mobile--link' to='/'>Contacts</Link>
+            <Link className='header__link header__mobile--link' to='/'>Journal</Link>
+            <Link className='header__link header__mobile--link' to='/'>About us</Link>
         </>
     )
 }

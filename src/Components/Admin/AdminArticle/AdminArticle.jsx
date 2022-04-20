@@ -86,24 +86,6 @@ function AdminArticle() {
                                         </li>
                                     ))
                                 }
-                                {/* <li className='admin__article--item'>
-                                    <button id='2' onClick={openSubNav} className='admin__article--btn'>
-                                        <img src={dots} alt="dots" />
-                                        <div ref={subNav} id='2' className='admin__article--subbox'>
-                                            <button className='admin__article--subbtn'>
-                                                <img src={edit} alt="edit" />
-                                                <p>Change</p>
-                                            </button>
-                                            <button className='admin__article--subbtn'>
-                                                <img src={delete_icon} alt="delete_icon" />
-                                                <p>Delete</p>
-                                            </button>
-                                        </div>
-                                    </button>
-                                    <h3 className='admin__article--title'>Ways to strengthen financial control in the rational USE of financial control state...</h3>
-                                    <h4 className='admin__article--subtitle'>Xodjayev Erkin</h4>
-                                    <p className='admin__article--text'>CAREERS EDITORIAL | 14 MAR 2022</p>
-                                </li> */}
                             </ul>
                         </div>
                     </div>

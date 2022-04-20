@@ -1,5 +1,6 @@
 import { useRef } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 //SASS
 import './Header.scss'
@@ -13,6 +14,7 @@ import Bar from '../../Assets/img/bar_icon.svg'
 import MobileNav from './mobileNav'
 
 function Header() {
+    const tagHeader = useRef()
     const barList = useRef()
     function openBar() {
         barList.current.classList.add('header__open')
@@ -20,19 +22,29 @@ function Header() {
     function closeBar() {
         barList.current.classList.remove('header__open')
     }
+    const path = useParams()
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 20) {
+            return tagHeader.current ? tagHeader.current.classList.add('header__bg') : null
+        } else {
+            return tagHeader.current ? tagHeader.current.classList.remove('header__bg') : null
+        }
+    })
     return (
-        <header className='header'>
+        <header ref={tagHeader} className='header'>
             <div className="container">
                 <div className="header__nav">
-                    <img className='header__logo' src={Logo} alt="logo" />
+                    <Link to={'/'}>
+                        <img className='header__logo' src={Logo} alt="logo" />
+                    </Link>
                     <div className='header__list'>
-                        <NavLink className='header__link' to='/'>Conference</NavLink>
-                        <NavLink className='header__link' to='/'>Articles</NavLink>
-                        <NavLink className='header__link' to='/'>Certificates</NavLink>
-                        <NavLink className='header__link' to='/'>Pricing</NavLink>
-                        <NavLink className='header__link' to='/'>Contacts</NavLink>
-                        <NavLink className='header__link' to='/'>Journal</NavLink>
-                        <NavLink className='header__link' to='/'>About us</NavLink>
+                        <Link className='header__link' to='/conference'>Conference</Link>
+                        <Link className='header__link' to='/articles'>Articles</Link>
+                        <Link className='header__link' to='/certificates'>Certificates</Link>
+                        <Link className='header__link' to='/pricing'>Pricing</Link>
+                        <Link className='header__link' to='/contacts'>Contacts</Link>
+                        <Link className='header__link' to='/journal'>Journal</Link>
+                        <Link className='header__link' to='/about'>About us</Link>
                     </div>
                     <button onClick={openBar} className='header__bar--open'><img src={Bar} alt="bar" /></button>
                     <div ref={barList} className="header__bar">

@@ -13,7 +13,6 @@ import AdminNav from '../AdminNav/AdminNav'
 
 function JournalForm() {
     let currentTime = new Date().toISOString()
-    console.log();
     return (
         <>
             <div className="admin">
@@ -31,7 +30,7 @@ function JournalForm() {
                             </div>
                         </div>
                         <div className="admin__area">
-                            <AdminNav />
+                            <AdminNav search={'delete'}/>
                             <div className="journal__form">
                                 <label className='journal__form--label'>
                                     upload Img :

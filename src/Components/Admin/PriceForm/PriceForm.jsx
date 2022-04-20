@@ -28,7 +28,7 @@ function PriceForm() {
                             </div>
                         </div>
                         <div className="admin__area">
-                            <AdminNav />
+                            <AdminNav search={'delete'}/>
                         </div>
                     </div>
                 </div>
