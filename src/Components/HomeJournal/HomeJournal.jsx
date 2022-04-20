@@ -50,7 +50,7 @@ function HomeJournal() {
                     <h4 className="hjournal__item-title">{e.text}</h4>
                     <div className="hjournal__item-box">
                       <span className="hjournal__item-date">1-aprel 12:30</span>
-                      <a href="#" className="hjournal__item-btn" download>
+                      <a href="https://unsplash.com/photos/8BhC4aRgoi8/download?ixid=MnwxMjA3fDF8MXxhbGx8MXx8fHx8fDJ8fDE2NTA0NTk2MTI&force=true" className="hjournal__item-btn" download>
                         <img src={Download} alt="downloader" width={20} height={20} />
                       </a>
                     </div>
