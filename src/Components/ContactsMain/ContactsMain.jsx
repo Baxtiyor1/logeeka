@@ -16,57 +16,57 @@ function ContactsMain() {
           <div className="contacts__top">
             <ul className="contacts__menu">
               <li className="contacts__item">
-                <a className="contacts__link" href="#">
+                <a className="contacts__link" href="tel: +998901234567">
                   <img className="contacts__icon" src={Phone} alt="phone" />
                   <div className="contacts__linkbox">
                     <p className="contacts__subtitle">Phone Number</p>
-                    <a className="contacts__textlink" href="#">
+                    <p className="contacts__textlink">
                       +998901234567
-                    </a>
+                    </p>
                   </div>
                 </a>
               </li>
               <li className="contacts__item">
-                <a className="contacts__link" href="#">
+                <a className="contacts__link" href="mailto: logeekascince@gmail.com">
                   <img className="contacts__icon" src={Mail} alt="mail" />
                   <div className="contacts__linkbox">
                     <p className="contacts__subtitle">Email Address</p>
-                    <a className="contacts__textlink" href="#">
+                    <p className="contacts__textlink" >
                       logeekascince@gmail.com
-                    </a>
+                    </p>
                   </div>
                 </a>
               </li>
               <li className="contacts__item">
-                <a className="contacts__link" href="#">
+                <a className="contacts__link" href="https://www.instagram.com/ibrahimgulyamov/">
                   <img className="contacts__icon" src={Insta} alt="insta" />
                   <div className="contacts__linkbox">
                     <p className="contacts__subtitle">Instagram</p>
-                    <a className="contacts__textlink" href="#">
+                    <p className="contacts__textlink">
                       Logeekascince
-                    </a>
+                    </p>
                   </div>
                 </a>
               </li>
               <li className="contacts__item">
-                <a className="contacts__link" href="#">
+                <a className="contacts__link" href="https://t.me/Logeekascince">
                   <img className="contacts__icon" src={Telegram} alt="tg" />
                   <div className="contacts__linkbox">
                     <p className="contacts__subtitle">Telegram</p>
-                    <a className="contacts__textlink" href="#">
+                    <p className="contacts__textlink" >
                       Logeekascince
-                    </a>
+                    </p>
                   </div>
                 </a>
               </li>
               <li className="contacts__item">
-                <a className="contacts__link" href="#">
+                <a className="contacts__link" href="https://t.me/Logeekascince">
                   <img className="contacts__icon" src={Facebook} alt="face" />
                   <div className="contacts__linkbox">
                     <p className="contacts__subtitle">Facebook</p>
-                    <a className="contacts__textlink" href="#">
+                    <p className="contacts__textlink">
                       Logeekascince
-                    </a>
+                    </p>
                   </div>
                 </a>
               </li>
