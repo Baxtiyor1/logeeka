@@ -3,8 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import './App.scss'
 
 //Components
-import Private from './Route/Private';
-import Public from './Route/Public'
+// import Private from './Route/Private';
+// import Public from './Route/Public'
 import Admin from './Components/Admin/Admin';
 import AdminArticle from './Components/Admin/AdminArticle/AdminArticle';
 import ArticleForm from './Components/Admin/ArticleForm/ArticleForm';

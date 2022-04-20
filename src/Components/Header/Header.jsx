@@ -22,7 +22,7 @@ function Header() {
     function closeBar() {
         barList.current.classList.remove('header__open')
     }
-    const path = useParams()
+    
     window.addEventListener("scroll", () => {
         if (window.scrollY > 20) {
             return tagHeader.current ? tagHeader.current.classList.add('header__bg') : null

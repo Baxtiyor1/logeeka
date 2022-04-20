@@ -37,10 +37,10 @@ function AdminArticle() {
 
     function openSubNav(e) {
         subNav.current.map(item => {
-            if (item.current.id == e.target.id) {
-                item.current.classList.toggle('admin__article--subbox-open');
+            if (item.current.id === Number(e.target.id)) {
+                return item.current && item.current.classList.toggle('admin__article--subbox-open');
             } else {
-                item.current.classList.remove('admin__article--subbox-open');
+                return item.current && item.current.classList.remove('admin__article--subbox-open');
             }
         })
     }

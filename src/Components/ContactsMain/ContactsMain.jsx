@@ -16,55 +16,55 @@ function ContactsMain() {
           <div className="contacts__top">
             <ul className="contacts__menu">
               <li className="contacts__item">
-                <a className="contacts__link" href="">
-                  <img className="contacts__icon" src={Phone} alt="" />
+                <a className="contacts__link" href="#">
+                  <img className="contacts__icon" src={Phone} alt="phone" />
                   <div className="contacts__linkbox">
                     <p className="contacts__subtitle">Phone Number</p>
-                    <a className="contacts__textlink" href="">
+                    <a className="contacts__textlink" href="#">
                       +998901234567
                     </a>
                   </div>
                 </a>
               </li>
               <li className="contacts__item">
-                <a className="contacts__link" href="">
-                  <img className="contacts__icon" src={Mail} alt="" />
+                <a className="contacts__link" href="#">
+                  <img className="contacts__icon" src={Mail} alt="mail" />
                   <div className="contacts__linkbox">
                     <p className="contacts__subtitle">Email Address</p>
-                    <a className="contacts__textlink" href="">
+                    <a className="contacts__textlink" href="#">
                       logeekascince@gmail.com
                     </a>
                   </div>
                 </a>
               </li>
               <li className="contacts__item">
-                <a className="contacts__link" href="">
-                  <img className="contacts__icon" src={Insta} alt="" />
+                <a className="contacts__link" href="#">
+                  <img className="contacts__icon" src={Insta} alt="insta" />
                   <div className="contacts__linkbox">
                     <p className="contacts__subtitle">Instagram</p>
-                    <a className="contacts__textlink" href="">
+                    <a className="contacts__textlink" href="#">
                       Logeekascince
                     </a>
                   </div>
                 </a>
               </li>
               <li className="contacts__item">
-                <a className="contacts__link" href="">
-                  <img className="contacts__icon" src={Telegram} alt="" />
+                <a className="contacts__link" href="#">
+                  <img className="contacts__icon" src={Telegram} alt="tg" />
                   <div className="contacts__linkbox">
                     <p className="contacts__subtitle">Telegram</p>
-                    <a className="contacts__textlink" href="">
+                    <a className="contacts__textlink" href="#">
                       Logeekascince
                     </a>
                   </div>
                 </a>
               </li>
               <li className="contacts__item">
-                <a className="contacts__link" href="">
-                  <img className="contacts__icon" src={Facebook} alt="" />
+                <a className="contacts__link" href="#">
+                  <img className="contacts__icon" src={Facebook} alt="face" />
                   <div className="contacts__linkbox">
                     <p className="contacts__subtitle">Facebook</p>
-                    <a className="contacts__textlink" href="">
+                    <a className="contacts__textlink" href="#">
                       Logeekascince
                     </a>
                   </div>
@@ -107,15 +107,6 @@ function ContactsMain() {
               ></textarea>
             </form>
           </div>
-          <h3 className="contacts__subtext">Find us by map</h3>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.2566544825618!2d69.24633840368692!3d41.32503208608863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8bfaedfe3e1d%3A0x23ac4a5a705b84ab!2sNajot%20Ta&#39;lim!5e0!3m2!1suz!2s!4v1650240911827!5m2!1suz!2s"
-            width={1280}
-            height={560}
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
         </div>
       </div>
     </section>

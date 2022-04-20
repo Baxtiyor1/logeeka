@@ -12,7 +12,7 @@ function AdminNav({ search }) {
     const elemSearch = useRef()
 
     useEffect(() => {
-        if (search == 'delete') {
+        if (search === 'delete') {
             elemSearch.current && elemSearch.current.classList.add('admin__area--form-none')
         }else{
             elemSearch.current && elemSearch.current.classList.remove('admin__area--form-none')

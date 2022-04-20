@@ -40,7 +40,7 @@ function AdminConference() {
 
     function openSubNav(e) {
         subNav.current.map(item => {
-            if (item.current.id == e.target.id) {
+            if (item.current.id === Number(e.target.id)) {
                 return item.current && item.current.classList.toggle('admin__article--subbox-open')
             } else {
                 return item.current && item.current.classList.remove('admin__article--subbox-open')
