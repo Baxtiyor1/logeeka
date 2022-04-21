@@ -6,7 +6,7 @@ import InArticles from "../Components/InArticles/InArticles";
 function InnerArticles() {
   return (
     <>
-      <Header/>
+      <Header bgColor={'blue'}/>
       <InArticles/>
       <Footer />
     </>

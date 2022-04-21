@@ -26,11 +26,6 @@
                 border-radius: 5px;
             }
             
-            &-icon {
-                width: 16px;
-                margin-right: 8px;
-            }
-            
             &-input {
                 background-color: transparent;
                 font-size: 14px;
@@ -50,6 +45,8 @@
             }
             
             &-pic {
+                width: 40px;
+                height: 40px;
                 margin-right: 10px;
                 border-radius: 50%;
             }

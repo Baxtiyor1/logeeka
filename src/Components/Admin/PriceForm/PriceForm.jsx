@@ -28,7 +28,13 @@ function PriceForm() {
                             </div>
                         </div>
                         <div className="admin__area">
-                            <AdminNav search={'delete'}/>
+                            <AdminNav />
+                            <form className='article__form'>
+                                <label className='article__form--label'>
+                                    Title:
+                                    <input name='name' className='article__form--input' type="text" placeholder='name surname' />
+                                </label>
+                            </form>
                         </div>
                     </div>
                 </div>

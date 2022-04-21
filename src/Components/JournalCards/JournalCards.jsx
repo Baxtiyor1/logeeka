@@ -6,9 +6,9 @@ import Img from "../../Assets/img/hjournal-item.png";
 function JournalCards() {
   return (
     <section className='jcards'>
-        <div className="container">
-            <div className="jcards__wrapper">
-            <ul className="hjournal__list">
+      <div className="container">
+        <div className="jcards__wrapper">
+          <ul className="hjournal__list">
             <li className="hjournal__item">
               <img className="hjournal__item-img" src={Img} alt="" />
               <div className="hjournal__item-wrapper">
@@ -131,8 +131,8 @@ function JournalCards() {
             </li>
           </ul>
           <div className='confcards__btnbox'><button className='confcards__btn'>Show more</button></div>
-            </div>
         </div>
+      </div>
     </section>
   )
 }

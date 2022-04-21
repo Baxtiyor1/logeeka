@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './PricingMain.scss'
 
 function PricingMain() {
@@ -8,9 +8,9 @@ function PricingMain() {
         <div className="container">
             <div className="pricing__wrapper">
                 <div className="pricing__navlink">
-                    <NavLink className={'pricing__navlink'} to={'/'}>Home</NavLink>
+                    <Link className={'pricing__navlink'} to={'/'}>Home</Link>
                     <span className={'pricing__navlink'}> | </span>
-                    <NavLink className={'pricing__navlink pricing__navlink--active'} to={'/pricing'}>Pricing</NavLink>
+                    <Link className={'pricing__navlink pricing__navlink--active'} to={'/pricing'}>Pricing</Link>
                 </div>
                 <h1 className='pricing__title'>Pricing</h1>
                 <ul className='pricing__menu'>

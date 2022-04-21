@@ -6,7 +6,7 @@ import InConference from "../Components/InConference/InConference";
 function InnerConference() {
   return (
     <>
-      <Header/>
+      <Header bgColor={'blue'}/>
       <InConference/>
       <Footer />
     </>

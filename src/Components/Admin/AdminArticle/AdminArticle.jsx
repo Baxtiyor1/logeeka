@@ -10,6 +10,7 @@ import delete_icon from '../../../Assets/img/delete.svg'
 import edit from '../../../Assets/img/edit.svg'
 import dots from '../../../Assets/img/dots_icon.svg'
 import search from '../../../Assets/img/search.svg'
+import Logo from '../../../Assets/img/logo.svg'
 
 //Components
 import AdminAside from '../AdminAside/AdminAside'
@@ -37,7 +38,7 @@ function AdminArticle() {
 
     function openSubNav(e) {
         subNav.current.map(item => {
-            if (item.current.id === Number(e.target.id)) {
+            if (Number(item.current.id) === Number(e.target.id)) {
                 return item.current && item.current.classList.toggle('admin__article--subbox-open');
             } else {
                 return item.current && item.current.classList.remove('admin__article--subbox-open');
@@ -52,16 +53,17 @@ function AdminArticle() {
                     <AdminAside />
                     <div className="admin__bside">
                         <div className="admin__bside--header">
-                            <form className='admin__bside--header-form'>
-                                <img className='admin__bside--header-icon' src={search} alt="search" />
-                                <input className='admin__bside--header-input' type="text" placeholder='Search...' />
-                            </form>
+                            <img className='admin__bside--header-icon' src={Logo} alt="Logo" />
                             <div className="admin__bside--header-box">
                                 <img className="admin__bside--header-pic" src="http://picsum.photos/40" alt="img" />
                                 <p className="admin__bside--header-text">John Doe</p>
                             </div>
                         </div>
                         <div className="admin__area">
+                            <form className='admin__area--form'>
+                                <input className='admin__area--input' type="text" placeholder='User search...' />
+                                <img className='admin__area--input-icon' src={search} alt="search_icon" />
+                            </form>
                             <AdminNav />
                             <ul className='admin__article'>
                                 {

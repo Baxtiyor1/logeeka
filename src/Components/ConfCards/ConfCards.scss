@@ -87,6 +87,10 @@
         line-height: 24px;
         text-align: center;
         color: #FFFFFF;
+        cursor: pointer;
+        &:hover{
+        background: #1a7ad4;
+        }
     }
 }
 

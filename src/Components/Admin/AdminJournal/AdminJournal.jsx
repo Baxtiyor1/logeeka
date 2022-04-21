@@ -7,9 +7,8 @@ import '../AdminArticle/AdminArticle.scss'
 
 //Images
 import delete_icon from '../../../Assets/img/delete.svg'
-import edit from '../../../Assets/img/edit.svg'
+import Logo from '../../../Assets/img/logo.svg'
 import search from '../../../Assets/img/search.svg'
-import dots from '../../../Assets/img/dots_icon.svg'
 
 //Components
 import AdminNav from '../AdminNav/AdminNav'
@@ -34,20 +33,6 @@ function AdminJournal() {
             text: "aaaa"
         },
     ]
-
-    const journalNav = useRef([])
-
-    journalNav.current = journalData.map((_, i) => journalNav.current[i] ?? createRef());
-
-    function openJournalNav(e) {
-        journalNav.current.map(item => {
-            if (item.current.id === Number(e.target.id)) {
-                return item.current && item.current.classList.toggle('admin__article--subbox-open');
-            } else {
-                return item.current && item.current.classList.remove('admin__article--subbox-open');
-            }
-        })
-    }
     return (
         <>
             <section className='admin'>
@@ -55,16 +40,17 @@ function AdminJournal() {
                     <AdminAside />
                     <div className="admin__bside">
                         <div className="admin__bside--header">
-                            <form className='admin__bside--header-form'>
-                                <img className='admin__bside--header-icon' src={search} alt="search" />
-                                <input className='admin__bside--header-input' type="text" placeholder='Search...' />
-                            </form>
+                            <img className='admin__bside--header-icon' src={Logo} alt="Logo" />
                             <div className="admin__bside--header-box">
                                 <img className="admin__bside--header-pic" src="http://picsum.photos/40" alt="img" />
                                 <p className="admin__bside--header-text">John Doe</p>
                             </div>
                         </div>
                         <div className="admin__area">
+                            <form className='admin__area--form'>
+                                <input className='admin__area--input' type="text" placeholder='User search...' />
+                                <img className='admin__area--input-icon' src={search} alt="search_icon" />
+                            </form>
                             <AdminNav />
                             <div className="journal">
                                 <ul className='journal__list'>
@@ -74,18 +60,8 @@ function AdminJournal() {
                                                 <p className='journal__title'>The role of user preference in the customized control of .....</p>
                                                 <p className='journal__text'>{e.text}</p>
                                                 <time className='journal__time'>6-aprel 12:30</time>
-                                                <div id={i} className='admin__article--btn journal__btn' onClick={openJournalNav}>
-                                                    <img className='journal__img' src={dots} alt="dots" />
-                                                    <div ref={journalNav.current[i]} id={i} className='admin__article--subbox'>
-                                                        <Link to='/admin/journal/form' type='button' className='admin__article--subbtn'>
-                                                            <img src={edit} alt="edit" />
-                                                            <p>Change</p>
-                                                        </Link>
-                                                        <button type='button' className='admin__article--subbtn'>
-                                                            <img src={delete_icon} alt="delete_icon" />
-                                                            <p>Delete</p>
-                                                        </button>
-                                                    </div>
+                                                <div id={i} className='admin__article--btn journal__btn'>
+                                                    <img src={delete_icon} alt="delete_icon" />
                                                 </div>
                                             </li>
                                         ))

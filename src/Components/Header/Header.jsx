@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 //SASS
@@ -12,7 +12,7 @@ import Bar from '../../Assets/img/bar_icon.svg'
 //SubComponents
 import MobileNav from './mobileNav'
 
-function Header() {
+function Header({bgColor}) {
     const tagHeader = useRef()
     const barList = useRef()
     function openBar() {
@@ -21,6 +21,14 @@ function Header() {
     function closeBar() {
         barList.current.classList.remove('header__open')
     }
+
+    useEffect(()=> {
+        if (bgColor === 'blue') {
+            return tagHeader.current ? tagHeader.current.classList.add('header__bg--blue') : null
+        } else {
+            return tagHeader.current ? tagHeader.current.classList.remove('header__bg--blue') : null
+        }
+    },[bgColor])
     
     window.addEventListener("scroll", () => {
         if (window.scrollY > 20) {

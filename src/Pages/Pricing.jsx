@@ -6,7 +6,7 @@ import PricingMain from "../Components/PricingMain/PricingMain";
 function Pricing() {
   return (
     <>
-      <Header/>
+      <Header bgColor={'blue'}/>
       <PricingMain/>
       <Footer />
     </>

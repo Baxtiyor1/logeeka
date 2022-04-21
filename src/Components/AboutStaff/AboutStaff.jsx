@@ -45,16 +45,8 @@ function Staffs() {
                 <p className="staffs__text">Co-Founder, Director</p>
                 <div className="staffs__subbox">
                   <img className="staffs__subimg" src={Twitter} alt="twitter" />
-                  <img
-                    className="staffs__subimg"
-                    src={Facebook}
-                    alt="facebook"
-                  />
-                  <img
-                    className="staffs__subimg"
-                    src={Linkedin}
-                    alt="linkedin"
-                  />
+                  <img className="staffs__subimg" src={Facebook} alt="facebook" />
+                  <img className="staffs__subimg" src={Linkedin} alt="linkedin" />
                 </div>
               </div>
             </li>
@@ -65,16 +57,8 @@ function Staffs() {
                 <p className="staffs__text">HR Manager</p>
                 <div className="staffs__subbox">
                   <img className="staffs__subimg" src={Twitter} alt="twitter" />
-                  <img
-                    className="staffs__subimg"
-                    src={Facebook}
-                    alt="facebook"
-                  />
-                  <img
-                    className="staffs__subimg"
-                    src={Linkedin}
-                    alt="linkedin"
-                  />
+                  <img className="staffs__subimg" src={Facebook} alt="facebook" />
+                  <img className="staffs__subimg" src={Linkedin} alt="linkedin" />
                 </div>
               </div>
             </li>
@@ -85,16 +69,8 @@ function Staffs() {
                 <p className="staffs__text">it specialist</p>
                 <div className="staffs__subbox">
                   <img className="staffs__subimg" src={Twitter} alt="twitter" />
-                  <img
-                    className="staffs__subimg"
-                    src={Facebook}
-                    alt="facebook"
-                  />
-                  <img
-                    className="staffs__subimg"
-                    src={Linkedin}
-                    alt="linkedin"
-                  />
+                  <img className="staffs__subimg" src={Facebook} alt="facebook" />
+                  <img className="staffs__subimg" src={Linkedin} alt="linkedin" />
                 </div>
               </div>
             </li>

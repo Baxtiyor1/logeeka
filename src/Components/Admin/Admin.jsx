@@ -3,7 +3,8 @@
 import './Admin.scss'
 
 //IMAGES
-import search from '../../Assets/img/search.svg'
+import search_icon from '../../Assets/img/search.svg'
+import Logo from '../../Assets/img/logo.svg'
 
 //Components
 import AdminAside from './AdminAside/AdminAside'
@@ -17,16 +18,17 @@ function Admin() {
                     <AdminAside />
                     <div className="admin__bside">
                         <div className="admin__bside--header">
-                            <form className='admin__bside--header-form'>
-                                <img className='admin__bside--header-icon' src={search} alt="search" />
-                                <input className='admin__bside--header-input' type="text" placeholder='Search...' />
-                            </form>
+                            <img className='admin__bside--header-icon' src={Logo} alt="Logo" />
                             <div className="admin__bside--header-box">
                                 <img className="admin__bside--header-pic" src="http://picsum.photos/40" alt="img" />
                                 <p className="admin__bside--header-text">John Doe</p>
                             </div>
                         </div>
                         <div className="admin__area">
+                            <form className='admin__area--form'>
+                                <input className='admin__area--input' type="text" placeholder='User search...' />
+                                <img className='admin__area--input-icon' src={search_icon} alt="search_icon" />
+                            </form>
                             <AdminNav />
                         </div>
                     </div>

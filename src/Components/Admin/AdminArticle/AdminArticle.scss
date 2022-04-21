@@ -25,6 +25,10 @@
             cursor: pointer;
             border-radius: 40%;
             transition: 0.3s;
+            & img{
+                width: 25px;
+                pointer-events: none;
+            }
 
             &:hover {
                 background-color: #303055;

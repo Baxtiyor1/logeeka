@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "./InConference.scss";
 
@@ -36,16 +36,9 @@ function InConference() {
     <section className="inconference">
       <div className="container">
         <div className="pricing__navlink">
-          <NavLink className={"pricing__navlink"} to={"/"}>
-            Home
-          </NavLink>
+          <Link className={"pricing__navlink"} to={"/"}>Home</Link>
           <span className={"pricing__navlink"}> | </span>
-          <NavLink
-            className={"pricing__navlink pricing__navlink--active"}
-            to={"/#"}
-          >
-            Conference
-          </NavLink>
+          <Link className={"pricing__navlink pricing__navlink--active"} to={"/#"} >Conference</Link>
         </div>
         <div className="news__wrapper">
           <div className="news__left inconference__left">

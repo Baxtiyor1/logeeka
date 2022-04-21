@@ -1,5 +1,3 @@
-import { useRef, createRef } from 'react';
-import { Link } from 'react-router-dom';
 
 //SASS
 import './AdminConference.scss'
@@ -8,8 +6,7 @@ import '../AdminArticle/AdminArticle.scss'
 //Images
 import search from '../../../Assets/img/search.svg'
 import delete_icon from '../../../Assets/img/delete.svg'
-import edit from '../../../Assets/img/edit.svg'
-import dots from '../../../Assets/img/dots_icon.svg'
+import Logo from '../../../Assets/img/logo.svg'
 
 //Components
 import AdminNav from '../AdminNav/AdminNav'
@@ -34,19 +31,6 @@ function AdminConference() {
             type: "Go"
         },
     ]
-    const subNav = useRef([])
-
-    subNav.current = fakeConfrenceData.map((_, i) => subNav.current[i] ?? createRef());
-
-    function openSubNav(e) {
-        subNav.current.map(item => {
-            if (item.current.id === Number(e.target.id)) {
-                return item.current && item.current.classList.toggle('admin__article--subbox-open')
-            } else {
-                return item.current && item.current.classList.remove('admin__article--subbox-open')
-            }
-        })
-    }
     return (
         <>
             <section className='admin'>
@@ -54,16 +38,17 @@ function AdminConference() {
                     <AdminAside />
                     <div className="admin__bside">
                         <div className="admin__bside--header">
-                            <form className='admin__bside--header-form'>
-                                <img className='admin__bside--header-icon' src={search} alt="search" />
-                                <input className='admin__bside--header-input' type="text" placeholder='Search...' />
-                            </form>
+                            <img className='admin__bside--header-icon' src={Logo} alt="search" />
                             <div className="admin__bside--header-box">
                                 <img className="admin__bside--header-pic" src="http://picsum.photos/40" alt="img" />
                                 <p className="admin__bside--header-text">John Doe</p>
                             </div>
                         </div>
                         <div className="admin__area">
+                            <form className='admin__area--form'>
+                                <input className='admin__area--input' type="text" placeholder='User search...' />
+                                <img className='admin__area--input-icon' src={search} alt="search_icon" />
+                            </form>
                             <AdminNav />
                             <ul className='conf__list'>
                                 {
@@ -73,18 +58,8 @@ function AdminConference() {
                                             <p className='conf__text conf__name'>Abbos Janizakov</p>
                                             <p className='conf__text conf__type'>{e.type}</p>
                                             <time className='conf__text conf__time'>26/01/2022 | 10:00</time>
-                                            <div id={i} onClick={openSubNav} className='admin__article--btn conf__btn'>
-                                                <img style={{ "pointerEvents": "none" }} src={dots} alt="dots" />
-                                                <div ref={subNav.current[i]} id={i} className='admin__article--subbox conf__subbox'>
-                                                    <Link to='/admin/conference/form' type='button' className='admin__article--subbtn'>
-                                                        <img src={edit} alt="edit" />
-                                                        <p>Change</p>
-                                                    </Link>
-                                                    <button type='button' className='admin__article--subbtn'>
-                                                        <img src={delete_icon} alt="delete_icon" />
-                                                        <p>Delete</p>
-                                                    </button>
-                                                </div>
+                                            <div className='admin__article--btn conf__btn'>
+                                                <img src={delete_icon} alt="delete_icon" />
                                             </div>
                                         </li>
                                     ))
