@@ -1,5 +1,3 @@
-import { useRef, createRef } from 'react'
-import { Link } from 'react-router-dom'
 
 //SASS
 import './AdminJournal.scss'
