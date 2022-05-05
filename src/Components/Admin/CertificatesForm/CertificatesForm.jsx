@@ -6,7 +6,6 @@ import './CertificatesForm.scss'
 //IMAGES
 import Logo from '../../../Assets/img/logo.svg'
 import file_icon from '../../../Assets/img/file_upload.svg'
-import search from '../../../Assets/img/search.svg'
 
 //COMPONENTS
 import AdminAside from '../AdminAside/AdminAside'

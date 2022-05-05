@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 // import images
 import ArrowRight from "../../Assets/img/arrow-right.svg";
 import Download from "../../Assets/img/download.svg";
-import Img from "../../Assets/img/hjournal-item.png";
 
 function HomeJournal() {
   const fakeJournals = [

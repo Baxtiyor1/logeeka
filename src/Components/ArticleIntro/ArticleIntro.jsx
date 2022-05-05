@@ -11,9 +11,9 @@ function ArticleIntro() {
     e.preventDefault()
     const { articleName } = e.target.elements
     axios.get(`https://logeeka-mini-app.herokuapp.com/posts/allArticle?search=${articleName.value.trim()}`)
-    .then(res => setArticleData(res.data.data))
-
+      .then(res => setArticleData(res.data.data))
   }
+  console.log(articleData);
   return (
     <section className='artintro'>
       <div className="container">

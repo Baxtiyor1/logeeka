@@ -7,7 +7,6 @@ import './AdminAside.scss'
 import server from '../../../Assets/img/server.svg'
 import plus_icon from '../../../Assets/img/plus-circle.svg'
 import power from '../../../Assets/img/power.svg'
-import setting from '../../../Assets/img/settings.svg'
 
 function AdminAside() {
     return (

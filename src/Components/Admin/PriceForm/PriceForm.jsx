@@ -5,7 +5,6 @@ import './PriceForm.scss'
 
 //IMAGES
 import Logo from '../../../Assets/img/logo.svg'
-import search from '../../../Assets/img/search.svg'
 
 //COMPONENTS
 import AdminAside from '../AdminAside/AdminAside'
