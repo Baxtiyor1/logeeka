@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom'
 
 //SASS
 import './AdminAside.scss'
@@ -17,20 +17,20 @@ function AdminAside() {
                     <div className="admin__aside--circle"><span></span></div>
                     <h2 className='admin__aside--title'>Admin Panel</h2>
                 </div>
-                <ul className='admin__aside--list'>
-                    <li className='admin__aside--item admin__aside--item-active'>
+                <div className='admin__aside--list'>
+                    <Link to={'/admin'} className='admin__aside--item admin__aside--item-active'>
                         <img className='admin__aside--icon' src={server} alt="server" />
                         <p className='admin__aside--text'>Home</p>
-                    </li>
-                    <li className='admin__aside--item'>
+                    </Link>
+                    <Link to={'/admin/add'} className='admin__aside--item'>
                         <img className='admin__aside--icon' src={plus_icon} alt="plus_icon" />
                         <p className='admin__aside--text'>Add</p>
-                    </li>
-                    <li className='admin__aside--item'>
+                    </Link>
+                    {/* <li className='admin__aside--item'>
                         <img className='admin__aside--icon' src={setting} alt="setting" />
                         <p className='admin__aside--text'>Settings</p>
-                    </li>
-                </ul>
+                    </li> */}
+                </div>
             </div>
             <button className='admin__aside--exit'>
                 <img className='admin__aside--icon' src={power} alt="power" />

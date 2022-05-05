@@ -5,6 +5,7 @@
     &__title{
         font-weight: 600;
         font-size: 40px;
+        padding-right: 40px;
         line-height: 47px;
         color: #333333;
         border-bottom:  2px solid #333333;
@@ -12,6 +13,32 @@
     &__swiper{
         margin-top: 40px;
         height: 202px;
+    }
+    &__subbox{
+        display: flex;
+        align-items: center;
+    }
+    &__box{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__btn{
+        margin-left: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border: none;
+        background-color: transparent;
+        opacity: 0.7;
+        cursor: pointer;    
+        &--left{
+            transform: rotate(180deg);
+        }
+        &:hover{
+            opacity: 1;
+        }
     }
     &__slide{
         background: rgba(255, 255, 255, 0.01);
@@ -54,7 +81,18 @@
         }
     }
 }
-
-// @media screen and (max-width: 1280px) {
-    
-    // }
+@media screen and (max-width: 560px) {
+    .hnews{
+        margin: 100px 0;
+        padding: 66 0;
+    }
+}
+@media screen and (max-width: 560px) {
+    .hnews{
+        margin: 100px 0;
+        &__title{
+            font-size: 32px;
+            line-height: normal;
+        }
+    }
+}

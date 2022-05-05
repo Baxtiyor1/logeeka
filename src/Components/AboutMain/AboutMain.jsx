@@ -73,39 +73,52 @@ function AboutMain() {
           <div className="about__sponsors">
             <h3 className="about__subtitle">Our sponsors</h3>
             <Swiper className="about__swiper"
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
-            spaceBetween={40}
-            slidesPerView={4.5}
-            // navigation
-            // pagination={{ clickable: true }}
-            // scrollbar={{ draggable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log("slide change")}
-          >
-            <SwiperSlide className="about__slide">
-            <img className="about__slide-img about__slide-img--small" src={Doi} alt="doi-logo"/>
-            </SwiperSlide>
-            <SwiperSlide className="about__slide">
-            <img className="about__slide-img" src={Google} alt="google-scholarship" />
-            </SwiperSlide>
-            <SwiperSlide className="about__slide">
-            <img className="about__slide-img about__slide-img--small" src={Doi} alt="doi-logo"/>
-            </SwiperSlide>
-            <SwiperSlide className="about__slide">
-            <img className="about__slide-img" src={Google} alt="google-scholarship" />
-            </SwiperSlide>
-            <SwiperSlide className="about__slide">
-            <img className="about__slide-img about__slide-img--small" src={Doi} alt="doi-logo"/>
-            </SwiperSlide>
-            <SwiperSlide className="about__slide">
-            <img className="about__slide-img" src={Google} alt="google-scholarship" />
-            </SwiperSlide>
-            <SwiperSlide className="about__slide">
-            <img className="about__slide-img about__slide-img--small" src={Doi} alt="doi-logo"/>
-            </SwiperSlide>
-            <SwiperSlide className="about__slide">
-            <img className="about__slide-img" src={Google} alt="google-scholarship" />
-            </SwiperSlide>
+              modules={[Navigation, Pagination, Scrollbar, A11y]}
+              spaceBetween={40}
+              slidesPerView={4.5}
+              breakpoints={{
+                0: {
+                  slidesPerView: 1,
+                  spaceBetween: 10
+                },
+                375: {
+                  slidesPerView: 1,
+                  spaceBetween: 10
+                },
+                500: {
+                  slidesPerView: 2,
+                  spaceBetween: 20
+                },
+                768: {
+                  slidesPerView: 4,
+                  spaceBetween: 30
+                }
+              }}
+            >
+              <SwiperSlide className="about__slide">
+                <img className="about__slide-img about__slide-img--small" src={Doi} alt="doi-logo" />
+              </SwiperSlide>
+              <SwiperSlide className="about__slide">
+                <img className="about__slide-img" src={Google} alt="google-scholarship" />
+              </SwiperSlide>
+              <SwiperSlide className="about__slide">
+                <img className="about__slide-img about__slide-img--small" src={Doi} alt="doi-logo" />
+              </SwiperSlide>
+              <SwiperSlide className="about__slide">
+                <img className="about__slide-img" src={Google} alt="google-scholarship" />
+              </SwiperSlide>
+              <SwiperSlide className="about__slide">
+                <img className="about__slide-img about__slide-img--small" src={Doi} alt="doi-logo" />
+              </SwiperSlide>
+              <SwiperSlide className="about__slide">
+                <img className="about__slide-img" src={Google} alt="google-scholarship" />
+              </SwiperSlide>
+              <SwiperSlide className="about__slide">
+                <img className="about__slide-img about__slide-img--small" src={Doi} alt="doi-logo" />
+              </SwiperSlide>
+              <SwiperSlide className="about__slide">
+                <img className="about__slide-img" src={Google} alt="google-scholarship" />
+              </SwiperSlide>
             </Swiper>
           </div>
         </div>

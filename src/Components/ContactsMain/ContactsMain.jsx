@@ -17,7 +17,9 @@ function ContactsMain() {
             <ul className="contacts__menu">
               <li className="contacts__item">
                 <a className="contacts__link" href="tel: +998901234567">
-                  <img className="contacts__icon" src={Phone} alt="phone" />
+                  <div className="contacts__icon--box">
+                    <img className="contacts__icon" src={Phone} alt="phone" />
+                  </div>
                   <div className="contacts__linkbox">
                     <p className="contacts__subtitle">Phone Number</p>
                     <p className="contacts__textlink">
@@ -28,7 +30,9 @@ function ContactsMain() {
               </li>
               <li className="contacts__item">
                 <a className="contacts__link" href="mailto: logeekascince@gmail.com">
-                  <img className="contacts__icon" src={Mail} alt="mail" />
+                  <div className="contacts__icon--box">
+                    <img className="contacts__icon" src={Mail} alt="mail" />
+                  </div>
                   <div className="contacts__linkbox">
                     <p className="contacts__subtitle">Email Address</p>
                     <p className="contacts__textlink" >
@@ -39,7 +43,9 @@ function ContactsMain() {
               </li>
               <li className="contacts__item">
                 <a className="contacts__link" href="https://www.instagram.com/ibrahimgulyamov/">
-                  <img className="contacts__icon" src={Insta} alt="insta" />
+                  <div className="contacts__icon--box">
+                    <img className="contacts__icon" src={Insta} alt="insta" />
+                  </div>
                   <div className="contacts__linkbox">
                     <p className="contacts__subtitle">Instagram</p>
                     <p className="contacts__textlink">
@@ -50,7 +56,9 @@ function ContactsMain() {
               </li>
               <li className="contacts__item">
                 <a className="contacts__link" href="https://t.me/Logeekascince">
-                  <img className="contacts__icon" src={Telegram} alt="tg" />
+                  <div className="contacts__icon--box">
+                    <img className="contacts__icon" src={Telegram} alt="tg" />
+                  </div>
                   <div className="contacts__linkbox">
                     <p className="contacts__subtitle">Telegram</p>
                     <p className="contacts__textlink" >
@@ -61,50 +69,30 @@ function ContactsMain() {
               </li>
               <li className="contacts__item">
                 <a className="contacts__link" href="https://t.me/Logeekascince">
-                  <img className="contacts__icon" src={Facebook} alt="face" />
+                  <div className="contacts__icon--box">
+                    <img className="contacts__icon" src={Facebook} alt="face" />
+                  </div>
                   <div className="contacts__linkbox">
                     <p className="contacts__subtitle">Facebook</p>
-                    <p className="contacts__textlink">
-                      Logeekascince
-                    </p>
+                    <p className="contacts__textlink">Logeekascince</p>
                   </div>
                 </a>
               </li>
             </ul>
             <form className="contacts__form">
               <h2 className="contacts__form-title">Send Message</h2>
-              <p className="contacts__form-text">
-                If you have any questions, you can send us an SMS or contact us
-                by phone you can also contact us via social networks.
-              </p>
+              <p className="contacts__form-text">If you have any questions, you can send us an SMS or contact us
+                by phone you can also contact us via social networks. </p>
               <div className="contacts__inputbox">
-                <input
-                  className="contacts__input"
-                  placeholder="Your name"
-                  type="text"
-                />
-                <input
-                  className="contacts__input"
-                  placeholder="Email address"
-                  type="text"
-                />
+                <input className="contacts__input" placeholder="Your name" type="text" />
+                <input className="contacts__input" placeholder="Email address" type="email" />
               </div>
               <div className="contacts__inputbox">
-                <input
-                  className="contacts__input"
-                  placeholder="Phone number"
-                  type="text"
-                />
-                <input
-                  className="contacts__input"
-                  placeholder="Telegram"
-                  type="text"
-                />
+                <input className="contacts__input" placeholder="Phone number" type="tel" />
+                <input className="contacts__input" placeholder="Telegram" type="text" />
               </div>
-              <textarea
-                className="contacts__input contacts__textarea"
-                placeholder="Message"
-              ></textarea>
+              <textarea className="contacts__input contacts__textarea" placeholder="Message" />
+              <button type="submit" className="contacts__btn">Send message</button>
             </form>
           </div>
         </div>

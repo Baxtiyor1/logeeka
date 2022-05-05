@@ -3,9 +3,14 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+
+
+    .effect{
+        background-color: #00000065;
+    }
     
     &__wrapper {
-        min-height: 80vh;
+        min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -42,6 +47,12 @@
             font-size: 18px;
             line-height: 28px;
         }
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .jintro{
+        margin-bottom: 50px;
     }
 }
 @media screen and (max-width: 428px) {

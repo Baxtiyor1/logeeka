@@ -1,10 +1,11 @@
-
+import axios from 'axios';
 
 //SASS
 import './JournalForm.scss'
 
 //IMAGES
 import search from '../../../Assets/img/search.svg'
+import Logo from '../../../Assets/img/logo.svg'
 import file_icon from '../../../Assets/img/file_upload.svg'
 
 //COMPONENTS
@@ -13,6 +14,23 @@ import AdminNav from '../AdminNav/AdminNav'
 
 function JournalForm() {
     let currentTime = new Date().toISOString()
+
+    function JournalValues(e) {
+        e.preventDefault()
+        const { journalFile, journalImage, journalTitle, journalTime } = e.target.elements
+        const data = {
+            image: journalImage.value,
+            pdf_file: journalFile.value,
+            title: journalTitle.value,
+            date: journalTime.value
+        }
+        console.log(data);
+        // axios.post('https://logeeka-mini-app.herokuapp.com/journal', data, {
+        //     headers: {
+        //         token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9'
+        //     }
+        // }).then(res => console.log(res))
+    }
     return (
         <>
             <div className="admin">
@@ -20,30 +38,27 @@ function JournalForm() {
                     <AdminAside />
                     <div className="admin__bside">
                         <div className="admin__bside--header">
-                            <form className='admin__bside--header-form'>
-                                <img className='admin__bside--header-icon' src={search} alt="search" />
-                                <input className='admin__bside--header-input' type="text" placeholder='Search...' />
-                            </form>
+                            <img className='admin__bside--header-icon' src={Logo} alt="Logo" />
                             <div className="admin__bside--header-box">
                                 <img className="admin__bside--header-pic" src="http://picsum.photos/40" alt="img" />
                                 <p className="admin__bside--header-text">John Doe</p>
                             </div>
                         </div>
                         <div className="admin__area">
-                            <AdminNav search={'delete'}/>
-                            <div className="journal__form">
+                            <AdminNav route={'add'} />
+                            <form onSubmit={JournalValues} className="journal__form" encType="multipart/form-data">
                                 <label className='journal__form--label'>
                                     upload Img :
                                     <div className='journal__form--box'>
                                         <p className='journal__form--text'>Img</p>
                                         <img className='journal__icon' src={file_icon} alt="file_icon" />
                                     </div>
-                                    <input className='journal__form--fileInput' type="file" accept="image/*" />
+                                    <input name='journalImage' className='journal__form--fileInput' type="file" accept="image/*" />
                                 </label>
                                 <label className='journal__form--label'>
                                     data:
-                                    <input className='journal__form--time' 
-                                    type="datetime-local" min={currentTime.split('').splice(0, 16).join('')}/>
+                                    <input name='journalTime' className='journal__form--time'
+                                        type="datetime-local" min={currentTime.split('').splice(0, 16).join('')} />
                                 </label>
                                 <label className='journal__form--label'>
                                     Title name:
@@ -55,10 +70,10 @@ function JournalForm() {
                                         <p className='journal__form--text'>pdf</p>
                                         <img className='journal__icon' src={file_icon} alt="file_icon" />
                                     </div>
-                                    <input className='journal__form--fileInput' type="file" accept='application/pdf'/>
+                                    <input name='journalFile' className='journal__form--fileInput' type="file" accept='application/pdf' />
                                 </label>
-                                <button className='journal__form--btn'>Save</button>
-                            </div>
+                                <button className='journal__form--btn' type='submit'>Save</button>
+                            </form>
                         </div>
                     </div>
                 </div>

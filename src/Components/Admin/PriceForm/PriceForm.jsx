@@ -4,6 +4,7 @@
 import './PriceForm.scss'
 
 //IMAGES
+import Logo from '../../../Assets/img/logo.svg'
 import search from '../../../Assets/img/search.svg'
 
 //COMPONENTS
@@ -18,22 +19,28 @@ function PriceForm() {
                     <AdminAside />
                     <div className="admin__bside">
                         <div className="admin__bside--header">
-                            <form className='admin__bside--header-form'>
-                                <img className='admin__bside--header-icon' src={search} alt="search" />
-                                <input className='admin__bside--header-input' type="text" placeholder='Search...' />
-                            </form>
+                        <img className='admin__bside--header-icon' src={Logo} alt="Logo" />
                             <div className="admin__bside--header-box">
                                 <img className="admin__bside--header-pic" src="http://picsum.photos/40" alt="img" />
                                 <p className="admin__bside--header-text">John Doe</p>
                             </div>
                         </div>
                         <div className="admin__area">
-                            <AdminNav />
-                            <form className='article__form'>
-                                <label className='article__form--label'>
+                            <AdminNav route={'add'}/>
+                            <form className='article__form price__form'>
+                                <label className='article__form--label price__form--label'>
                                     Title:
-                                    <input name='name' className='article__form--input' type="text" placeholder='name surname' />
+                                    <input name='priceTitle' className='article__form--input price__form--input' type="text" placeholder='type price title...' />
                                 </label>
+                                <label className='article__form--label price__form--label'>
+                                    Old price:
+                                    <input name='oldPrice' className='article__form--input price__form--input' type="number" placeholder='type old price' />
+                                </label>
+                                <label className='article__form--label price__form--label'>
+                                    New price: 
+                                    <input name='newPrice' className='article__form--input price__form--input' type="number" placeholder='type new price' />
+                                </label>
+                                <button className='article__form--btn' type='submit'>Save</button>
                             </form>
                         </div>
                     </div>

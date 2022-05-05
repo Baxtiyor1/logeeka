@@ -6,6 +6,7 @@ import '../AdminArticle/AdminArticle.scss'
 
 //IMAGES
 import file_icon from '../../../Assets/img/file_upload.svg'
+import Logo from '../../../Assets/img/logo.svg'
 import search from '../../../Assets/img/search.svg'
 
 //COMPONENTS
@@ -22,17 +23,14 @@ function ConferemceForm() {
                     <AdminAside />
                     <div className="admin__bside">
                         <div className="admin__bside--header">
-                            <form className='admin__bside--header-form'>
-                                <img className='admin__bside--header-icon' src={search} alt="search" />
-                                <input className='admin__bside--header-input' type="text" placeholder='Search...' />
-                            </form>
+                            <img className='admin__bside--header-icon' src={Logo} alt="Logo" />
                             <div className="admin__bside--header-box">
                                 <img className="admin__bside--header-pic" src="http://picsum.photos/40" alt="img" />
                                 <p className="admin__bside--header-text">John Doe</p>
                             </div>
                         </div>
                         <div className="admin__area">
-                            <AdminNav search={'delete'}/>
+                            <AdminNav route={'add'} />
                             <form className='conf__form'>
                                 <div className='conf__form--box'>
                                     <label className='conf__form--label'>
@@ -55,8 +53,8 @@ function ConferemceForm() {
                                 <div className='conf__form--subbox'>
                                     <label className='conf__form--label'>
                                         Time:
-                                        <input className='conf__form--input journal__form--time conf__form--time' 
-                                    type="datetime-local" min={currentTime.split('').splice(0, 16).join('')}/>
+                                        <input className='conf__form--input journal__form--time conf__form--time'
+                                            type="datetime-local" min={currentTime.split('').splice(0, 16).join('')} />
                                     </label>
                                     <label className='conf__form--label'>
                                         Phone:

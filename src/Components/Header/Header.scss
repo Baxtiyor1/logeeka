@@ -8,8 +8,10 @@
 
     &__bg{
         background-color: #1d2137;
+        backdrop-filter: blur(25px);
         &--blue{
-            background-color: #007AFF;
+            background-color: #007AFF90;
+            backdrop-filter: blur(25px);
         }
     }
     &__nav {
@@ -54,6 +56,8 @@
     }
 
     &__bar {
+        width: 100%;
+        min-height: 100vh;
         display: none;
     }
 

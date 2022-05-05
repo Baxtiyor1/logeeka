@@ -1,9 +1,12 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 //SASS
 import './ArticleForm.scss'
 
 //IMAGES
 import file_icon from '../../../Assets/img/file_upload.svg'
+import Logo from '../../../Assets/img/logo.svg'
 import search from '../../../Assets/img/search.svg'
 
 //COMPONENTS
@@ -11,6 +14,23 @@ import AdminAside from '../AdminAside/AdminAside'
 import AdminNav from '../AdminNav/AdminNav'
 
 function ArticleForm() {
+    const [categoryData, setCategoryData] = useState([])
+
+    useEffect(() => {
+        axios.get('https://logeeka-mini-app.herokuapp.com/category', {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => setCategoryData(res.data.data))
+    })
+
+    function articleValues(e) {
+        e.preventDefault()
+
+    }
+
     return (
         <>
             <section className="admin">
@@ -18,24 +38,27 @@ function ArticleForm() {
                     <AdminAside />
                     <div className="admin__bside">
                         <div className="admin__bside--header">
-                            <form className='admin__bside--header-form'>
-                                <img className='admin__bside--header-icon' src={search} alt="search" />
-                                <input className='admin__bside--header-input' type="text" placeholder='Search...' />
-                            </form>
+                            <img className='admin__bside--header-icon' src={Logo} alt="Logo" />
                             <div className="admin__bside--header-box">
                                 <img className="admin__bside--header-pic" src="http://picsum.photos/40" alt="img" />
                                 <p className="admin__bside--header-text">John Doe</p>
                             </div>
                         </div>
                         <div className="admin__area">
-                            <AdminNav search={'delete'}/>
+                            <AdminNav route={'add'} />
                             <div className='article__wrapper'>
-                                <form className='article__form' method='multipart/form-data'>
+                                <form onSubmit={articleValues} className='article__form' method='multipart/form-data'>
                                     <label className='article__form--label'>
                                         profession:
-                                        <select name="profession" className='article__form--input'>
-                                            <option value="profession">Profession</option>
-                                            <option className='article__form--option' value="Matematika">Matematika</option>
+                                        <select name="profession" className='article__form--input' defaultValue='profession'>
+                                            <option value="profession" disabled>Profession</option>
+                                            {
+                                                categoryData && categoryData.map((e, i) => {
+                                                    return (
+                                                        <option key={i} className='article__form--option' value={e.category_name}>{e.category_name}</option>
+                                                    )
+                                                })
+                                            }
                                             <option className='article__form--option' value="Kimyo">Kimyo</option>
                                         </select>
                                     </label>

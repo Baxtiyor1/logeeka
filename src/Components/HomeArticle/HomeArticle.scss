@@ -1,35 +1,39 @@
-.harticle{
+.harticle {
     margin-top: 80px;
-    &__title{
+
+    &__title {
+        padding-right: 30px;
         font-weight: 600;
         font-size: 40px;
         line-height: 47px;
         color: #333333;
-        border-bottom:  2px solid #333333;
+        border-bottom: 2px solid #333333;
     }
-    &__list{
+
+    &__list {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        // flex-direction: row;
-        flex-wrap: wrap;
     }
-    &__item{
+
+    &__item {
         width: 620px;
         max-width: 100%;
-        margin: 40px  0;
+        margin: 40px 0;
         background: rgba(212, 212, 212, 0.01);
         border: 1px solid rgba(51, 51, 51, 0.1);
         box-sizing: border-box;
         border-radius: 4px;
         padding: 30px 50px 30px 30px;
-        &-title{
+
+        &-title {
             font-weight: 600;
             font-size: 32px;
             line-height: 44px;
             color: #333333;
         }
-        &-name{
+
+        &-name {
             font-weight: 600;
             font-size: 22px;
             line-height: 22px;
@@ -37,14 +41,16 @@
             color: #333333;
             margin: 20px 0 15px 0;
         }
-        &-box{
+
+        &-box {
             display: block;
             font-weight: 400;
             font-size: 18px;
             line-height: 21px;
             color: #333333;
             opacity: 0.7;
-            &--res{
+
+            &--res {
                 display: none;
                 font-weight: 400;
                 font-size: 18px;
@@ -53,12 +59,14 @@
                 opacity: 0.7;
             }
         }
-        &-line{
+
+        &-line {
             margin: 0 5px;
         }
     }
 }
-.more__link{
+
+.more__link {
     width: 150px;
     display: flex;
     align-items: center;
@@ -66,27 +74,27 @@
     font-size: 28px;
     line-height: 33px;
     color: #333333;
-    &-img{
+
+    &-img {
         margin-left: 10px;
     }
 }
 
 @media screen and (max-width: 1280px) {
-    .harticle{
-        &__list{
-        justify-content: center;
-        }
-        &__item{
+    .harticle {
+        &__item {
+            width: 47vw;
             padding: 20px;
         }
     }
 }
+
 @media screen and (max-width: 1024px) {
-    .harticle{
-        &__item{
-            // margin: 40px 10px 40px 0;
+    .harticle {
+        &__item {
             padding: 15px 5px 15px 15px;
-            &-title{
+
+            &-title {
                 font-weight: 500;
                 font-size: 28px;
                 line-height: 36px;
@@ -94,42 +102,60 @@
         }
     }
 }
+
 @media screen and (max-width: 768px) {
-    .harticle{
-        &__list{
+    .harticle {
+        &__list {
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
         }
-        &__item{
+        &__title{
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+
+        &__item {
+            margin: 0 0 20px;
             width: 100%;
             max-width: 620px;
         }
     }
 }
+
 @media screen and (max-width: 510px) {
-    .harticle{
+    .harticle {
         margin-top: 70px;
-        &__item{
+        
+        &__title {
+            font-size: 28px;
+            line-height: normal;
+        }
+
+        &__item {
             padding: 28px 30px;
-            min-width: 335px;
+            width: 100%;
             min-height: 156px;
             background: rgba(176, 176, 176, 0.1);
-            &-title{
+
+            &-title {
                 font-weight: 700;
                 font-size: 16px;
                 line-height: 24px;
             }
-            &-name{
+
+            &-name {
                 font-weight: 700;
                 font-size: 13px;
                 line-height: 16px;
-            margin: 20px 0 0;
+                margin: 20px 0 0;
             }
-            &-box{
+
+            &-box {
                 display: none;
-                &--res{
+
+                &--res {
                     display: block;
                     font-weight: 700;
                     font-size: 14px;
@@ -140,5 +166,10 @@
                 }
             }
         }
+    }
+
+    .more__link {
+        font-size: 28px;
+        line-height: normal;
     }
 }

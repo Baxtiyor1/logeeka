@@ -16,6 +16,7 @@ import JournalForm from './Components/Admin/JournalForm/JournalForm';
 import CertificateForm from './Components/Admin/CertificatesForm/CertificatesForm';
 import ConferemceForm from './Components/Admin/ConferenceForm/ConferenceForm';
 import PriceForm from './Components/Admin/PriceForm/PriceForm';
+import AdminAdd from './Components/Admin/AdminAdd/AdminAdd';
 //public
 import Home from './Pages/Home';
 import Conference from './Pages/Conference';
@@ -54,6 +55,7 @@ function App() {
       {/* </Route>
       <Route path='/'> */}
         <Route path='/admin' element={<Admin />} />
+        <Route path='/admin/add' element={<AdminAdd />} />
         <Route path='/admin/article' element={<AdminArticle />} />
         <Route path='/admin/article/form' element={<ArticleForm />} />
         <Route path='/admin/journal' element={<AdminJournal />} />

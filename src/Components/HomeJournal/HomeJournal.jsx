@@ -15,24 +15,8 @@ function HomeJournal() {
     },
     {
       id: 2,
-      text: "bbb"
-    },
-    {
-      id: 3,
-      text: "ccc"
-    },
-    {
-      id: 4,
-      text: "ddd"
-    },
-    {
-      id: 5,
-      text: "rrr"
-    },
-    {
-      id: 6,
-      text: "eee"
-    },
+      text: "aaa"
+    }
   ]
   return (
     <section className="hjournal">
@@ -45,7 +29,7 @@ function HomeJournal() {
             {
               fakeJournals && fakeJournals.map((e, i) => (
                 <li key={i} className="hjournal__item">
-                  <img className="hjournal__item-img" src={Img} alt="" />
+                  <img className="hjournal__item-img" src={'http://via.placeholder.com/300/262?text=Img+not+found'} alt="" />
                   <div className="hjournal__item-wrapper">
                     <h4 className="hjournal__item-title">{e.text}</h4>
                     <div className="hjournal__item-box">
