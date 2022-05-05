@@ -1,4 +1,3 @@
-import axios from 'axios';
 
 //SASS
 import './JournalForm.scss'
