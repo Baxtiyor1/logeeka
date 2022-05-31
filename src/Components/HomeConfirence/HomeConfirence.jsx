@@ -17,9 +17,9 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 // Import Images
-import Eye from '../../Assets/img/eye.svg'
-import CardImg from '../../Assets/img/conf-cards.png';
-import Avatar from '../../Assets/img/Avatars.png'
+// import Eye from '../../Assets/img/eye.svg'
+// import CardImg from '../../Assets/img/conf-cards.png';
+// import Avatar from '../../Assets/img/Avatars.png'
 import arrow_icon from '../../Assets/img/chevron-right.svg'
 
 function HomeConfirence() {

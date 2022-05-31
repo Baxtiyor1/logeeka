@@ -2,9 +2,9 @@ import React from "react";
 import "./AboutMain.scss";
 import { NavLink } from "react-router-dom";
 // import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+// import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";

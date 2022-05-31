@@ -13,7 +13,7 @@ function ArticleCards({ searchvalue }) {
   let [categoryData, setCategoryData] = useState()
 
   useEffect(() => {
-    if(searchvalue){
+    if (searchvalue) {
       axios.get(`https://logeekascience.com/api/posts/allarticle?search=${searchvalue}`)
         .then(res => setArticleData(res.data.data))
     }
@@ -25,11 +25,11 @@ function ArticleCards({ searchvalue }) {
 
     axios.get('https://logeekascience.com/api/category')
       .then(res => setCategoryData(res.data.data))
-  }, [!searchvalue])
+  })
 
   function ByCategory(e) {
     let cat_id = e.target.dataset.category
-    if (cat_id == 'all') {
+    if (cat_id === 'all') {
       axios.get('https://logeekascience.com/api/posts/allArticle')
         .then(res => setArticleData(res.data.data))
     } else {

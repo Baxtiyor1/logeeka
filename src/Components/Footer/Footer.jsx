@@ -6,7 +6,6 @@ import './Footer.scss'
 import Logo from '../../Assets/img/logo.svg'
 import facebook from '../../Assets/img/facebook.svg'
 import insta from '../../Assets/img/insta.svg'
-import twitter from '../../Assets/img/twitter.svg'
 import telegram from '../../Assets/img/telegram-white.svg'
 
 function Footer() {

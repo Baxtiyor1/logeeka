@@ -7,7 +7,7 @@ import "./InConference.scss";
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
@@ -17,7 +17,7 @@ import "swiper/css/scrollbar";
 
 // Import Images
 import Calendar from "../../Assets/img/calendar.svg";
-import Eye from "../../Assets/img/eye.svg";
+// import Eye from "../../Assets/img/eye.svg";
 import Clock from "../../Assets/img/clock.svg";
 import Phone from "../../Assets/img/phone.svg";
 import Mappin from "../../Assets/img/map-pin.svg";
@@ -27,10 +27,10 @@ import Telegram from "../../Assets/img/telegram-white.svg";
 import Whatsapp from "../../Assets/img/Whatsapp.svg";
 import Facebook from "../../Assets/img/facebook.svg";
 import Instagram from "../../Assets/img/insta.svg";
-import Computer from "../../Assets/img/computer.png";
-import Abdusattor from "../../Assets/img/Abdusattor.png";
-import CardImg from '../../Assets/img/conf-cards.png';
-import Avatar from '../../Assets/img/Avatars.png'
+// import Computer from "../../Assets/img/computer.png";
+// import Abdusattor from "../../Assets/img/Abdusattor.png";
+// import CardImg from '../../Assets/img/conf-cards.png';
+// import Avatar from '../../Assets/img/Avatars.png'
 import arrow_icon from '../../Assets/img/chevron-right.svg'
 
 function InConference() {
@@ -94,7 +94,7 @@ function InConference() {
                   </div>
                   <div key={i + 1} className="news__right inconference__right">
                     <h1 className="news__right-title">{e.title}</h1>
-                    <img className="inconference__img" src={'https://logeekascience.com/api' + e.image} alt="image" />
+                    <img className="inconference__img" src={'https://logeekascience.com/api' + e.image} alt="conference" />
                     <p className="news__right-text">{e.info}</p>
                     <button onClick={openLinks} className="inconference__btn">
                       <img src={Share} alt="Share" />

@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import axios from 'axios';
 
+//SASS
 import './ArticleIntro.scss'
+
+//IMAGE
 import Lupa from '../../Assets/img/searchArticle.svg';
 
 function ArticleIntro(props) {
-  const [articleData, setArticleData] = useState()
 
   function articleSearch(e) {
     e.preventDefault()

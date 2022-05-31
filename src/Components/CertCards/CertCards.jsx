@@ -17,7 +17,7 @@ function CertCards({searchValue}) {
   useEffect(() => {
     axios.get('https://logeekascience.com/api/certificate?limit=6')
       .then(res => setCertifData(res.data.data))
-  }, [!searchValue])
+  })
 
   return (
     <section className="certcards">
@@ -27,7 +27,7 @@ function CertCards({searchValue}) {
             {
               certifData && certifData.map((e, i) => (
                 <li key={i} className="certcards__item">
-                  <img className="certcards__img" src={'https://logeekascience.com/api' + e.image_url} alt="image" />
+                  <img className="certcards__img" src={'https://logeekascience.com/api' + e.image_url} alt="certificate" />
                   <h4 className="certcards__title">CCID : {e.ccid}</h4>
                 </li>
               ))

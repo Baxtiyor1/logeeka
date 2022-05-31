@@ -1,6 +1,7 @@
 import axios from 'axios'
-import { Link } from 'react-router-dom'
-import { createRef, useEffect, useRef, useState } from 'react'
+// import { Link } from 'react-router-dom'
+// import { createRef, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import useToken from '../../../Hook/useToken'
 
 //SASS
@@ -8,9 +9,9 @@ import './AdminArticle.scss'
 import '../Admin.scss'
 
 //IMAGES
-import delete_icon from '../../../Assets/img/delete.svg'
-import edit from '../../../Assets/img/edit.svg'
-import dots from '../../../Assets/img/dots_icon.svg'
+// import delete_icon from '../../../Assets/img/delete.svg'
+// import edit from '../../../Assets/img/edit.svg'
+// import dots from '../../../Assets/img/dots_icon.svg'
 import search from '../../../Assets/img/search.svg'
 import Logo from '../../../Assets/img/logo.svg'
 
@@ -28,7 +29,7 @@ function AdminArticle() {
         })
             .then(res => setData(res.data.data))
             .catch(err => setData(false))
-    }, [])
+    }, [token])
 
     // const subNav = useRef([])
 

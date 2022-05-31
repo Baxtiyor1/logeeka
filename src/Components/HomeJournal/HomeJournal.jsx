@@ -31,12 +31,12 @@ function HomeJournal() {
                 let time = e.date && e.date.split('T')[1] && e.date && e.date.split('T')[1].split('').splice(0, 5).join('')
                 return (
                   <li key={i} className="hjournal__item">
-                    <img className="hjournal__item-img" src={'https://logeekascience.com/api' + e.image} alt="journal image" />
+                    <img className="hjournal__item-img" src={'https://logeekascience.com/api' + e.image} alt="journal" />
                     <div className="hjournal__item-wrapper">
                       <h4 className="hjournal__item-title">{e.title}</h4>
                       <div className="hjournal__item-box">
                         <span className="hjournal__item-date">{year} {time}</span>
-                        <a target='_blank' href={'https://logeekascience.com/api' + e.file} className="hjournal__item-btn" download>
+                        <a target='_blank' rel="noreferrer" href={'https://logeekascience.com/api' + e.file} className="hjournal__item-btn" download>
                           <img src={Download} alt="downloader" width={20} height={20} />
                         </a>
                       </div>

@@ -26,7 +26,7 @@ function AdminJournal() {
         })
             .then(res => setJournalData(res.data.data))
             .catch(err => console.log(err))
-    }, [deleteJour])
+    }, [deleteJour, token])
 
     function deleteJournal(e) {
         e.preventDefault()

@@ -33,7 +33,7 @@ function Login() {
     }
     //login farruhbek
     //parol far45
-    if(result == 'Login successful!' && token){
+    if(result === 'Login successful!' && token){
         setTimeout(navigate('/admin'), 3000)
     }else{
     }

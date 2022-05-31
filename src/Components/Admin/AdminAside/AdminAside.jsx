@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import useToken from '../../../Hook/useToken'
 
@@ -11,15 +11,15 @@ import plus_icon from '../../../Assets/img/plus-circle.svg'
 import power from '../../../Assets/img/power.svg'
 
 function AdminAside(props) {
-    let [_, setToken] = useToken()
+    let [ , setToken] = useToken()
     let homeElem = useRef()
     let addElem = useRef()
 
     useEffect(() => {
-        if (props.active == "home") {
+        if (props.active === "home") {
             homeElem.current && homeElem.current.classList.add('admin__aside--item-active')
             addElem.current && addElem.current.classList.remove('admin__aside--item-active')
-        } else if (props.active == "add") {
+        } else if (props.active === "add") {
             addElem.current && addElem.current.classList.add('admin__aside--item-active')
             homeElem.current && homeElem.current.classList.remove('admin__aside--item-active')
         }

@@ -29,7 +29,7 @@ function JournalCards() {
                       <h4 className="hjournal__item-title">{e.title}</h4>
                       <div className="hjournal__item-box">
                         <span className="hjournal__item-date">{year} {time}</span>
-                        <a href={'https://logeekascience.com/api' + e.file} target="_blank" className="hjournal__item-btn" download={'AAAA'}>
+                        <a href={'https://logeekascience.com/api' + e.file} target="_blank" rel="noreferrer" className="hjournal__item-btn" download={'AAAA'}>
                           <img src={Download} alt="downloader" width={20} height={20} />
                         </a>
                       </div>
