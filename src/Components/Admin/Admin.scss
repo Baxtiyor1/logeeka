@@ -65,5 +65,27 @@
         margin: 0 auto;
         background: #1E1E32;
         border-radius: 5px;
+        &--input{
+            color: #FFFFFF !important;
+        }
+    }
+    &__navigate{
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+        &--btn{
+            margin-left: 15px;
+            padding: 7px 25px;
+            background-color: rgb(39, 125, 224);
+            color: #FFFFFF;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            transition: 0.5s;
+            &:hover{
+                box-shadow: 0 0 3px 3px #FFFFFF;
+                background-color: rgb(23, 43, 223);
+            }
+        }
     }
 }

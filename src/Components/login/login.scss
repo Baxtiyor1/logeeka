@@ -23,11 +23,23 @@
         padding: 10px 15px;
         background-color: transparent;
         border: 1px solid #006AFF;
+        outline: none;
     }
     &__btn{
         padding: 15px 30px;
         border: none;
         background-color: #006AFF;
         border-radius: 10px;
+        cursor: pointer;
+        color: #fff;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    &__bad{
+        color: red;
+        opacity: 0;
+        &-active{
+            opacity: 1;
+        }
     }
 }

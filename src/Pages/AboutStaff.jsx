@@ -5,6 +5,7 @@ import Staffs from "../Components/AboutStaff/AboutStaff";
 import Footer from '../Components/Footer/Footer'
 
 function AboutStaff() {
+  document.title = 'Logeeka About staff'
   return (
     <>
       <Header />

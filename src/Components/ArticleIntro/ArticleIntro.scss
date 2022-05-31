@@ -92,8 +92,12 @@
 @media screen and (max-width: 500px) {
     .artintro {
         &__input {
-            max-width: 100%;
-            width: 150px;
+            width: 75%;
+        }
+
+        &__btn {
+            width: 25%;
+            padding: 22px 0;
         }
     }
 }
@@ -106,5 +110,12 @@
             line-height: 55px;
             text-align: left;
         }
+
+        &__form {
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        &__btn {}
     }
 }

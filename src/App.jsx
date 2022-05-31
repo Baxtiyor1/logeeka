@@ -3,8 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import './App.scss'
 
 //Components
-// import Private from './Route/Private';
-// import Public from './Route/Public'
+import Private from './Route/Private';
+import Public from './Route/Public';
 import Admin from './Components/Admin/Admin';
 import AdminArticle from './Components/Admin/AdminArticle/AdminArticle';
 import ArticleForm from './Components/Admin/ArticleForm/ArticleForm';
@@ -22,7 +22,6 @@ import Home from './Pages/Home';
 import Conference from './Pages/Conference';
 import Articles from './Pages/Articles';
 import Journal from './Pages/Journal';
-import News from './Pages/News';
 import Certificates from './Pages/Certificates';
 import Contacts from './Pages/Contacts';
 import Aboutus from './Pages/Aboutus';
@@ -37,23 +36,22 @@ import NotFound from './Components/404/404';
 function App() {
   return (
     <Routes>
-      {/* <Route path='/'> */}
+      <Route path='/' element={<Public />}>
         <Route path="/" element={<Home />} />
         <Route path="/conference" element={<Conference />} />
-        <Route path="/conference/1" element={<InnerConference />} />
+        <Route path="/conference/:id" element={<InnerConference />} />
         <Route path="/articles" element={<Articles />} />
-        <Route path="/articles/1" element={<InnerArticles />} />
+        <Route path="/articles/:id" element={<InnerArticles />} />
         <Route path="/journal" element={<Journal />} />
-        <Route path="/news" element={<News />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/about" element={<Aboutus />} />
-        <Route path="/staffs" element={<AboutStaff />} />
+        <Route path="/about/staff" element={<AboutStaff />} />
         <Route path="/certificates" element={<Certificates />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/*" element={<NotFound />} />
-      {/* </Route>
-      <Route path='/'> */}
+      </Route>
+      <Route path='/' element={<Private />}>
         <Route path='/admin' element={<Admin />} />
         <Route path='/admin/add' element={<AdminAdd />} />
         <Route path='/admin/article' element={<AdminArticle />} />
@@ -66,7 +64,7 @@ function App() {
         <Route path='/admin/conference/form' element={<ConferemceForm />} />
         <Route path='/admin/certificate' element={<AdminCertificates />} />
         <Route path='/admin/certificate/form' element={<CertificateForm />} />
-      {/* </Route> */}
+      </Route>
     </Routes>
   )
 }

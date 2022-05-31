@@ -1,4 +1,6 @@
-import { useRef } from 'react';
+import axios from 'axios';
+import { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import useToken from '../../Hook/useToken';
 
@@ -6,25 +8,34 @@ import useToken from '../../Hook/useToken';
 import './login.scss'
 
 function Login() {
+    document.title = 'Login'
+    let navigate = useNavigate()
 
-    const [, setToken] = useToken()
+    let [token, setToken] = useToken()
+    let [result, setResult] = useState('')
+    let bad = useRef()
 
-    const inputName = useRef()
-    const inputPassword = useRef()
-
-    async function loginFunction(e) {
+    function loginFunction(e) {
         e.preventDefault()
-        fetch('https://pressademobackend.herokuapp.com/authorization/login', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                username: inputName.current.value,
-                password: inputPassword.current.value
+        let { username, password } = e.target.elements
+
+        axios.post('https://logeekascience.com/api/auth/login', {
+            'user_name': username.value.trim(),
+            'password': password.value.trim()
+        })
+            .then(function (response) {
+                setToken(response.data.data[0].token)
+                setResult(response.data.message);
             })
-        }).then(res => res.json())
-            .then(data => data.token ? setToken(data.token) : null)
+            .catch(function (error) {
+                bad.current && bad.current.classList.add('login__bad-active')
+            });
+    }
+    //login farruhbek
+    //parol far45
+    if(result == 'Login successful!' && token){
+        setTimeout(navigate('/admin'), 3000)
+    }else{
     }
 
     return (
@@ -32,10 +43,11 @@ function Login() {
             <div className="container">
                 <div className="login__wrapper">
                     <h1 className='login__title'>Log in</h1>
-                    <form className='login__form' action="" onSubmit={loginFunction}>
-                        <input className='login__input' ref={inputName} name='username' type="text" placeholder='Enter your username' />
-                        <input className='login__input' ref={inputPassword} name='password' type="password" placeholder='Enter your password' />
-                        <button className='login__btn' type='Submit'>Send</button>
+                    <form className='login__form' onSubmit={loginFunction}>
+                        <input className='login__input' name='username' type="text" placeholder='Enter your username' />
+                        <input className='login__input' name='password' type="password" placeholder='Enter your password' />
+                        <h3 ref={bad} className='login__bad'>User not found</h3>
+                        <button className='login__btn' type='submit'>Send</button>
                     </form>
                 </div>
             </div>

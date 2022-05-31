@@ -5,6 +5,7 @@ import AboutMain from "../Components/AboutMain/AboutMain";
 import Footer from "../Components/Footer/Footer";
 
 function Aboutus() {
+  document.title = 'Logeeka About'
   return (
     <>
       <Header />

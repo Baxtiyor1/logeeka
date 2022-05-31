@@ -1,14 +1,17 @@
 .artcards{
     margin-top: 100px;
     &__menu{
+        margin-bottom: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: row;
         flex-wrap: nowrap;
     }
+    &__list{
+        min-height: 80vh;
+    }
     &__btn{
-        // margin-right: 60px;
         width: 180px;
         border: none;
         background-color: #fff;
@@ -20,6 +23,15 @@
         cursor: pointer;
         &--active{
             opacity: 1;
+        }
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .artcards{
+        &__btn{
+            width: auto;
+            text-align: center;
         }
     }
 }

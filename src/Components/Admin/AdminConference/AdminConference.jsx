@@ -1,3 +1,7 @@
+import { useEffect, useState } from 'react'
+import useToken from '../../../Hook/useToken'
+import axios from 'axios'
+
 
 //SASS
 import './AdminConference.scss'
@@ -13,24 +17,27 @@ import AdminNav from '../AdminNav/AdminNav'
 import AdminAside from '../AdminAside/AdminAside'
 
 function AdminConference() {
-    let fakeConfrenceData = [
-        {
-            id: 1,
-            type: "Java"
-        },
-        {
-            id: 2,
-            type: "Phayton"
-        },
-        {
-            id: 3,
-            type: "JavaScript"
-        },
-        {
-            id: 4,
-            type: "Go"
-        },
-    ]
+    let [token] = useToken()
+    let [confData, setConfData] = useState()
+    let [delConf, setDelConf] = useState()
+
+    useEffect(() => {
+        axios.get('https://logeekascience.com/api/conference')
+            .then(res => setConfData(res.data.data))
+            .catch(err => console.log(err))
+    }, [delConf])
+
+    console.log(confData);
+    function deleteConf(e) {
+        e.preventDefault()
+        let id = e.target.dataset.id
+        axios.delete('https://logeekascience.com/api/conference', {
+            headers: { token },
+            data: { conference_id: id }
+        })
+            .then(res => setDelConf(res.data.data))
+            .catch(err => console.log(err.message))
+    }
     return (
         <>
             <section className='admin'>
@@ -52,19 +59,26 @@ function AdminConference() {
                             <AdminNav />
                             <ul className='conf__list'>
                                 {
-                                    fakeConfrenceData && fakeConfrenceData.map((e, i) => (
-                                        <li key={i} className='conf__item'>
-                                            <h3 className='conf__text conf__title'>O'zbekistonda {e.type} dasturchi qancha pul topadi?</h3>
-                                            <p className='conf__text conf__name'>Abbos Janizakov</p>
-                                            <p className='conf__text conf__type'>{e.type}</p>
-                                            <time className='conf__text conf__time'>26/01/2022 | 10:00</time>
-                                            <div className='admin__article--btn conf__btn'>
-                                                <img src={delete_icon} alt="delete_icon" />
-                                            </div>
-                                        </li>
-                                    ))
+                                    confData && confData.map((e, i) => {
+                                        let year = e.date.split('T')[0]
+                                        let time = e.date && e.date.split('T')[1] && e.date && e.date.split('T')[1].split('').splice(0, 5).join('')
+                                        return (
+                                            <li key={i} className='conf__item'>
+                                                <h3 className='conf__text conf__title'>{e.title}</h3>
+                                                <p className='conf__text conf__name'>{e.author}</p>
+                                                <p className='conf__text conf__type'>{e.profession}</p>
+                                                <time className='conf__text conf__time'>{year} | {time}</time>
+                                                <div data-id={e.conference_id} onClick={deleteConf} className='admin__article--btn conf__btn'>
+                                                    <img src={delete_icon} alt="delete_icon" />
+                                                </div>
+                                            </li>
+                                        )
+                                    })
                                 }
                             </ul>
+                            <div className='admin__navigate'>
+                                <button className='admin__navigate--btn'>next</button>
+                            </div>
                         </div>
                     </div>
                 </div>

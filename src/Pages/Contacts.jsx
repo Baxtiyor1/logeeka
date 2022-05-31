@@ -5,6 +5,7 @@ import ContactsMain from "../Components/ContactsMain/ContactsMain";
 import Footer from "../Components/Footer/Footer";
 
 function Contacts() {
+  document.title = 'Logeeka Contact'
   return (
     <>
       <Header />

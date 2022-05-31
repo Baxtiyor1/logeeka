@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
@@ -7,8 +7,11 @@ import './PricingMain.scss'
 
 function PricingMain() {
     const [priceData, setPriceData] = useState()
-    axios.get('https://logeeka-mini-app.herokuapp.com/price')
+
+    useEffect(()=> {
+        axios.get('https://logeekascience.com/api/price?limit=100')
         .then(res => setPriceData(res.data.data))
+    }, [])
 
     return (
         <section className='pricing'>
@@ -19,12 +22,13 @@ function PricingMain() {
                         <span className={'pricing__navlink'}> | </span>
                         <Link className={'pricing__navlink pricing__navlink--active'} to={'/pricing'}>Pricing</Link>
                     </div>
-                    <h1 className='pricing__title'>Pricing</h1>
+                    {
+                        priceData && <h1 className='pricing__title'>Pricing</h1>
+                    }
                     <ul className='pricing__menu'>
                         {
                             priceData && priceData.map((e, i) => (
                                 <li key={i} className='pricing__item'>
-                                    {/* <h2 className='pricing__subtitle'>01</h2> */}
                                     <p className='pricing__text pricing__text--main'>{e.title}</p>
                                     <div className='pricing__textbox'>
                                         <span className='pricing__text'>$</span>
@@ -33,6 +37,9 @@ function PricingMain() {
                                     </div>
                                 </li>
                             ))
+                        }
+                        {
+                            !priceData && <h2 style={{ "margin": "150px 0","width": "1400px", "maxWidth": "100%", 'textAlign': "center" }}>No internet connection...</h2>
                         }
                     </ul>
                 </div>

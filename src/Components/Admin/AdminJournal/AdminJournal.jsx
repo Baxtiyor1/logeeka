@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react'
+import useToken from '../../../Hook/useToken'
+import axios from 'axios'
 
 //SASS
 import './AdminJournal.scss'
@@ -13,24 +16,28 @@ import AdminNav from '../AdminNav/AdminNav'
 import AdminAside from '../AdminAside/AdminAside'
 
 function AdminJournal() {
-    const journalData = [
-        {
-            id: 1,
-            text: "aaaa"
-        },
-        {
-            id: 2,
-            text: "aaaa"
-        },
-        {
-            id: 3,
-            text: "aaaa"
-        },
-        {
-            id: 4,
-            text: "aaaa"
-        },
-    ]
+    let [token] = useToken()
+    let [deleteJour, setDeleteJour] = useState()
+    let [journalData, setJournalData] = useState()
+
+    useEffect(() => {
+        axios.get('https://logeekascience.com/api/journal', {
+            headers: { token }
+        })
+            .then(res => setJournalData(res.data.data))
+            .catch(err => console.log(err))
+    }, [deleteJour])
+
+    function deleteJournal(e) {
+        e.preventDefault()
+        let id = e.target.dataset.id
+        axios.delete('https://logeekascience.com/api/journal', {
+            headers: { token },
+            data: { id }
+        })
+            .then(res => setDeleteJour(res.data.data))
+            .catch(err => console.log(err.message))
+    }
     return (
         <>
             <section className='admin'>
@@ -53,18 +60,24 @@ function AdminJournal() {
                             <div className="journal">
                                 <ul className='journal__list'>
                                     {
-                                        journalData && journalData.map((e, i) => (
-                                            <li key={i} className='journal__item'>
-                                                <p className='journal__title'>The role of user preference in the customized control of .....</p>
-                                                <p className='journal__text'>{e.text}</p>
-                                                <time className='journal__time'>6-aprel 12:30</time>
-                                                <div id={i} className='admin__article--btn journal__btn'>
-                                                    <img src={delete_icon} alt="delete_icon" />
-                                                </div>
-                                            </li>
-                                        ))
+                                        journalData && journalData.map((e, i) => {
+                                            let year = e.date.split('T')[0]
+                                            let time = e.date && e.date.split('T')[1] && e.date && e.date.split('T')[1].split('').splice(0, 5).join('')
+                                            return (
+                                                <li key={i} className='journal__item'>
+                                                    <p className='journal__title'>{e.title}</p>
+                                                    <time className='journal__time'>{year} | {time}</time>
+                                                    <div data-id={e.journal_id} onClick={deleteJournal} className='admin__article--btn journal__btn'>
+                                                        <img src={delete_icon} alt="delete_icon" />
+                                                    </div>
+                                                </li>
+                                            )
+                                        })
                                     }
                                 </ul>
+                            </div>
+                            <div className='admin__navigate'>
+                                <button className='admin__navigate--btn'>next</button>
                             </div>
                         </div>
                     </div>

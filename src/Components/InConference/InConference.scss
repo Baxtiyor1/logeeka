@@ -1,36 +1,50 @@
-.inconference{
+.inconference {
     margin: 150px 0;
-    &__left{
-        &-box{
+
+    &__left {
+        &-box {
             margin-bottom: 30px;
             display: flex;
             align-items: center;
         }
-        &-text{
+
+        &-text {
             margin-bottom: 0;
         }
-        &-title{
+
+        &-title {
             margin-bottom: 4px;
         }
+        &-pic{
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
     }
-    &__box{
+
+    &__box {
         margin-left: 10px;
     }
-    &__item{
+
+    &__item {
         display: flex;
         align-items: flex-start;
         margin-bottom: 30px;
     }
-    &__icon{
+
+    &__icon {
         margin-right: 10px;
     }
-    &__name{
+
+    &__name {
         margin-left: 10px;
         font-weight: 500;
         font-size: 22px;
         line-height: 16px;
         color: #181818;
-        &--simple{
+
+        &--simple {
             font-weight: 400;
             font-size: 15px;
             line-height: 22px;
@@ -38,25 +52,200 @@
             margin-left: 10px;
         }
     }
-    &__list{
+
+    &__list {
         width: 276px;
-        display: flex;
+        display: none;
         align-items: center;
         margin-top: 13px;
         padding: 16px 13px;
         background: #1263B0;
-border-radius: 4px;
+        border-radius: 4px;
+        &--active{
+            display: flex;
+        }
     }
-    &__link{
+
+    &__link {
         margin-right: 10px;
-        &:last-child{
+
+        &:last-child {
             margin-right: 0;
         }
     }
-    &__btn{
+
+    &__btn {
         padding: 9px;
-        background:#3475B4;
+        background: #3475B4;
         border-radius: 4px;
         border: none;
+        cursor: pointer;
+        transition: 0.5s;
+        display: inline-block;
+
+        &:hover {
+            background-color: #4294e6;
+        }
+    }
+
+    &__swiper {
+        margin-bottom: 40px;
+        justify-content: flex-end;
+    }
+    &__img{
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        margin-bottom: 30px;
+    }
+
+    &--left {
+        transform: rotate(180deg);
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .inconference {
+        &__left {
+            width: 30vw;
+            max-width: 100%;
+            margin-right: 35px;
+            padding: 2.5vw 2vw;
+
+            &-title {
+                font-size: 1.6vw;
+            }
+
+            &-text {
+                font-size: 1.4vw;
+            }
+        }
+        &__list{
+            width: 265px;
+            padding: 10px 7px;
+        }
+
+        &__name {
+            font-size: 1.8vw;
+            line-height: normal;
+
+            &--simple {
+                line-height: normal;
+            }
+        }
+
+        &__item {
+            align-items: flex-start;
+        }
+
+        &__img {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+    }
+    .news{
+        &__right {
+            &-title {
+                font-size: 2.6vw;
+                line-height: normal;
+            }
+
+            &-text {
+                font-size: 1.7vw;
+                line-height: normal;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .inconference {
+        &__right{
+            width: 500px;
+            max-width: 100%;
+        }
+        &__wrapper{
+           justify-content: space-around; 
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .inconference{
+        margin: 100px 0;
+        &__wrapper{
+            margin-bottom: 50px;
+            flex-direction: column;
+            align-items: center;
+        }
+        &__left{
+            width: 100%;
+            margin: 0 0 30px 0;
+            &-title{
+                font-size: 20px;
+            }
+            &-text{
+                font-size: 14px;
+            }
+        }
+        &__right{
+            width: 100%;
+            &-title{
+                font-size: 32px;
+            }
+        }
+        &__name{
+            font-size: 22px;
+        }
+        &__swiper{
+            margin-bottom: 30px;
+        }
+    }
+    .news{
+        &__right{
+            &-title{
+                font-size: 32px;
+            }
+            &-text{
+                font-size: 18px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 425px) {
+    .inconference{
+        &__left{
+            &-title{
+                margin-bottom: 0;
+                font-size: 18px;
+            }
+            &-text{
+                font-size: 12px;
+            }
+            &-pic{
+                width: 50px;
+            }
+            &-box{
+                margin-bottom: 20px;
+            }
+        }
+        &__icon{
+            margin-right: 5px;
+        }
+        &__item{
+            margin-bottom: 15px;
+        }
+        &__name{
+            font-size: 18px;
+        }
+    }
+    .news{
+        &__right{
+            &-title{
+                font-size: 24px;
+            }
+            &-text{
+                font-size: 16px;
+            }
+        }
     }
 }

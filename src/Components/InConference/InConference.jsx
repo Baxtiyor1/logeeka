@@ -1,5 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 
 import "./InConference.scss";
 
@@ -30,8 +31,21 @@ import Computer from "../../Assets/img/computer.png";
 import Abdusattor from "../../Assets/img/Abdusattor.png";
 import CardImg from '../../Assets/img/conf-cards.png';
 import Avatar from '../../Assets/img/Avatars.png'
+import arrow_icon from '../../Assets/img/chevron-right.svg'
 
 function InConference() {
+  let { id } = useParams()
+  let [confData, setConfData] = useState()
+  let linkBox = useRef()
+
+  useEffect(() => {
+    axios.get(`https://logeekascience.com/api/conference?id=${id}`)
+      .then(res => setConfData(res.data.data))
+  }, [id])
+
+  function openLinks(){
+    linkBox.current && linkBox.current.classList.toggle('inconference__list--active')
+  }
   return (
     <section className="inconference">
       <div className="container">
@@ -40,265 +54,142 @@ function InConference() {
           <span className={"pricing__navlink"}> | </span>
           <Link className={"pricing__navlink pricing__navlink--active"} to={"/#"} >Conference</Link>
         </div>
-        <div className="news__wrapper">
-          <div className="news__left inconference__left">
-            <div className="inconference__left-box">
-              <img src={Abdusattor} alt="" />
-              <div className="inconference__box">
-                <h2 className="news__left-title inconference__left-title">
-                  Abdusattor Abdurahimov
-                </h2>
-                <p className="news__left-text inconference__left-text">
-                  Frilanser va IT biznesmen
-                </p>
-              </div>
-            </div>
-            <ul className="inconference__menu">
-              <li className="inconference__item">
-                <img
-                  className="inconference__icon"
-                  src={Calendar}
-                  alt=""
-                  width={20}
-                  height={20}
-                />
-                <p className="news__left-text inconference__left-text">Sana : </p>
-                <p className="inconference__name">26 Yanvar</p>
-              </li>
-              <li className="inconference__item">
-                <img
-                  className="inconference__icon"
-                  src={Clock}
-                  alt=""
-                  width={20}
-                  height={20}
-                />
-                <p className="news__left-text inconference__left-text">Vaqt : </p>
-                <p className="inconference__name">10:55</p>
-              </li>
-              <li className="inconference__item">
-                <img
-                  className="inconference__icon"
-                  src={Phone}
-                  alt=""
-                  width={20}
-                  height={20}
-                />
-                <p className="news__left-text inconference__left-text">Telefon : </p>
-                <p className="inconference__name">+99871 207 7173</p>
-              </li>
-              <li className="inconference__item">
-                <img
-                  className="inconference__icon"
-                  src={Mappin}
-                  alt="Mappin"
-                  width={20}
-                  height={20}
-                />
-                <p className="news__left-text inconference__left-text">Manzil : </p>
-                <p className="inconference__name--simple">25-uy, Hamid  Olimjon, Shayhontoxur  tumani,  Toshkent,  100500, Toshkent  vil.</p>
-              </li>
-            </ul>
-          </div>
-          <div className="news__right">
-            <h1 className="news__right-title">
-              Respublika ilmiy-amaliy konferensiyasi: Tabiiy fanlar: nazariya va
-              amaliyot
-            </h1>
-            <p className="news__right-text">
-              Islom dinining ham rivojlanishi va o‘sishida pul muhim ahamiyatga
-              ega
-            </p>
-            <img className="inconference__img" src={Computer} alt="computer" />
-            <p className="news__right-text">
-              — Islom dinining ham rivojlanishi va o‘sishida pul muhim
-              ahamiyatga ega bo‘lgan. Dinimizning asosiy 5 ta farz amallaridan 4
-              tasida pul va moddiyatning ahamiyati bor. Masalan, namoz o‘qish
-              uchun kiyim, masjid kerak. Ro‘za tutish uchun taom sotib olish
-              Islom dinining ham rivojlanishi va o‘sishida pul muhim ahamiyatga
-              ega{" "}
-            </p>
-            <button className="news__btn">
-              <img src={Share} alt="" />
-            </button>
-            <ul className="inconference__list">
-                <li className="inconference__link">
-                <button className="inconference__btn">
-              <img src={Smth} alt="" width={24} height={24}/>
-            </button>
-                </li>
-                <li className="inconference__link">
-                <button className="inconference__btn">
-              <img src={Telegram} alt="" width={24} height={24}/>
-            </button>
-                </li>
-                <li className="inconference__link">
-                <button className="inconference__btn">
-              <img src={Facebook} alt="" width={24} height={24}/>
-            </button>
-                </li>
-                <li className="inconference__link">
-                <button className="inconference__btn">
-              <img src={Whatsapp} alt="" width={24} height={24}/>
-            </button>
-                </li>
-                <li className="inconference__link">
-                <button className="inconference__btn">
-              <img src={Instagram} alt="" width={24} height={24}/>
-            </button>
-                </li>
-            </ul>
-          </div>
+        <div className="news__wrapper inconference__wrapper">
+          {
+            confData && confData.map((e, i) => {
+              let year = e.date.split('T')[0]
+              let time = e.date && e.date.split('T')[1] && e.date && e.date.split('T')[1].split('').splice(0, 5).join('')
+              return (
+                <>
+                  <div key={i} className="news__left inconference__left">
+                    <div className="inconference__left-box">
+                      <img className="inconference__left-pic" src={'https://logeekascience.com/api' + e.user_image} alt="avatar" />
+                      <div className="inconference__box">
+                        <h2 className="news__left-title inconference__left-title">{e.author}</h2>
+                        <p className="news__left-text inconference__left-text">{e.profession}</p>
+                      </div>
+                    </div>
+                    <ul className="inconference__menu">
+                      <li className="inconference__item">
+                        <img className="inconference__icon" src={Calendar} alt="Calendar" width={20} height={20} />
+                        <p className="news__left-text inconference__left-text">Sana : </p>
+                        <p className="inconference__name">{year}</p>
+                      </li>
+                      <li className="inconference__item">
+                        <img className="inconference__icon" src={Clock} alt="Clock" width={20} height={20} />
+                        <p className="news__left-text inconference__left-text">Vaqt : </p>
+                        <p className="inconference__name">{time}</p>
+                      </li>
+                      <li className="inconference__item">
+                        <img className="inconference__icon" src={Phone} alt="Phone" width={20} height={20} />
+                        <p className="news__left-text inconference__left-text">Telefon : </p>
+                        <p className="inconference__name">{'+998' + e.phone}</p>
+                      </li>
+                      <li className="inconference__item">
+                        <img className="inconference__icon" src={Mappin} alt="Mappin" width={20} height={20} />
+                        <p className="news__left-text inconference__left-text">Manzil:</p>
+                        <p className="inconference__name--simple">{e.location}</p>
+                      </li>
+                    </ul>
+                  </div>
+                  <div key={i + 1} className="news__right inconference__right">
+                    <h1 className="news__right-title">{e.title}</h1>
+                    <img className="inconference__img" src={'https://logeekascience.com/api' + e.image} alt="image" />
+                    <p className="news__right-text">{e.info}</p>
+                    <button onClick={openLinks} className="inconference__btn">
+                      <img src={Share} alt="Share" />
+                    </button>
+                    <ul ref={linkBox} className="inconference__list">
+                      <li className="inconference__link">
+                        <a href="/" target='_blank' className="inconference__btn">
+                          <img src={Smth} alt="Smth" width={24} height={24} />
+                        </a>
+                      </li>
+                      <li className="inconference__link">
+                        <a href="/" target='_blank' className="inconference__btn">
+                          <img src={Telegram} alt="Telegram" width={24} height={24} />
+                        </a>
+                      </li>
+                      <li className="inconference__link">
+                        <a href="/" target='_blank' className="inconference__btn">
+                          <img src={Facebook} alt="Facebook" width={24} height={24} />
+                        </a>
+                      </li>
+                      <li className="inconference__link">
+                        <a href="/" target='_blank' className="inconference__btn">
+                          <img src={Whatsapp} alt="Whatsapp" width={24} height={24} />
+                        </a>
+                      </li>
+                      <li className="inconference__link">
+                        <a href="/" target='_blank' className="inconference__btn">
+                          <img src={Instagram} alt="Instagram" width={24} height={24} />
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </>
+              )
+            })
+          }
         </div>
-        {/* <div className="wrapper"> */}
-          <Swiper
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
-            spaceBetween={24}
-            slidesPerView={3}
-            navigation
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log("slide change")}
-          >
-            <SwiperSlide className="confcards__item">
-            <img className='confcards__item-img' src={CardImg} alt="card-img" />
-                        <div className="confcards__box">
-                        <h3 className='confcards__item-title'>O'zbekistonda UX/UI dizayner qancha pul topadi?</h3>
-                        <div className='confcards__item-datebox'>
-                            <span className='confcards__item-date'>26/01/2022</span>
-                            <span className='confcards__item-line'> | </span>
-                            <span className='confcards__item-time'>10:00</span>
+        <div className="hnews__subbox inconference__swiper">
+          <button className="hnews__btn inconference--left">
+            <img className="hnews__icon" src={arrow_icon} alt="arrow_icon" />
+          </button>
+          <button className="hnews__btn inconference--right">
+            <img className="hnews__icon" src={arrow_icon} alt="arrow_icon" />
+          </button>
+        </div>
+        <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          spaceBetween={24}
+          slidesPerView={3}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+              spaceBetween: 10
+            },
+            626: {
+              slidesPerView: 2,
+              spaceBetween: 10
+            },
+            1260: {
+              slidesPerView: 4,
+              spaceBetween: 40
+            }
+          }}
+          navigation={{
+            nextEl: '.inconference--right',
+            prevEl: '.inconference--left'
+          }}
+        >
+          {/* {
+            inConfData && inConfData.map((e, i) => (
+              <SwiperSlide key={i} className="confcards__item">
+                <Link to='/conference/1'>
+                  <img className='confcards__item-img' src={CardImg} alt="card-img" />
+                  <div className="confcards__box">
+                    <h3 className='confcards__item-title'>O'zbekistonda UX/UI dizayner qancha pul topadi?</h3>
+                    <div className='confcards__item-datebox'>
+                      <span className='confcards__item-date'>26/01/2022</span>
+                      <span className='confcards__item-line'> | </span>
+                      <span className='confcards__item-time'>10:00</span>
+                    </div>
+                    <div className='confcards__item-box'>
+                      <div className='confcards__item-subbox'>
+                        <img className='confcards__item-avatar' src={Avatar} alt="avatar" />
+                        <div className='confcards__item-minbox'>
+                          <p className='confcards__item-name'>{e.title}</p>
+                          <p className='confcards__item-profession'>UX / UI Dizayner</p>
                         </div>
-                        <div className='confcards__item-box'>
-                                <div className='confcards__item-subbox'>
-                                <img className='confcards__item-avatar' src={Avatar} alt="" />
-                                <div className='confcards__item-minbox'>
-                                    <p className='confcards__item-name'>Abbos Janizakov</p>
-                                    <p className='confcards__item-profession'>UX / UI Dizayner</p>
-                                </div>
-                                </div>
-                                <span className='confcards__item-watching'>
-                                    <img className='confcards__item-icon' src={Eye} alt="" /> 1300
-                                </span>
-                        </div>
-                        </div>
-            </SwiperSlide>
-            <SwiperSlide className="confcards__item">
-            <img className='confcards__item-img' src={CardImg} alt="card-img" />
-                        <div className="confcards__box">
-                        <h3 className='confcards__item-title'>O'zbekistonda UX/UI dizayner qancha pul topadi?</h3>
-                        <div className='confcards__item-datebox'>
-                            <span className='confcards__item-date'>26/01/2022</span>
-                            <span className='confcards__item-line'> | </span>
-                            <span className='confcards__item-time'>10:00</span>
-                        </div>
-                        <div className='confcards__item-box'>
-                                <div className='confcards__item-subbox'>
-                                <img className='confcards__item-avatar' src={Avatar} alt="" />
-                                <div className='confcards__item-minbox'>
-                                    <p className='confcards__item-name'>Abbos Janizakov</p>
-                                    <p className='confcards__item-profession'>UX / UI Dizayner</p>
-                                </div>
-                                </div>
-                                <span className='confcards__item-watching'>
-                                    <img className='confcards__item-icon' src={Eye} alt="" /> 1300
-                                </span>
-                        </div>
-                        </div>
-            </SwiperSlide>
-            <SwiperSlide className="confcards__item">
-            <img className='confcards__item-img' src={CardImg} alt="card-img" />
-                        <div className="confcards__box">
-                        <h3 className='confcards__item-title'>O'zbekistonda UX/UI dizayner qancha pul topadi?</h3>
-                        <div className='confcards__item-datebox'>
-                            <span className='confcards__item-date'>26/01/2022</span>
-                            <span className='confcards__item-line'> | </span>
-                            <span className='confcards__item-time'>10:00</span>
-                        </div>
-                        <div className='confcards__item-box'>
-                                <div className='confcards__item-subbox'>
-                                <img className='confcards__item-avatar' src={Avatar} alt="" />
-                                <div className='confcards__item-minbox'>
-                                    <p className='confcards__item-name'>Abbos Janizakov</p>
-                                    <p className='confcards__item-profession'>UX / UI Dizayner</p>
-                                </div>
-                                </div>
-                                <span className='confcards__item-watching'>
-                                    <img className='confcards__item-icon' src={Eye} alt="" /> 1300
-                                </span>
-                        </div>
-                        </div>
-            </SwiperSlide>
-            <SwiperSlide className="confcards__item">
-            <img className='confcards__item-img' src={CardImg} alt="card-img" />
-                        <div className="confcards__box">
-                        <h3 className='confcards__item-title'>O'zbekistonda UX/UI dizayner qancha pul topadi?</h3>
-                        <div className='confcards__item-datebox'>
-                            <span className='confcards__item-date'>26/01/2022</span>
-                            <span className='confcards__item-line'> | </span>
-                            <span className='confcards__item-time'>10:00</span>
-                        </div>
-                        <div className='confcards__item-box'>
-                                <div className='confcards__item-subbox'>
-                                <img className='confcards__item-avatar' src={Avatar} alt="" />
-                                <div className='confcards__item-minbox'>
-                                    <p className='confcards__item-name'>Abbos Janizakov</p>
-                                    <p className='confcards__item-profession'>UX / UI Dizayner</p>
-                                </div>
-                                </div>
-                                <span className='confcards__item-watching'>
-                                    <img className='confcards__item-icon' src={Eye} alt="" /> 1300
-                                </span>
-                        </div>
-                        </div>
-            </SwiperSlide>
-            <SwiperSlide className="confcards__item">
-            <img className='confcards__item-img' src={CardImg} alt="card-img" />
-                        <div className="confcards__box">
-                        <h3 className='confcards__item-title'>O'zbekistonda UX/UI dizayner qancha pul topadi?</h3>
-                        <div className='confcards__item-datebox'>
-                            <span className='confcards__item-date'>26/01/2022</span>
-                            <span className='confcards__item-line'> | </span>
-                            <span className='confcards__item-time'>10:00</span>
-                        </div>
-                        <div className='confcards__item-box'>
-                                <div className='confcards__item-subbox'>
-                                <img className='confcards__item-avatar' src={Avatar} alt="" />
-                                <div className='confcards__item-minbox'>
-                                    <p className='confcards__item-name'>Abbos Janizakov</p>
-                                    <p className='confcards__item-profession'>UX / UI Dizayner</p>
-                                </div>
-                                </div>
-                                <span className='confcards__item-watching'>
-                                    <img className='confcards__item-icon' src={Eye} alt="" /> 1300
-                                </span>
-                        </div>
-                        </div>
-            </SwiperSlide>
-            <SwiperSlide className="confcards__item">
-            <img className='confcards__item-img' src={CardImg} alt="card-img" />
-                        <div className="confcards__box">
-                        <h3 className='confcards__item-title'>O'zbekistonda UX/UI dizayner qancha pul topadi?</h3>
-                        <div className='confcards__item-datebox'>
-                            <span className='confcards__item-date'>26/01/2022</span>
-                            <span className='confcards__item-line'> | </span>
-                            <span className='confcards__item-time'>10:00</span>
-                        </div>
-                        <div className='confcards__item-box'>
-                                <div className='confcards__item-subbox'>
-                                <img className='confcards__item-avatar' src={Avatar} alt="" />
-                                <div className='confcards__item-minbox'>
-                                    <p className='confcards__item-name'>Abbos Janizakov</p>
-                                    <p className='confcards__item-profession'>UX / UI Dizayner</p>
-                                </div>
-                                </div>
-                                <span className='confcards__item-watching'>
-                                    <img className='confcards__item-icon' src={Eye} alt="" /> 1300
-                                </span>
-                        </div>
-                        </div>
-            </SwiperSlide>
-          </Swiper>
-        {/* </div> */}
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </SwiperSlide>
+            ))
+          } */}
+        </Swiper>
       </div>
     </section>
   );

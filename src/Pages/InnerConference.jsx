@@ -4,6 +4,7 @@ import Header from "../Components/Header/Header";
 import InConference from "../Components/InConference/InConference";
 
 function InnerConference() {
+  document.title = 'Logeeka science'
   return (
     <>
       <Header bgColor={'blue'}/>

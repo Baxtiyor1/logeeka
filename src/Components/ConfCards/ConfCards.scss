@@ -1,82 +1,107 @@
-.confcards{
+.confcards {
     margin: 120px 0;
-    &__btnbox{
+
+    &__btnbox {
         display: flex;
         align-items: center;
         flex-direction: column;
         justify-content: center;
     }
-    &__list{
+
+    &__list {
+        min-height: 60vh;
         display: flex;
         align-items: center;
-        justify-content: space-between;
         flex-wrap: wrap;
     }
-    &__box{
+
+    &__box {
         padding: 20px 30px 30px 30px;
     }
-    &__item{
-        margin-bottom: 40px;
+
+    &__item {
+        margin: 0 20px 40px 0;
         border: 1px solid rgba(23, 38, 110, 0.1);
         border-radius: 4px;
         width: 100%;
         max-width: 396px;
-        &-img{
+        transition: 0.3s;
+        &:hover{
+            box-shadow: 0 0 4px 4px rgba(23, 38, 110, 0.1);
+        }
+
+        &:nth-child(3n) {
+            margin-right: 0;
+        }
+
+        &-img {
             width: 100%;
             max-width: 396px;
+            height: 250px;
+            object-fit: cover;
         }
-        &-title{
+
+        &-title {
+            max-height: 84px;
             font-weight: 600;
             font-size: 20px;
             line-height: 28px;
             color: #17266E;
+            overflow: hidden;
+            display: -webkit-box !important;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            white-space: normal;
         }
-        &-datebox{
+
+        &-datebox {
             font-weight: 700;
             font-size: 14px;
             line-height: 16px;
             color: #526EFF;
             margin: 20px 0 30px 0;
         }
-        &-box{
-            // opacity: 0.05;
-            border-top: 1px solid  rgba($color: #242424, $alpha: 0.05);
+
+        &-box {
+            border-top: 1px solid rgba($color: #242424, $alpha: 0.05);
             padding-top: 20px;
             display: flex;
             align-items: flex-end;
             justify-content: space-between;
         }
-        &-subbox{
+
+        &-subbox {
             display: flex;
             align-items: center;
         }
-        &-minbox{
+
+        &-minbox {
             margin-left: 10px;
         }
-        &-name{
+
+        &-name {
             font-weight: 400;
             font-size: 14px;
             line-height: 16px;
             color: #17266E;
         }
-        &-profession{
+
+        &-profession {
             font-weight: 400;
             font-size: 12px;
             line-height: 14px;
             opacity: 0.3;
             margin-top: 6px;
         }
-        &-watching{
-            display: flex;
-            align-items: center;
-            opacity: 0.3;
-            font-weight: 400;
-            font-size: 13px;
-            line-height: 16px;
-            color: #17266E;
+        &-avatar{
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 50%;
         }
     }
-    &__btn{
+
+    &__btn {
         margin: 47px 0 100px 0;
         background: #1263B0;
         border: 1px solid #246FB6;
@@ -88,36 +113,53 @@
         text-align: center;
         color: #FFFFFF;
         cursor: pointer;
-        &:hover{
-        background: #1a7ad4;
+
+        &:hover {
+            background: #1a7ad4;
         }
     }
 }
 
 @media screen and (max-width: 1250px) {
-    .confcards{
-        &__list{
+    .confcards {
+        &__list {
             justify-content: space-around;
         }
-        &__item{
-           margin: 40px 0;
+
+        &__item {
+            margin: 0 20px 40px 0;
+            &:nth-child(2n){
+                margin-right: 0;
+            }
         }
     }
 }
+
 @media screen and (max-width: 875px) {
-    .confcards{
-        &__list{
+    .confcards {
+        &__list {
             justify-content: center;
         }
-        &__item{
-           margin: 40px 20px 0 0;
+
+        &__item {
+            margin: 40px 20px 0 0;
         }
     }
 }
+
 @media screen and (max-width: 860px) {
+    .confcards {
+        &__item {
+            margin: 20px 5px !important;
+        }
+    }
+}
+
+@media screen and (max-width: 560px) {
     .confcards{
-        &__item{
-           margin: 20px 5px;
+        &__btn{
+            margin: 30px 0 70px;
+            padding: 15px 50px;
         }
     }
 }

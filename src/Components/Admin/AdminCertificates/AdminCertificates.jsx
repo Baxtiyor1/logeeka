@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import useToken from '../../../Hook/useToken'
 
 //SASS
 import './AdminCertificates.scss'
@@ -12,24 +15,26 @@ import AdminNav from '../AdminNav/AdminNav'
 import AdminAside from '../AdminAside/AdminAside'
 
 function AdminCertificates() {
-    const certificateData = [
-        {
-            id: 1,
-            text: 2200089
-        },
-        {
-            id: 2,
-            text: 2200089
-        },
-        {
-            id: 3,
-            text: 2200089
-        },
-        {
-            id: 4,
-            text: 2200089
-        },
-    ]
+    let [token] = useToken()
+    let [deleteCert, setDeleteCert] = useState('')
+    let [certificateData, setCertificateData] = useState()
+
+    useEffect(() => {
+        axios.get('https://logeekascience.com/api/certificate')
+            .then(res => setCertificateData(res.data.data))
+            .catch(err => console.log(err))
+    }, [deleteCert])
+
+    function deleteCertificate(e) {
+        e.preventDefault()
+        let id = e.target.dataset.id
+        axios.delete('https://logeekascience.com/api/certificate', {
+            headers: { token },
+            data: { id }
+        })
+            .then(res => setDeleteCert(res.data.data))
+            .catch(err => console.log(err.message))
+    }
     return (
         <>
             <section className='admin'>
@@ -53,15 +58,17 @@ function AdminCertificates() {
                                 {
                                     certificateData && certificateData.map((e, i) => (
                                         <li key={i} className='journal__item'>
-                                            <p className='journal__text'>CCID: {e.text}</p>
-                                            <time className='journal__time'>6-aprel 12:30</time>
-                                            <div id={i} className='admin__article--btn journal__btn'>
+                                            <p className='journal__text'>CCID: {e.ccid}</p>
+                                            <div data-id={e.certificate_id} onClick={deleteCertificate} className='admin__article--btn journal__btn'>
                                                 <img src={delete_icon} alt="delete_icon" />
                                             </div>
                                         </li>
                                     ))
                                 }
                             </ul>
+                            <div className='admin__navigate'>
+                                <button className='admin__navigate--btn'>next</button>
+                            </div>
                         </div>
                     </div>
                 </div>

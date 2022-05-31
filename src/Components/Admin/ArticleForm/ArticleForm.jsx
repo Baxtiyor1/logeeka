@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import useToken from '../../../Hook/useToken'
 
 //SASS
 import './ArticleForm.scss'
@@ -13,21 +14,50 @@ import AdminAside from '../AdminAside/AdminAside'
 import AdminNav from '../AdminNav/AdminNav'
 
 function ArticleForm() {
+    let [token] = useToken()
     const [categoryData, setCategoryData] = useState([])
+    let [selectFile, setSelectFile] = useState()
 
     useEffect(() => {
-        axios.get('https://logeeka-mini-app.herokuapp.com/category', {
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json'
-            }
-        })
+        axios.get('https://logeekascience.com/api/category')
             .then(res => setCategoryData(res.data.data))
     })
 
+    const handleFileSelect = e => {
+        setSelectFile(e.target.value)
+    }
+
     function articleValues(e) {
         e.preventDefault()
+        const { category, name, profession, title, keyword, anastasiya, file } = e.target.elements
+        var formData = new FormData();
 
+        formData.append("category_id", category.value);
+        formData.append("profession", profession.value);
+        formData.append("full_name", name.value);
+        formData.append("title", title.value);
+        formData.append("keyword", keyword.value);
+        formData.append("annastatsiya", anastasiya.value);
+        formData.append("files", file.files[0]);
+
+        axios.post('https://logeekascience.com/api/posts/article', formData, {
+            headers: {
+                token: token,
+                "type": "formData",
+                "Content-Type": "form-data",
+                "Accept": "application/json",
+                "Access-Control-Allow-Origin": "*"
+            }
+        }).then(res => alert(res.data.message))
+            .catch(err => console.log(err))
+
+        category.value = null
+        name.value = null
+        profession.value = null
+        title.value = null
+        keyword.value = null
+        anastasiya.value = null
+        file.value = null
     }
 
     return (
@@ -48,13 +78,13 @@ function ArticleForm() {
                             <div className='article__wrapper'>
                                 <form onSubmit={articleValues} className='article__form' method='multipart/form-data'>
                                     <label className='article__form--label'>
-                                        profession:
-                                        <select name="profession" className='article__form--input' defaultValue='profession'>
-                                            <option value="profession" disabled>Profession</option>
+                                        Category:
+                                        <select name="category" className='article__form--input' defaultValue='category'>
+                                            <option value="category" className='article__form--option' disabled>Choose Category</option>
                                             {
                                                 categoryData && categoryData.map((e, i) => {
                                                     return (
-                                                        <option key={i} className='article__form--option' value={e.category_name}>{e.category_name}</option>
+                                                        <option key={i} className='article__form--option' value={e.category_id}>{e.category_name}</option>
                                                     )
                                                 })
                                             }
@@ -68,7 +98,7 @@ function ArticleForm() {
                                         </label>
                                         <label className='article__form--label'>
                                             profession:
-                                            <input className='article__form--input' type="text" placeholder='profession' />
+                                            <input name='profession' className='article__form--input' type="text" placeholder='profession' />
                                         </label>
                                     </div>
                                     <label className='article__form--label'>
@@ -81,15 +111,15 @@ function ArticleForm() {
                                     </label>
                                     <label className='article__form--label'>
                                         Аннастация:
-                                        <textarea name="keyword" className='article__form--area article__form--keyword' placeholder='Type title' />
+                                        <textarea name="anastasiya" className='article__form--area article__form--keyword' placeholder='Type title' />
                                     </label>
-                                    <label className='article__form--label'>
-                                        upload pdf
+                                    <label className='article__form--label article__form--lastlabel'>
+                                        upload pdf {selectFile}
                                         <div className='article__form--subbox'>
                                             <p>pdf</p>
                                             <img src={file_icon} alt="file_icon" />
                                         </div>
-                                        <input className='article__form--file' type="file" placeholder='pdf' accept="image/*" />
+                                        <input name='file' onChange={handleFileSelect} className='article__form--file' type="file" placeholder='pdf' accept=".pdf" />
                                     </label>
                                     <button className='article__form--btn' type='submit'>Save</button>
                                 </form>

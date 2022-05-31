@@ -6,6 +6,7 @@ import ConfSolution from "../Components/ConfSolution/ConfSolution";
 import Footer from "../Components/Footer/Footer";
 
 function Conference() {
+  document.title = 'Logeeka Conference'
   return (
     <>
       <Header />

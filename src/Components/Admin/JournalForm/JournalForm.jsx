@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import axios from 'axios';
+import useToken from '../../../Hook/useToken'
 
 //SASS
 import './JournalForm.scss'
@@ -11,23 +14,45 @@ import AdminAside from '../AdminAside/AdminAside'
 import AdminNav from '../AdminNav/AdminNav'
 
 function JournalForm() {
+    let [selectPhoto, setSelectPhoto] = useState('')
+    let [selectFile, setSelectFile] = useState('')
+    let [token] = useToken()
+
+    const handleSelectPhoto = evt => {
+        setSelectPhoto(evt.target.value)
+    }
+
+    const handleSelectFile = evt => {
+        setSelectFile(evt.target.value)
+    }
+
     let currentTime = new Date().toISOString()
 
     function JournalValues(e) {
         e.preventDefault()
-        const { journalFile, journalImage, journalTitle, journalTime } = e.target.elements
-        const data = {
-            image: journalImage.value,
-            pdf_file: journalFile.value,
-            title: journalTitle.value,
-            date: journalTime.value
-        }
-        console.log(data);
-        // axios.post('https://logeeka-mini-app.herokuapp.com/journal', data, {
-        //     headers: {
-        //         token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9'
-        //     }
-        // }).then(res => console.log(res))
+        let { journalFile, journalImage, journalTitle, journalTime } = e.target.elements
+        var formData = new FormData();
+
+        formData.append("image", journalImage.files[0]);
+        formData.append("pdf_file", journalFile.files[0]);
+        formData.append("title", journalTitle.value);
+        formData.append("date", journalTime.value);
+
+        axios.post('https://logeekascience.com/api/journal', formData, {
+            headers: {
+                token: token,
+                "type": "formData",
+                "Content-Type": "form-data",
+                "Accept": "application/json",
+                "Access-Control-Allow-Origin": "*"
+            }
+        }).then(res => alert(res.data.message && 'Journal is added succesfuly'))
+            .catch(err => console.log(err))
+
+        journalImage.value = null
+        journalFile = null
+        journalTitle = null
+        journalTime = null
     }
     return (
         <>
@@ -45,30 +70,26 @@ function JournalForm() {
                         <div className="admin__area">
                             <AdminNav route={'add'} />
                             <form onSubmit={JournalValues} className="journal__form" encType="multipart/form-data">
-                                <label className='journal__form--label'>
-                                    upload Img :
+                                <label className='journal__form--label journal__form--file'>upload Img : {selectPhoto}
                                     <div className='journal__form--box'>
                                         <p className='journal__form--text'>Img</p>
                                         <img className='journal__icon' src={file_icon} alt="file_icon" />
                                     </div>
-                                    <input name='journalImage' className='journal__form--fileInput' type="file" accept="image/*" />
+                                    <input onChange={handleSelectPhoto} name='journalImage' className='journal__form--fileInput' type="file" accept="image/*" />
                                 </label>
-                                <label className='journal__form--label'>
-                                    data:
+                                <label className='journal__form--label'>data:
                                     <input name='journalTime' className='journal__form--time'
                                         type="datetime-local" min={currentTime.split('').splice(0, 16).join('')} />
                                 </label>
-                                <label className='journal__form--label'>
-                                    Title name:
+                                <label className='journal__form--label'>Title name:
                                     <textarea className='journal__form--textarea' name="journalTitle" placeholder='Type journal name...' />
                                 </label>
-                                <label className='journal__form--label'>
-                                    Upload file:
+                                <label className='journal__form--label journal__form--file'>Upload file: {selectFile}
                                     <div className='journal__form--box'>
                                         <p className='journal__form--text'>pdf</p>
                                         <img className='journal__icon' src={file_icon} alt="file_icon" />
                                     </div>
-                                    <input name='journalFile' className='journal__form--fileInput' type="file" accept='application/pdf' />
+                                    <input onChange={handleSelectFile} name='journalFile' className='journal__form--fileInput' type="file" accept='application/pdf' />
                                 </label>
                                 <button className='journal__form--btn' type='submit'>Save</button>
                             </form>

@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom'
 function MobileNav() {
     return (
         <>
-            <Link className='header__link header__mobile--link' to='/'>Conference</Link>
-            <Link className='header__link header__mobile--link' to='/'>Articles</Link>
-            <Link className='header__link header__mobile--link' to='/'>Certificates</Link>
-            <Link className='header__link header__mobile--link' to='/'>Pricing</Link>
-            <Link className='header__link header__mobile--link' to='/'>Contacts</Link>
-            <Link className='header__link header__mobile--link' to='/'>Journal</Link>
-            <Link className='header__link header__mobile--link' to='/'>About us</Link>
+            <Link className='header__link header__mobile--link' to='/conference'>Conference</Link>
+            <Link className='header__link header__mobile--link' to='/articles'>Articles</Link>
+            <Link className='header__link header__mobile--link' to='/certificates'>Certificates</Link>
+            <Link className='header__link header__mobile--link' to='/pricing'>Pricing</Link>
+            <Link className='header__link header__mobile--link' to='/contacts'>Contacts</Link>
+            <Link className='header__link header__mobile--link' to='/journal'>Journal</Link>
+            <Link className='header__link header__mobile--link' to='/about'>About us</Link>
         </>
     )
 }

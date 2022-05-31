@@ -4,16 +4,15 @@ import axios from 'axios';
 import './ArticleIntro.scss'
 import Lupa from '../../Assets/img/searchArticle.svg';
 
-function ArticleIntro() {
+function ArticleIntro(props) {
   const [articleData, setArticleData] = useState()
 
   function articleSearch(e) {
     e.preventDefault()
     const { articleName } = e.target.elements
-    axios.get(`https://logeeka-mini-app.herokuapp.com/posts/allArticle?search=${articleName.value.trim()}`)
-      .then(res => setArticleData(res.data.data))
+    props.setSearch(articleName.value)
   }
-  console.log(articleData);
+  
   return (
     <section className='artintro'>
       <div className="container">

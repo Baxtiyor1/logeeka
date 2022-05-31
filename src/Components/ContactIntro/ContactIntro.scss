@@ -1,11 +1,11 @@
 .contintro{
-    background-image: url('../../Assets/img/contacts-bg.png');
+    background-image: url('../../Assets/img/contacts-bg.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    
     &__wrapper {
-        min-height: 80vh;
+        // min-height: 80vh;
+        min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;

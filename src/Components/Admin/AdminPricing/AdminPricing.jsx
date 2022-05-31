@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import useToken from '../../../Hook/useToken'
 
 //SASS
 import './AdminPricing.scss'
@@ -13,24 +16,26 @@ import AdminNav from '../AdminNav/AdminNav'
 import AdminAside from '../AdminAside/AdminAside'
 
 function AdminPricing() {
-    let facePriceData = [
-        {
-            id: 1,
-            price: 10
-        },
-        {
-            id: 2,
-            price: 25
-        },
-        {
-            id: 3,
-            price: 30
-        },
-        {
-            id: 4,
-            price: 50
-        }
-    ]
+    let [token] = useToken()
+    let [priceData, setPriceData] = useState()
+    let [delPrice, setDeletePrice] = useState()
+
+    useEffect(() => {
+        axios.get('https://logeekascience.com/api/price')
+            .then(res => setPriceData(res.data.data))
+            .catch(err => console.log(err))
+    }, [delPrice])
+
+    function deletePrice(e) {
+        e.preventDefault()
+        let id = e.target.dataset.id
+        axios.delete('https://logeekascience.com/api/price', {
+            headers: { token },
+            data: { id }
+        })
+            .then(res => setDeletePrice(res.data.data))
+            .catch(err => console.log(err.message))
+    }
     return (
         <>
             <section className='admin'>
@@ -52,13 +57,13 @@ function AdminPricing() {
                             <AdminNav />
                             <ul className='price__list'>
                                 {
-                                    facePriceData && facePriceData.map((e, i) => (
+                                    priceData && priceData.map((e, i) => (
                                         <li key={i} className='price__item'>
-                                            <div className='admin__article--btn'>
+                                            <div data-id={e.price_id} onClick={deletePrice} className='admin__article--btn'>
                                                 <img src={delete_icon} alt="delete_icon" />
                                             </div>
-                                            <h2 className='price__title'>Publishing scientific articles in international journals</h2>
-                                            <p className='price__text'><span className='price__subtext'>${e.price}</span>/$450</p>
+                                            <h2 className='price__title'>{e.title}</h2>
+                                            <p className='price__text'><span className='price__subtext'>${e.price_max}</span>/${e.price_min}</p>
                                         </li>
                                     ))
                                 }

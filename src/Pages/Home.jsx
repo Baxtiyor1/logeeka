@@ -4,16 +4,17 @@ import Header from "../Components/Header/Header";
 import HomeArticle from "../Components/HomeArticle/HomeArticle";
 import HomeIntro from "../Components/HomeIntro/HomeIntro";
 import HomeJournal from "../Components/HomeJournal/HomeJournal";
-import HomeNews from "../Components/HomeNews/HomeNews";
+import HomeConfirence from "../Components/HomeConfirence/HomeConfirence";
 
 function Home() {
+  document.title = 'Logeeka science'
   return (
     <>
       <Header/>
       <HomeIntro />
       <HomeArticle/>
       <HomeJournal/>
-      <HomeNews/>
+      <HomeConfirence/>
       <Footer />
     </>
   );

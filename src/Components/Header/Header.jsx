@@ -38,7 +38,7 @@ function Header({bgColor}) {
         }
     })
     return (
-        <header ref={tagHeader} className='header'>
+        <header ref={tagHeader} id='top' className='header'>
             <div className="container">
                 <div className="header__nav">
                     <Link to={'/'}>

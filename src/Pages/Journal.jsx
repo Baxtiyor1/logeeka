@@ -5,6 +5,7 @@ import JournalCards from "../Components/JournalCards/JournalCards";
 import JournalIntro from "../Components/JournalIntro/JournalIntro";
 
 function Journal() {
+  document.title = 'Logeeka Journal'
   return (
     <>
       <Header/>

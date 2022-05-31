@@ -8,8 +8,8 @@ function JournalIntro() {
       <div className="effect">
         <div className="container">
           <div className="jintro__wrapper">
-            <h1 className='jintro__title'>Journal</h1>
-            <h2 className='jintro__subtitle'>Matbaa va matn terish sanoatining oddiygina soxta matnidir. Lorem Ipsum 1500-yillardan beri </h2>
+            <h1 className='jintro__title'>Logeeka Science</h1>
+            <h2 className='jintro__subtitle'>International scientific journal</h2>
           </div>
         </div>
       </div>
