@@ -47,7 +47,7 @@ function AdminArticle() {
         } else {
             show_btn.current && show_btn.current.classList.remove('admin__navigate--close')
         }
-    }, [pageLimit])
+    }, [pageLimit, pageCount])
     
     const NextPage = e => {
         e.preventDefault()

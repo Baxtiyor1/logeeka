@@ -69,7 +69,7 @@ function AdminJournal() {
         } else {
             show_btn.current && show_btn.current.classList.remove('admin__navigate--close')
         }
-    }, [pageLimit])
+    }, [pageLimit, pageCount])
 
     const NextFunction = e => {
         e.preventDefault()
