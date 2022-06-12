@@ -2,7 +2,7 @@
     background-color: #F7F7F7;
     border-radius: 2px;
     padding: 93px 0;
-    margin-bottom: 120px;
+    // margin-bottom: 120px;
 
     &__wrapper {
         background-image: url('../../Assets/img/soroq.png');
@@ -24,6 +24,8 @@
     }
 
     &__text {
+        width: 475px;
+        max-width: 100%;
         margin: 20px 0 50px 0;
         font-weight: 600;
         font-size: 20px;
@@ -57,13 +59,14 @@
         }
 
         &__text {
+            width: 100%;
             font-weight: 600;
             font-size: 18px;
             line-height: 30px;
         }
 
         &__btn {
-            padding: 20px 119px;
+            padding: 20px 80px;
             border-radius: 4px;
         }
     }

@@ -1,25 +1,26 @@
-.aboutintro{
+.aboutintro {
     background-image: url('../../Assets/img/aboutus-bg.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    
+
     &__wrapper {
-        min-height: 80vh;
+        min-height: 40vh;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
     }
-    
+
     &__title {
         margin-bottom: 10px;
         font-weight: 700;
         font-size: 64px;
-line-height: 75px;
-        color: #FFFFFF;
+        line-height: 75px;
+        color: #fff;
     }
-    &__subtitle{
+
+    &__subtitle {
         max-width: 844px;
         width: 100%;
         font-weight: 500;

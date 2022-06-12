@@ -13,7 +13,7 @@ function HomeJournal() {
   let [journalData, setjournalData] = useState()
 
   useEffect(() => {
-    axios.get('https://logeekascience.com/api/journal?limit=8')
+    axios.get('https://logeekascience.com/api/journal?limit=4')
       .then(res => setjournalData(res.data.data))
   }, [])
 
@@ -31,7 +31,9 @@ function HomeJournal() {
                 let time = e.date && e.date.split('T')[1] && e.date && e.date.split('T')[1].split('').splice(0, 5).join('')
                 return (
                   <li key={i} className="hjournal__item">
-                    <img className="hjournal__item-img" src={'https://logeekascience.com/api' + e.image} alt="journal" />
+                    <div className="hjournal__item-imgbox">
+                      <img className="hjournal__item-img" src={'https://logeekascience.com/api' + e.image} alt="journal" />
+                    </div>
                     <div className="hjournal__item-wrapper">
                       <h4 className="hjournal__item-title">{e.title}</h4>
                       <div className="hjournal__item-box">
@@ -52,7 +54,7 @@ function HomeJournal() {
             </Link>
           }
           {
-            !journalData && <h2 style={{"width": "1450px", "maxWidth": "100%", "textAlign": "center"}}>No internet connection...</h2>
+            !journalData && <h2 style={{ "width": "1450px", "maxWidth": "100%", "textAlign": "center" }}>No internet connection...</h2>
           }
         </div>
       </div>

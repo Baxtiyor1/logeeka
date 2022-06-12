@@ -1,25 +1,26 @@
-.certintro{
-    background-image: url('../../Assets/img/certiificate-bg.png');
+.certintro {
+    background-image: url('../../Assets/img/certiificate-bg.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    
+
     &__wrapper {
-        min-height: 80vh;
+        min-height: 60vh;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
     }
-    
+
     &__title {
         margin-bottom: 10px;
         font-weight: 700;
         font-size: 64px;
-line-height: 75px;
+        line-height: 75px;
         color: #FFFFFF;
     }
-    &__subtitle{
+
+    &__subtitle {
         max-width: 844px;
         width: 100%;
         font-weight: 500;
@@ -29,14 +30,16 @@ line-height: 75px;
         color: #FFFFFF;
     }
 }
+
 @media screen and (max-width: 900px) {
-    .certintro{
+    .certintro {
         &__title {
             font-weight: 700;
             font-size: 52px;
             line-height: 55px;
         }
-        &__subtitle{
+
+        &__subtitle {
             max-width: 700px;
             font-weight: 500;
             font-size: 18px;
@@ -44,14 +47,16 @@ line-height: 75px;
         }
     }
 }
+
 @media screen and (max-width: 428px) {
-    .certintro{
+    .certintro {
         &__title {
             font-weight: 700;
             font-size: 52px;
             line-height: 55px;
         }
-        &__subtitle{
+
+        &__subtitle {
             font-weight: 500;
             font-size: 24px;
             line-height: 34px;

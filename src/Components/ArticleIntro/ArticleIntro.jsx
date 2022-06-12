@@ -21,9 +21,9 @@ function ArticleIntro(props) {
           <form className='artintro__form' onSubmit={articleSearch}>
             <div className='artintro__box'>
               <img className='artintro__icon' src={Lupa} alt="lupa" />
-              <input name='articleName' className='artintro__input' type="search" placeholder='Search' />
+              <input name='articleName' className='artintro__input' type="search" placeholder='Enter article topic' />
             </div>
-            <button className='artintro__btn' type='submit'>Send</button>
+            <button className='artintro__btn' type='submit'>Search</button>
           </form>
         </div>
       </div>

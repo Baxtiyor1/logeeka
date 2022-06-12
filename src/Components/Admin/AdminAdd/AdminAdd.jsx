@@ -11,6 +11,8 @@ import AdminAside from '../AdminAside/AdminAside'
 import AdminNav from '../AdminNav/AdminNav'
 
 function AdminAdd(){
+    document.title = 'Admin Forms'
+
     return (
         <main>
             <section className='admin'>

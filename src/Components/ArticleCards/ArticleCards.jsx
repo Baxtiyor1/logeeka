@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,40 +11,90 @@ import '../InArticles/InArticles.scss'
 function ArticleCards({ searchvalue }) {
   let [articleData, setArticleData] = useState()
   let [categoryData, setCategoryData] = useState()
+  let [pageLimit, setPageLimit] = useState(1)
+  let [categoryId, setCategoryId] = useState('all')
+  let show_btn = useRef()
+  let next_btn = useRef()
+
+  useEffect(() => {
+    axios.get('https://logeekascience.com/api/posts/allArticle?limit=6')
+      .then(res => {
+        setArticleData(res.data.data)
+        setPageLimit(Math.ceil(res.data.count_selected / 6))
+      })
+    axios.get('https://logeekascience.com/api/category')
+      .then(res => setCategoryData(res.data.data))
+  }, [])
 
   useEffect(() => {
     if (searchvalue) {
-      axios.get(`https://logeekascience.com/api/posts/allarticle?search=${searchvalue}`)
-        .then(res => setArticleData(res.data.data))
+      axios.get(`https://logeekascience.com/api/posts/allarticle?search=${searchvalue}&limit=6`)
+        .then(res => {
+          setArticleData(res.data.data)
+          setPageLimit(Math.ceil(res.data.count_selected / 6))
+        })
     }
   }, [searchvalue])
 
-  useEffect(() => {
-    axios.get('https://logeekascience.com/api/posts/allArticle')
-      .then(res => setArticleData(res.data.data))
-
-    axios.get('https://logeekascience.com/api/category')
-      .then(res => setCategoryData(res.data.data))
-  })
 
   function ByCategory(e) {
     let cat_id = e.target.dataset.category
+    setCategoryId(cat_id)
     if (cat_id === 'all') {
-      axios.get('https://logeekascience.com/api/posts/allArticle')
-        .then(res => setArticleData(res.data.data))
+      axios.get('https://logeekascience.com/api/posts/allArticle?limit=6')
+        .then(res => {
+          setArticleData(res.data.data)
+          setPageLimit(Math.ceil(res.data.count_selected / 6))
+        })
+      show_btn.current && show_btn.current.classList.remove('artcards__nextbtn--close')
     } else {
-      axios.get(`https://logeekascience.com/api/posts/allArticle?category_id=${cat_id}`)
-        .then(res => setArticleData(res.data.data))
-        .catch(err => setArticleData(false))
+      axios.get(`https://logeekascience.com/api/posts/allArticle?category_id=${cat_id}&limit=6`)
+        .then(res => {
+          setArticleData(res.data.data)
+          setPageLimit(Math.ceil(res.data.count_selected / 6))
+        })
+        .catch(err => {
+          setArticleData(false)
+          alert(err.req.data.message)
+        })
+    }
+    next_btn.current.dataset.page = 2
+    if (Number(pageLimit) <= 1) {
+      show_btn.current && show_btn.current.classList.add('artcards__nextbtn--close')
+    } else {
+      show_btn.current && show_btn.current.classList.remove('artcards__nextbtn--close')
     }
   }
 
   function nextData(e) {
-    let page = e.target.dataset.page
-    axios.get(`https://logeekascience.com/api/posts/allArticle?page=${page}`)
-      .then(res => setArticleData(res.data.data))
-      .catch(err => console.log(err))
-    e.target.dataset.page = Number(page) + 1
+    e.preventDefault()
+    let pageCount = e.target.dataset.page
+    if (Number(pageLimit) <= Number(pageCount) - 1) {
+      show_btn.current && show_btn.current.classList.add('artcards__nextbtn--close')
+    } else {
+      show_btn.current && show_btn.current.classList.remove('artcards__nextbtn--close')
+
+      if (Number(pageLimit) === Number(pageCount)) {
+        show_btn.current && show_btn.current.classList.add('artcards__nextbtn--close')
+      }
+
+      if (categoryId === 'all') {
+        axios.get(`https://logeekascience.com/api/posts/allArticle?page=${pageCount}&limit=6`)
+          .then(res => {
+            setArticleData([...articleData, ...res.data.data]);
+            setPageLimit(Math.ceil(res.data.count_selected / 8));
+          })
+      } else {
+        axios.get(`https://logeekascience.com/api/posts/allArticle?category_id=${categoryId}&page=${pageCount}&limit=6`)
+          .then(res => {
+            setArticleData([...articleData, ...res.data.data]);
+            setPageLimit(Math.ceil(res.data.count_selected / 8));
+          })
+      }
+
+    }
+
+    e.target.dataset.page = Number(pageCount) + 1
   }
   return (
     <section className='artcards'>
@@ -111,8 +161,8 @@ function ArticleCards({ searchvalue }) {
             }
           </ul>
           {
-            articleData && <div className='confcards__btnbox'>
-              <button data-page='2' onClick={nextData} className='confcards__btn'>Show more</button>
+            articleData && <div ref={show_btn} className='confcards__btnbox artcards__nextbtn'>
+              <button ref={next_btn} data-page='2' onClick={nextData} className='confcards__btn'>Show more</button>
             </div>
           }
         </div>

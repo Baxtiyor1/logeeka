@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { NavLink, useParams, Link } from "react-router-dom";
+import React, { useEffect, useRef } from "react";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 
@@ -21,6 +21,7 @@ import Download from '../../Assets/img/download-white.svg'
 import Share from "../../Assets/img/share-2.svg";
 
 function InArticles() {
+  let author = useRef()
   let { id } = useParams()
 
   let [inArticleData, setInArticleData] = useState()
@@ -32,28 +33,22 @@ function InArticles() {
   }, [id])
 
   useEffect(() => {
-    axios.get('https://logeekascience.com/api/posts/allArticle')
+    axios.get('https://logeekascience.com/api/posts/allArticle?limit=6')
       .then(res => setArticleData(res.data.data))
   }, [id])
 
+  if(inArticleData){
+    author.current.textContent = inArticleData[0].full_name
+  }
   return (
     <section className="inarticles">
       <div className="container">
         <div className="pricing__navlink">
-          <NavLink className={"pricing__navlink"} to={"/"}>
-            Home
-          </NavLink>
+          <Link className={"pricing__navlink"} to={"/"}>Home</Link>
           <span className={"pricing__navlink"}> | </span>
-          <NavLink className={"pricing__navlink"} to={"/news"}>
-            Articles
-          </NavLink>
+          <Link className={"pricing__navlink"} to={"/articles"}>Articles</Link>
           <span className={"pricing__navlink"}> | </span>
-          <NavLink
-            className={"pricing__navlink pricing__navlink--active"}
-            to={"/#"}
-          >
-            Ways to strengthten
-          </NavLink>
+          <Link ref={author} className={"pricing__navlink pricing__navlink--active"} to={"/#"}></Link>
         </div>
         {
           inArticleData && inArticleData.map((e, i) => (

@@ -4,10 +4,10 @@ import "./AboutStaff.scss";
 // import images
 
 import Farangiz from "../../Assets/img/farangiz.png";
-import Farruh from "../../Assets/img/farrukh.png";
 import Behruz from "../../Assets/img/bekhruz.png";
 import Diyorbek from "../../Assets/img/diyorbek.png";
 import Facebook from "../../Assets/img/facebook-about.svg";
+import Farruh from "../../Assets/img/farrukh.png";
 import Twitter from "../../Assets/img/twitter-about.svg";
 import Linkedin from "../../Assets/img/linkedin.svg";
 

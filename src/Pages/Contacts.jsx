@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../Components/Header/Header";
-import ContactIntro from "../Components/ContactIntro/ContactIntro";
 import ContactsMain from "../Components/ContactsMain/ContactsMain";
 import Footer from "../Components/Footer/Footer";
 
@@ -8,8 +7,7 @@ function Contacts() {
   document.title = 'Logeeka Contact'
   return (
     <>
-      <Header />
-      <ContactIntro />
+      <Header bgColor={'blue'}/>
       <ContactsMain />
       <Footer />
     </>

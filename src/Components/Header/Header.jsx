@@ -45,12 +45,12 @@ function Header({bgColor}) {
                         <img className='header__logo' src={Logo} alt="logo" />
                     </Link>
                     <div className='header__list'>
+                        <Link className='header__link' to='/journal'>Journal</Link>
                         <Link className='header__link' to='/conference'>Conference</Link>
                         <Link className='header__link' to='/articles'>Articles</Link>
                         <Link className='header__link' to='/certificates'>Certificates</Link>
                         <Link className='header__link' to='/pricing'>Pricing</Link>
                         <Link className='header__link' to='/contacts'>Contacts</Link>
-                        <Link className='header__link' to='/journal'>Journal</Link>
                         <Link className='header__link' to='/about'>About us</Link>
                     </div>
                     <button onClick={openBar} className='header__bar--open'><img src={Bar} alt="bar" /></button>

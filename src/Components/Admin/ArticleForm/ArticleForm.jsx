@@ -14,6 +14,8 @@ import AdminAside from '../AdminAside/AdminAside'
 import AdminNav from '../AdminNav/AdminNav'
 
 function ArticleForm() {
+    document.title = 'Admin Article Form'
+
     let [token] = useToken()
     const [categoryData, setCategoryData] = useState([])
     let [selectFile, setSelectFile] = useState()
@@ -21,6 +23,7 @@ function ArticleForm() {
     useEffect(() => {
         axios.get('https://logeekascience.com/api/category')
             .then(res => setCategoryData(res.data.data))
+            .catch(err => alert(err.response.data.message))
     })
 
     const handleFileSelect = e => {
@@ -49,7 +52,7 @@ function ArticleForm() {
                 "Access-Control-Allow-Origin": "*"
             }
         }).then(res => alert(res.data.message))
-            .catch(err => console.log(err))
+            .catch(err => alert(err.response.data.message))
 
         category.value = null
         name.value = null
@@ -64,7 +67,7 @@ function ArticleForm() {
         <>
             <section className="admin">
                 <div className="admin__wrapper">
-                    <AdminAside />
+                    <AdminAside active={'add'}/>
                     <div className="admin__bside">
                         <div className="admin__bside--header">
                             <img className='admin__bside--header-icon' src={Logo} alt="Logo" />

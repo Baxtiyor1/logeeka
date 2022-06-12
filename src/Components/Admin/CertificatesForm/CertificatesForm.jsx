@@ -14,6 +14,8 @@ import AdminAside from '../AdminAside/AdminAside'
 import AdminNav from '../AdminNav/AdminNav'
 
 function CertificateForm() {
+    document.title = 'Admin Certificate Form'
+
     let [token] = useToken()
     let [selectImage, setSelectImage] = useState('')
 
@@ -38,7 +40,7 @@ function CertificateForm() {
                 "Access-Control-Allow-Origin": "*"
             }
         }).then(res => alert(res.data.message))
-            .catch(err => console.log(err))
+            .catch(err => alert(err.response.data.message))
 
         certImg.value = null
         ccid.value = null
@@ -48,7 +50,7 @@ function CertificateForm() {
         <>
             <div className="admin">
                 <div className="admin__wrapper">
-                    <AdminAside />
+                    <AdminAside active={'add'}/>
                     <div className="admin__bside">
                         <div className="admin__bside--header">
                             <img className='admin__bside--header-icon' src={Logo} alt="Logo" />
@@ -70,7 +72,7 @@ function CertificateForm() {
                                 </label>
                                 <label className='article__form--label price__form--label'>
                                     CCID :
-                                    <input name='ccid' className='article__form--input' type="name" placeholder='type price title...' />
+                                    <input name='ccid' className='article__form--input' type="name" placeholder='Enter CCID number...' />
                                 </label>
                                 <button className='article__form--btn cert__form--btn' type='submit'>Save</button>
                             </form>

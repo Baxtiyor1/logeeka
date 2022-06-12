@@ -8,9 +8,6 @@
         flex-direction: row;
         flex-wrap: nowrap;
     }
-    &__list{
-        min-height: 80vh;
-    }
     &__btn{
         width: 180px;
         border: none;
@@ -23,6 +20,14 @@
         cursor: pointer;
         &--active{
             opacity: 1;
+        }
+    }
+    &__list{
+        margin-bottom: 100px;
+    }
+    &__nextbtn{
+        &--close{
+            display: none;
         }
     }
 }

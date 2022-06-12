@@ -15,7 +15,8 @@ import AdminAside from '../AdminAside/AdminAside'
 import AdminNav from '../AdminNav/AdminNav'
 
 function ConferemceForm() {
-    document.title = 'Admin Conference form'
+    document.title = 'Admin Conference Form'
+
     let currentTime = new Date().toISOString()
     let [token] = useToken()
     let [selectUserImg, setSelectUserImg] = useState()
@@ -43,6 +44,7 @@ function ConferemceForm() {
         formData.append("title", title.value);
         formData.append("date", time.value);
         formData.append("info", info.value);
+        console.log(formData);
 
         axios.post('https://logeekascience.com/api/conference', formData, {
             headers: {
@@ -53,7 +55,7 @@ function ConferemceForm() {
                 "Access-Control-Allow-Origin": "*"
             }
         }).then(res => alert(res.data.message))
-            .catch(err => console.log(err))
+            .catch(err => alert(err.response.data.message))
 
         username.value = null
         profession.value = null
@@ -64,12 +66,14 @@ function ConferemceForm() {
         card_img.value = null
         title.value = null
         info.value = null
+        setSelectUserImg('')
+        setSelectCardImg('')
     }
     return (
         <>
             <div className="admin">
                 <div className="admin__wrapper">
-                    <AdminAside />
+                    <AdminAside active={'add'}/>
                     <div className="admin__bside">
                         <div className="admin__bside--header">
                             <img className='admin__bside--header-icon' src={Logo} alt="Logo" />

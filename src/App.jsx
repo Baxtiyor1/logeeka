@@ -17,6 +17,11 @@ import CertificateForm from './Components/Admin/CertificatesForm/CertificatesFor
 import ConferemceForm from './Components/Admin/ConferenceForm/ConferenceForm';
 import PriceForm from './Components/Admin/PriceForm/PriceForm';
 import AdminAdd from './Components/Admin/AdminAdd/AdminAdd';
+import EditeArticle from './Components/Admin/EditArticle/EditeArticle';
+import StaffForm from './Components/Admin/StaffForm/StaffForm';
+import AdminStaff from './Components/Admin/AdminStaff/AdminStaff';
+import AdminPartner from './Components/Admin/AdminPartner/AdminPartner';
+import PartnerForm from './Components/Admin/PartnerForm/PartnerForm';
 //public
 import Home from './Pages/Home';
 import Conference from './Pages/Conference';
@@ -56,6 +61,7 @@ function App() {
         <Route path='/admin/add' element={<AdminAdd />} />
         <Route path='/admin/article' element={<AdminArticle />} />
         <Route path='/admin/article/form' element={<ArticleForm />} />
+        <Route path='/admin/article/edit/:id' element={<EditeArticle />} />
         <Route path='/admin/journal' element={<AdminJournal />} />
         <Route path='/admin/journal/form' element={<JournalForm />} />
         <Route path='/admin/price' element={<AdminPricing />} />
@@ -64,6 +70,10 @@ function App() {
         <Route path='/admin/conference/form' element={<ConferemceForm />} />
         <Route path='/admin/certificate' element={<AdminCertificates />} />
         <Route path='/admin/certificate/form' element={<CertificateForm />} />
+        <Route path='/admin/staff' element={<AdminStaff />} />
+        <Route path='/admin/staff/form' element={<StaffForm />} />
+        <Route path='/admin/partner' element={<AdminPartner />} />
+        <Route path='/admin/partner/form' element={<PartnerForm />} />
       </Route>
     </Routes>
   )

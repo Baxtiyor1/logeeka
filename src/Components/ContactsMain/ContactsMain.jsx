@@ -15,31 +15,40 @@ function ContactsMain() {
 
   function sendMessage(e) {
     e.preventDefault()
+    var formData = new FormData();
+
     let { name, email, phone, nik_name, text } = e.target.elements
-    axios.post('https://logeekascience.com/api/messages', {
-      "full_name": name.value.trim(),
-      "email": email.value.trim(),
-      "phone": phone.value.trim(),
-      "telegram": nik_name.value.trim(),
-      "message_text": text.value.trim()
-    })
-      .then(function (response) {
-        console.log(response, 'res');
+
+    if (name.value.length > 2 && name.value.length < 20 && email.value && phone.value && nik_name.value && text.value < 300) {
+      formData.append("full_name", name.value);
+      formData.append("email", email.value);
+      formData.append("phone", phone.value);
+      formData.append("telegram", nik_name.value);
+      formData.append("message_text", text.value);
+
+      axios.post('https://logeekascience.com/api/messages', formData, {
+        headers: {
+          "type": "formData",
+          "Content-Type": "form-data",
+          "Accept": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        }
       })
-      .catch(function (error) {
-        console.log(error.message, 'err');
-      });
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
 
       name.value = null
       email.value = null
       phone.value = null
       nik_name.value = null
       text.value = null
+    }
   }
   return (
     <section className="contacts">
       <div className="container">
         <div className="contacts__wrapper">
+          <h1 className="contacts__title">CONTACTS</h1>
           <div className="contacts__top">
             <ul className="contacts__menu">
               <li className="contacts__item">
@@ -49,9 +58,7 @@ function ContactsMain() {
                   </div>
                   <div className="contacts__linkbox">
                     <p className="contacts__subtitle">Phone Number</p>
-                    <p className="contacts__textlink">
-                      +998901234567
-                    </p>
+                    <p className="contacts__textlink">+998901234567</p>
                   </div>
                 </a>
               </li>
@@ -73,9 +80,7 @@ function ContactsMain() {
                   </div>
                   <div className="contacts__linkbox">
                     <p className="contacts__subtitle">Instagram</p>
-                    <p className="contacts__textlink">
-                      Logeekascince
-                    </p>
+                    <p className="contacts__textlink">Logeekascince</p>
                   </div>
                 </a>
               </li>
@@ -86,9 +91,7 @@ function ContactsMain() {
                   </div>
                   <div className="contacts__linkbox">
                     <p className="contacts__subtitle">Telegram</p>
-                    <p className="contacts__textlink" >
-                      Logeekascince
-                    </p>
+                    <p className="contacts__textlink" >Logeekascince</p>
                   </div>
                 </a>
               </li>
@@ -106,8 +109,8 @@ function ContactsMain() {
             </ul>
             <form className="contacts__form" onSubmit={sendMessage}>
               <h2 className="contacts__form-title">Send Message</h2>
-              <p className="contacts__form-text">If you have any questions, you can send us an SMS or contact us
-                by phone you can also contact us via social networks. </p>
+              <p className="contacts__form-text">If you have any questions, you can send us a message or contact us
+                by phone.</p>
               <div className="contacts__inputbox">
                 <input name="name" className="contacts__input" placeholder="Your name" type="text" />
                 <input name="email" className="contacts__input" placeholder="Email address" type="email" />

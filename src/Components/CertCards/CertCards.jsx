@@ -9,15 +9,15 @@ function CertCards({searchValue}) {
 
   useEffect(()=> {
     if(searchValue){
-      axios.get(`https://logeekascience.com/api/certificate?search=${searchValue}`)
+      axios.get(`https://logeekascience.com/api/certificate?search=${searchValue}&limit=1000`)
         .then(res => setCertifData(res.data.data))
     }
   }, [searchValue])
 
   useEffect(() => {
-    axios.get('https://logeekascience.com/api/certificate?limit=6')
+    axios.get('https://logeekascience.com/api/certificate?limit=9')
       .then(res => setCertifData(res.data.data))
-  })
+  }, [])
 
   return (
     <section className="certcards">

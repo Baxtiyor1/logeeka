@@ -14,6 +14,8 @@ import AdminAside from '../AdminAside/AdminAside'
 import AdminNav from '../AdminNav/AdminNav'
 
 function JournalForm() {
+    document.title = 'Admin Journal Form'
+
     let [selectPhoto, setSelectPhoto] = useState('')
     let [selectFile, setSelectFile] = useState('')
     let [token] = useToken()
@@ -47,7 +49,7 @@ function JournalForm() {
                 "Access-Control-Allow-Origin": "*"
             }
         }).then(res => alert(res.data.message && 'Journal is added succesfuly'))
-            .catch(err => console.log(err))
+            .catch(err => alert(err.response.data.message))
 
         journalImage.value = null
         journalFile = null
@@ -58,7 +60,7 @@ function JournalForm() {
         <>
             <div className="admin">
                 <div className="admin__wrapper">
-                    <AdminAside />
+                    <AdminAside active={'add'}/>
                     <div className="admin__bside">
                         <div className="admin__bside--header">
                             <img className='admin__bside--header-icon' src={Logo} alt="Logo" />

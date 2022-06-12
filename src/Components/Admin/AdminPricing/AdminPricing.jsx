@@ -16,12 +16,14 @@ import AdminNav from '../AdminNav/AdminNav'
 import AdminAside from '../AdminAside/AdminAside'
 
 function AdminPricing() {
+    document.title = 'Admin Pricing'
+
     let [token] = useToken()
     let [priceData, setPriceData] = useState()
     let [delPrice, setDeletePrice] = useState()
 
     useEffect(() => {
-        axios.get('https://logeekascience.com/api/price')
+        axios.get('https://logeekascience.com/api/price?limit=1000')
             .then(res => setPriceData(res.data.data))
             .catch(err => console.log(err))
     }, [delPrice])
@@ -29,9 +31,10 @@ function AdminPricing() {
     function deletePrice(e) {
         e.preventDefault()
         let id = e.target.dataset.id
+
         axios.delete('https://logeekascience.com/api/price', {
             headers: { token },
-            data: { id }
+            data: { "price_id": id }
         })
             .then(res => setDeletePrice(res.data.data))
             .catch(err => console.log(err.message))
@@ -40,7 +43,7 @@ function AdminPricing() {
         <>
             <section className='admin'>
                 <div className="admin__wrapper">
-                    <AdminAside />
+                    <AdminAside active={'home'}/>
                     <div className="admin__bside">
                         <div className="admin__bside--header">
                             <img className='admin__bside--header-icon' src={Logo} alt="search" />
@@ -63,7 +66,7 @@ function AdminPricing() {
                                                 <img src={delete_icon} alt="delete_icon" />
                                             </div>
                                             <h2 className='price__title'>{e.title}</h2>
-                                            <p className='price__text'><span className='price__subtext'>${e.price_max}</span>/${e.price_min}</p>
+                                            <p className='price__text'><span className='price__subtext'>${e.price_min}</span>/${e.price_max}</p>
                                         </li>
                                     ))
                                 }

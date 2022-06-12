@@ -1,13 +1,11 @@
 .certcards {
     &__wrapper {
-        margin: 100px 0 150px 0;
+        margin: 70px 0 100px;
     }
 
     &__list {
         display: flex;
-        // align-items: center;
-        // justify-content: center;
-        // flex-direction: row;
+        justify-content: center;
         flex-wrap: wrap;
     }
 

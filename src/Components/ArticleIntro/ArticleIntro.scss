@@ -1,5 +1,5 @@
 .artintro {
-    background-image: url('../../Assets/img/article-bg.png');
+    background-image: url('../../Assets/img/article-bg.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -13,7 +13,7 @@
     }
 
     &__title {
-        margin-bottom: 40px;
+        margin-bottom: 30px;
         font-weight: 400;
         font-size: 64px;
         line-height: 76px;
@@ -31,8 +31,6 @@
     }
 
     &__form {
-        margin-top: 50px;
-        // width: 100%;
         background: #FFFFFF;
         border-radius: 4px;
         display: flex;
@@ -115,7 +113,5 @@
             width: 100%;
             justify-content: space-between;
         }
-
-        &__btn {}
     }
 }

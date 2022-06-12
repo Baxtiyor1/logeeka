@@ -4,9 +4,6 @@ import { NavLink } from 'react-router-dom'
 //SASS
 import './AdminNav.scss'
 
-//IMAGES
-import dots from '../../../Assets/img/dots_icon.svg'
-
 function AdminNav({ route }) {
     let [formRoute, setFormRoute] = useState()
 
@@ -27,10 +24,9 @@ function AdminNav({ route }) {
                     <NavLink to={`/admin/certificate/${formRoute}`} className='admin__nav--btn'>Certificates</NavLink>
                     <NavLink to={`/admin/price/${formRoute}`} className='admin__nav--btn'>Pricing</NavLink>
                     <NavLink to={`/admin/conference/${formRoute}`} className='admin__nav--btn'>Conference</NavLink>
+                    <NavLink to={`/admin/partner/${formRoute}`} className='admin__nav--btn'>Partner</NavLink>
+                    <NavLink to={`/admin/staff/${formRoute}`} className='admin__nav--btn'>Stafff</NavLink>
                 </div>
-                <button className='admin__nav--btn'>
-                    <img src={dots} alt="dots" />
-                </button>
             </nav>
         </>
     )

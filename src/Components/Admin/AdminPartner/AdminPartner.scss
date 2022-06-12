@@ -1,0 +1,33 @@
+.apartner{
+    &__list{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    &__item{
+        padding: 10px;
+        border: 1px solid #f1f1f1;
+        margin: 0 0 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        transition: 0.3s;
+        &:hover{
+            box-shadow: 0 0 4px 4px #fff;
+        }
+    }
+    &__pic{
+        width: 200px;
+        height: 100px;
+        object-fit: contain;
+    }
+    &__text{
+        margin: 10px 0;
+        font-size: 18px;
+        color: #000;
+        font-weight: 600;
+    }
+    &__link{
+        color: #000;
+        text-decoration: underline;
+    }
+}

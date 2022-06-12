@@ -1,3 +1,32 @@
 .jcards{
     min-height: 80vh;
+    &__list{
+        margin-top: 70px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    &__item{
+        margin: 0 10px 20px;
+        width: 298px;
+        max-width: 100%;
+        border: 1px solid rgb(201, 199, 199);
+        transition: 0.5s;
+        &:hover{
+            box-shadow: 0 0 4px 4px rgb(197, 195, 195);
+        }
+    }
+    &__btn{
+        &--close{
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 560px){
+    .jcards{
+        &__item{
+            width: 100%;
+        }
+    }
 }

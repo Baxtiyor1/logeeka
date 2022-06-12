@@ -27,7 +27,7 @@ function HomeConfirence() {
   let [confirenceData, setConfirenceData] = useState(false)
 
   useEffect(() => {
-    axios.get('https://logeekascience.com/api/conference?limit=9')
+    axios.get('https://logeekascience.com/api/conference?limit=4')
       .then(res => setConfirenceData(res.data.data))
   }, [])
 
@@ -43,16 +43,48 @@ function HomeConfirence() {
         <div className="hnwes__wrapper">
           <div ref={arrowBox} className="hnews__box">
             <Link className="hnews__title" to={"conference# "}>Conference</Link>
-            <div className="hnews__subbox">
+            {/* <div className="hnews__subbox">
               <button className="hnews__btn hnews__btn--left">
                 <img className="hnews__icon" src={arrow_icon} alt="arrow_icon" />
               </button>
               <button className="hnews__btn hnews__btn--right">
                 <img className="hnews__icon" src={arrow_icon} alt="arrow_icon" />
               </button>
-            </div>
+            </div> */}
           </div>
-          <Swiper className="hnews__swiper"
+          <div className="hnews__list">
+            {
+              confirenceData && confirenceData.map((e, i) => {
+                let year = e.date.split('T')[0]
+                let time = e.date && e.date.split('T')[1] && e.date && e.date.split('T')[1].split('').splice(0, 5).join('')
+                return (
+                  <Link key={i} to={'/conference/' + e.conference_id} className="hnews__item">
+                    <div className='confcards__item-imgbox'>
+                      <img className='confcards__item-img' src={'https://logeekascience.com/api' + e.image} alt="card-img" />
+                    </div>
+                    <div className="confcards__box">
+                      <h3 className='confcards__item-title'>{e.title}</h3>
+                      <div className='confcards__item-datebox'>
+                        <span className='confcards__item-date'>{year}</span>
+                        <span className='confcards__item-line'> | </span>
+                        <span className='confcards__item-time'>{time}</span>
+                      </div>
+                      <div className='confcards__item-box'>
+                        <div className='confcards__item-subbox'>
+                          <img className='confcards__item-avatar' src={'https://logeekascience.com/api' + e.user_image} alt="avatar" />
+                          <div className='confcards__item-minbox'>
+                            <p className='confcards__item-name'>{e.author}</p>
+                            <p className='confcards__item-profession'>{e.profession}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                )
+              })
+            }
+          </div>
+          {/* <Swiper className="hnews__swiper"
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={24}
             slidesPerView={3}
@@ -105,7 +137,7 @@ function HomeConfirence() {
                 )
               })
             }
-          </Swiper>
+          </Swiper> */}
         </div>
       </div>
     </section>

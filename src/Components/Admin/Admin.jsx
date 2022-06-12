@@ -11,6 +11,8 @@ import AdminAside from './AdminAside/AdminAside'
 import AdminNav from './AdminNav/AdminNav'
 
 function Admin() {
+    document.title = 'Admin Home'
+
     return (
         <main>
             <section className='admin'>

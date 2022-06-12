@@ -12,6 +12,8 @@ import AdminAside from '../AdminAside/AdminAside'
 import AdminNav from '../AdminNav/AdminNav'
 
 function PriceForm() {
+    document.title = 'Admin Price Form'
+
     let [token] = useToken()
 
     const newPrice = e => {
@@ -33,7 +35,7 @@ function PriceForm() {
                     "Access-Control-Allow-Origin": "*"
                 }
             }).then(res => alert(res.data.message))
-                .catch(err => console.log(err))
+                .catch(err => alert(err.response.data.message))
     
             priceTitle.value = null
             oldPrice.value = null
@@ -44,7 +46,7 @@ function PriceForm() {
         <>
             <div className="admin">
                 <div className="admin__wrapper">
-                    <AdminAside />
+                    <AdminAside active={'add'}/>
                     <div className="admin__bside">
                         <div className="admin__bside--header">
                             <img className='admin__bside--header-icon' src={Logo} alt="Logo" />

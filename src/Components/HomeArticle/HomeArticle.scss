@@ -1,5 +1,5 @@
 .harticle {
-    margin-top: 80px;
+    margin-top: 70px;
 
     &__title {
         margin-bottom: 40px;
@@ -102,20 +102,9 @@
     }
 }
 
-// @media screen and (max-width: 1280px) {
-//     .harticle {
-//         &__item {
-//             width: 47vw;
-//             padding: 20px;
-//         }
-//     }
-// }
-
 @media screen and (max-width: 1024px) {
     .harticle {
         &__item {
-            // padding: 15px 5px 15px 15px;
-
             &-title {
                 font-weight: 500;
                 font-size: 28px;
@@ -160,6 +149,10 @@
             padding: 28px 30px;
             width: 100%;
             min-height: 156px;
+            &-title{
+                max-height: 100px;
+                -webkit-line-clamp: 3;
+            }
         }
     }
 
