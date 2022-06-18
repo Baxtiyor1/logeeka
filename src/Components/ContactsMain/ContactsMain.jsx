@@ -17,13 +17,12 @@ function ContactsMain() {
     e.preventDefault()
     var formData = new FormData();
 
-    let { name, email, phone, nik_name, text } = e.target.elements
+    let { name, email, phone, text } = e.target.elements
 
-    if (name.value.length > 2 && name.value.length < 20 && email.value && phone.value && nik_name.value && text.value < 300) {
+    if (name.value.length > 2 && name.value.length < 20 && email.value && phone.value && text.value < 300) {
       formData.append("full_name", name.value);
       formData.append("email", email.value);
       formData.append("phone", phone.value);
-      formData.append("telegram", nik_name.value);
       formData.append("message_text", text.value);
 
       axios.post('https://logeekascience.com/api/messages', formData, {
@@ -40,7 +39,6 @@ function ContactsMain() {
       name.value = null
       email.value = null
       phone.value = null
-      nik_name.value = null
       text.value = null
     }
   }
@@ -52,7 +50,7 @@ function ContactsMain() {
           <div className="contacts__top">
             <ul className="contacts__menu">
               <li className="contacts__item">
-                <a className="contacts__link" href="tel: +998901234567">
+                <a className="contacts__link" target="_blank" rel="noreferrer" href="tel: +998901234567">
                   <div className="contacts__icon--box">
                     <img className="contacts__icon" src={Phone} alt="phone" />
                   </div>
@@ -63,7 +61,7 @@ function ContactsMain() {
                 </a>
               </li>
               <li className="contacts__item">
-                <a className="contacts__link" href="mailto: logeekascince@gmail.com">
+                <a className="contacts__link" target="_blank" rel="noreferrer" href="mailto: logeekascince@gmail.com">
                   <div className="contacts__icon--box">
                     <img className="contacts__icon" src={Mail} alt="mail" />
                   </div>
@@ -74,7 +72,7 @@ function ContactsMain() {
                 </a>
               </li>
               <li className="contacts__item">
-                <a className="contacts__link" href="https://www.instagram.com/ibrahimgulyamov/">
+                <a className="contacts__link" target="_blank" rel="noreferrer" href="https://www.instagram.com/ibrahimgulyamov/">
                   <div className="contacts__icon--box">
                     <img className="contacts__icon" src={Insta} alt="insta" />
                   </div>
@@ -85,7 +83,7 @@ function ContactsMain() {
                 </a>
               </li>
               <li className="contacts__item">
-                <a className="contacts__link" href="https://t.me/Logeekascince">
+                <a className="contacts__link" target="_blank" rel="noreferrer" href="https://t.me/Logeekascince">
                   <div className="contacts__icon--box">
                     <img className="contacts__icon" src={Telegram} alt="tg" />
                   </div>
@@ -96,7 +94,7 @@ function ContactsMain() {
                 </a>
               </li>
               <li className="contacts__item">
-                <a className="contacts__link" href="https://t.me/Logeekascince">
+                <a className="contacts__link" target="_blank" rel="noreferrer" href="https://t.me/Logeekascince">
                   <div className="contacts__icon--box">
                     <img className="contacts__icon" src={Facebook} alt="face" />
                   </div>
@@ -117,7 +115,6 @@ function ContactsMain() {
               </div>
               <div className="contacts__inputbox">
                 <input name="phone" className="contacts__input" placeholder="Phone number" type="tel" />
-                <input name="nik_name" className="contacts__input" placeholder="Telegram" type="text" />
               </div>
               <textarea name="text" className="contacts__input contacts__textarea" placeholder="Message" />
               <button type="submit" className="contacts__btn">Send message</button>

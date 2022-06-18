@@ -18,7 +18,9 @@ function HomePartner() {
     return (
         <section className='homePartner'>
             <div className="container">
-                <h3 className='homePartner__title'>Our partners</h3>
+                {
+                    partnerData && <h3 className='homePartner__title'>Our partners</h3>
+                }
                 <ul className='homePartner__list'>
                     {
                         partnerData && partnerData.map((e, i) => (

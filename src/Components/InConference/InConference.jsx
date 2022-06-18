@@ -83,7 +83,7 @@ function InConference() {
                       <li className="inconference__item">
                         <img className="inconference__icon" src={Phone} alt="Phone" width={20} height={20} />
                         <p className="news__left-text inconference__left-text">Telefon : </p>
-                        <p className="inconference__name">{'+998' + e.phone}</p>
+                        <p className="inconference__name">{e.phone}</p>
                       </li>
                       <li className="inconference__item">
                         <img className="inconference__icon" src={Mappin} alt="Mappin" width={20} height={20} />

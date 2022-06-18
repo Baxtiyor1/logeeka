@@ -57,7 +57,9 @@ function AboutMain() {
             </div>
           </div>
           <div className="about__staff">
-            <h3 className="about__subtitle">Our staff</h3>
+            {
+              staffData && <h3 className="about__subtitle">Our staff</h3>
+            }
             <Swiper
               modules={[Navigation, A11y]}
               spaceBetween={50}
@@ -91,7 +93,9 @@ function AboutMain() {
             </Swiper>
           </div>
           <div className="about__staff">
-            <h3 className="about__subtitle">Editorial team</h3>
+            {
+              staffData && <h3 className="about__subtitle">Editorial team</h3>
+            }
             <Swiper
               modules={[Navigation, A11y]}
               spaceBetween={50}
@@ -125,7 +129,9 @@ function AboutMain() {
             </Swiper>
             <HomePartner />
             <div className="about__document">
-              <h3 className="about__document--title">Documents</h3>
+              {
+                staffData && <h3 className="about__document--title">Documents</h3>
+              }
               <Swiper
                 modules={[Navigation, A11y]}
                 spaceBetween={30}

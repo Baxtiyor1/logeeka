@@ -1,6 +1,7 @@
 .contacts {
     margin: 120px 0 150px 0;
-    &__title{
+
+    &__title {
         margin-bottom: 20px;
         font-weight: 700;
         font-size: 64px;
@@ -21,7 +22,8 @@
         border-radius: 4px;
         margin-bottom: 15px;
         transition: 0.5s;
-        &:hover{
+
+        &:hover {
             box-shadow: 0 0 4px 4px rgb(209, 207, 207);
         }
 
@@ -37,7 +39,7 @@
     }
 
     &__icon {
-        &--box{
+        &--box {
             padding: 18px;
             margin-right: 25px;
             background: #F4F4F4;
@@ -72,7 +74,8 @@
         box-sizing: border-box;
         border-radius: 6px;
         transition: 0.5s;
-        &:hover{
+
+        &:hover {
             box-shadow: 0 0 4px 4px rgb(209, 207, 207);
         }
 
@@ -162,7 +165,7 @@
 @media screen and (max-width: 1440px) {
     .contacts {
         &__link {
-            padding: 1.5vw 8vw 1.5vw 1.3vw;
+            padding: 1vw 3vw 1vw 1.3vw;
         }
 
         &__form {
@@ -170,8 +173,40 @@
         }
     }
 }
+
+@media screen and (max-width: 1200px) {
+    .contacts {
+        &__form {
+            padding: 2vw;
+            width: 62vw;
+
+            &-text {
+                margin: 10px 0 30px;
+            }
+        }
+
+        &__inputbox {
+            flex-wrap: wrap;
+        }
+
+        &__subtitle {
+            font-size: 20px;
+            line-height: normal;
+        }
+
+        &__icon {
+            width: 20px;
+
+            &--box {
+                margin-right: 20px;
+                padding: 15px;
+            }
+        }
+    }
+}
+
 @media screen and (max-width: 900px) {
-    .contacts{
+    .contacts {
         &__title {
             font-weight: 700;
             font-size: 52px;
@@ -179,8 +214,68 @@
         }
     }
 }
+
+@media screen and (max-width: 769px) {
+    .contacts {
+        &__top {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        &__menu {
+            width: 400px;
+            max-width: 100%;
+        }
+
+        &__form {
+            margin: 0;
+            margin-top: 30px;
+            width: 600px;
+            max-width: 100%;
+
+            &-title {
+                text-align: center;
+            }
+
+            &-text {
+                text-align: center;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 581px) {
+    .contacts {
+        margin-bottom: 100px;
+        &__input {
+            width: 100%;
+            margin: 0 0 15px;
+
+            &:first-child {
+                width: 100%;
+                margin: 0 0 15px;
+            }
+        }
+
+        &__inputbox {
+            width: 100%;
+            margin: 0;
+        }
+        &__btn{
+            width: 217px;
+            margin: 0 auto;
+        }
+        &__form{
+            padding: 15px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
 @media screen and (max-width: 428px) {
-    .contacts{
+    .contacts {
         &__title {
             font-weight: 700;
             font-size: 52px;

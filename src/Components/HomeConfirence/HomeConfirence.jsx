@@ -31,9 +31,11 @@ function HomeConfirence() {
     <section className="hnews">
       <div className="container">
         <div className="hnwes__wrapper">
-          <div ref={arrowBox} className="hnews__box">
+          {
+            confirenceData && <div ref={arrowBox} className="hnews__box">
             <Link className="hnews__title" to={"conference# "}>Conference</Link>
           </div>
+          }
           <div className="hnews__list">
             {
               confirenceData && confirenceData.map((e, i) => {
