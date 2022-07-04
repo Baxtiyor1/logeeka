@@ -25,7 +25,7 @@ function Login() {
             formData.append("user_name", username.value.trim());
             formData.append("password", password.value.trim());
             
-            axios.post('http://logeekascience.com/api/auth/login', formData, {
+            axios.post('https://logeekascience.com/api/auth/login', formData, {
                 headers: {
                     "type": "formData",
                     "Content-Type": "form-data",
@@ -36,11 +36,10 @@ function Login() {
                 .then(response => {
                     setToken(response.data.data[0].token)
                     setResult(response.data.message);
-                    console.log(response);
                 })
                 .catch(error => {
                     bad.current && bad.current.classList.add('login__bad-active')
-                    console.log(error.message);
+                    alert(error.message);
                 });
         } else {
             if (!username.value.trim()) alert("Enter username")

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 
@@ -8,10 +9,11 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import './ArticleCards.scss';
 import '../InArticles/InArticles.scss'
 
+
 function ArticleCards({ searchvalue }) {
-  let [articleData, setArticleData] = useState()
-  let [categoryData, setCategoryData] = useState()
-  let [pageLimit, setPageLimit] = useState()
+  let [articleData, setArticleData] = useState([])
+  let [categoryData, setCategoryData] = useState([])
+  let [pageLimit, setPageLimit] = useState(1)
   let [pageCount, setPageCount] = useState(2)
   let [categoryId, setCategoryId] = useState('all')
   let show_btn = useRef()
@@ -111,7 +113,7 @@ function ArticleCards({ searchvalue }) {
           <Swiper className="artcards__menu"
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={40}
-            slidesPerView={4.5}
+            slidesPerView={6}
             breakpoints={{
               0: {
                 slidesPerView: 2.2,
@@ -132,21 +134,21 @@ function ArticleCards({ searchvalue }) {
             }}
           >
             {
-              categoryData && <SwiperSlide className="about__slide">
+              categoryData.length > 1 && <SwiperSlide className="about__slide">
                 <button data-category='all' onClick={ByCategory} className='artcards__btn artcards__btn--active'>All</button>
               </SwiperSlide>
             }
 
             {
-              categoryData && categoryData.map((e, i) => (
+              categoryData.length > 1 && categoryData.map((e, i) => (
                 <SwiperSlide key={i} className="about__slide">
                   <button data-category={e.category_id} onClick={ByCategory} className='artcards__btn'>{e.category_name}</button>
                 </SwiperSlide>
               ))
             }
           </Swiper>
-          <div className='artcards__menu'>
-          </div>
+          {/* <div className='artcards__menu'>
+          </div> */}
           <ul className="harticle__list artcards__list">
             {
               articleData && articleData.map((e, i) => {
@@ -165,7 +167,10 @@ function ArticleCards({ searchvalue }) {
               })
             }
             {
-              !articleData && <h2 style={{ "width": "1400px", "maxWidth": "100%", 'textAlign': "center" }}>This category's articles are not found or No internet connection...</h2>
+              !articleData && <h2 style={{ "width": "1400px", "maxWidth": "100%", 'textAlign': "center" }}>No internet connection...</h2>
+            }
+            {
+              articleData.length < 1 && <h2 style={{ "width": "1400px", "maxWidth": "100%", 'textAlign': "center" }}>Articles are not found</h2>
             }
           </ul>
           {

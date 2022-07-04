@@ -26,13 +26,13 @@ function HomeConfirence() {
   } else {
     arrowBox.current && arrowBox.current.classList.remove('hnews__box--off')
   }
-
+  
   return (
     <section className="hnews">
       <div className="container">
         <div className="hnwes__wrapper">
           {
-            confirenceData && <div ref={arrowBox} className="hnews__box">
+            confirenceData.length > 1 && <div ref={arrowBox} className="hnews__box">
             <Link className="hnews__title" to={"conference# "}>Conference</Link>
           </div>
           }

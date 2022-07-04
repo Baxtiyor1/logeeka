@@ -23,7 +23,7 @@ import Linkedin from "../../Assets/img/linkedin.svg";
 import LOGEEKA_LOGO from '../../Assets/img/logeeka_about_logo.png'
 
 function AboutMain() {
-  let [staffData, setStaffData] = useState()
+  let [staffData, setStaffData] = useState([])
 
 
   useEffect(()=> {
@@ -58,7 +58,7 @@ function AboutMain() {
           </div>
           <div className="about__staff">
             {
-              staffData && <h3 className="about__subtitle">Our staff</h3>
+              staffData.length > 1 && <h3 className="about__subtitle">Our staff</h3>
             }
             <Swiper
               modules={[Navigation, A11y]}
@@ -94,7 +94,7 @@ function AboutMain() {
           </div>
           <div className="about__staff">
             {
-              staffData && <h3 className="about__subtitle">Editorial team</h3>
+              staffData.length > 1 && <h3 className="about__subtitle">Editorial team</h3>
             }
             <Swiper
               modules={[Navigation, A11y]}
@@ -130,7 +130,7 @@ function AboutMain() {
             <HomePartner />
             <div className="about__document">
               {
-                staffData && <h3 className="about__document--title">Documents</h3>
+                staffData.length > 1 && <h3 className="about__document--title">Documents</h3>
               }
               <Swiper
                 modules={[Navigation, A11y]}

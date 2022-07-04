@@ -33,7 +33,10 @@ function CertCards({searchValue}) {
               ))
             }
             {
-              !certifData && <h2 style={{ "width": "1400px", "maxWidth": "100%", 'textAlign': "center" }}>This certificate is not found or No internet connection...</h2>
+              !certifData && <h2 style={{ "width": "1400px", "maxWidth": "100%", 'textAlign': "center" }}>No internet connection...</h2>
+            }
+            {
+              certifData && certifData.length < 1 && <h2 style={{ "width": "1400px", "maxWidth": "100%", 'textAlign': "center" }}>Certificate is not found</h2>
             }
           </ul>
         </div>

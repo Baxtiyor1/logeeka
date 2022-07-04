@@ -9,11 +9,12 @@ import "./HomeArticle.scss";
 import ArrowRight from "../../Assets/img/arrow-right.svg";
 
 function HomeArticle() {
-  let [articleData, setArticleData] = useState()
+  let [articleData, setArticleData] = useState([])
 
   useEffect(() => {
     axios.get('https://logeekascience.com/api/posts/allArticle?limit=4')
       .then(res => setArticleData(res.data.data))
+      .catch(err => alert(err.message))
   }, [])
 
   return (

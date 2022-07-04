@@ -6,7 +6,7 @@ import './HomePartner.scss'
 
 
 function HomePartner() {
-    let [partnerData, setPartnerData] = useState()
+    let [partnerData, setPartnerData] = useState([])
 
     useState(() => {
         axios.get('https://logeekascience.com/api/utils/get_partner?limit=100')
@@ -19,7 +19,7 @@ function HomePartner() {
         <section className='homePartner'>
             <div className="container">
                 {
-                    partnerData && <h3 className='homePartner__title'>Our partners</h3>
+                    partnerData.length > 1 && <h3 className='homePartner__title'>Our partners</h3>
                 }
                 <ul className='homePartner__list'>
                     {

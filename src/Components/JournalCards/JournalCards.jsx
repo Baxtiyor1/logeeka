@@ -9,7 +9,8 @@ import Download from "../../Assets/img/download.svg";
 
 function JournalCards() {
   const [journalData, setJournalData] = useState()
-  let [pageLimit, setPageLimit] = useState(1)
+  let [pageLimit, setPageLimit] = useState()
+  let [pageCount, setPageCount] = useState(2)
   let show_btn = useRef()
 
   useEffect(() => {
@@ -20,26 +21,35 @@ function JournalCards() {
       })
   }, [])
 
-  function nextPage(e) {
-    e.preventDefault()
-    let pageCount = e.target.dataset.page
+  useEffect(()=> {
     if (Number(pageLimit) <= Number(pageCount) - 1) {
       show_btn.current && show_btn.current.classList.add('jcards__btn--close')
     } else {
       show_btn.current && show_btn.current.classList.remove('jcards__btn--close')
+    }
+  }, [pageCount, pageLimit])
+  
+  function nextPage(e) {
+    e.preventDefault()
+    let page = e.target.dataset.page
+    setPageCount(page)
+    if (Number(pageLimit) <= Number(page) - 1) {
+      show_btn.current && show_btn.current.classList.add('jcards__btn--close')
+    } else {
+      show_btn.current && show_btn.current.classList.remove('jcards__btn--close')
 
-      if (Number(pageLimit) === Number(pageCount)) {
+      if (Number(pageLimit) === Number(page)) {
         show_btn.current && show_btn.current.classList.add('jcards__btn--close')
       }
 
-      axios.get(`https://logeekascience.com/api/journal?page=${pageCount}&limit=8`)
+      axios.get(`https://logeekascience.com/api/journal?page=${page}&limit=8`)
         .then(res => {
           setJournalData([...journalData, ...res.data.data]);
           setPageLimit(Math.ceil(res.data.count_selected / 8));
         })
     }
 
-    e.target.dataset.page = Number(pageCount) + 1
+    e.target.dataset.page = Number(page) + 1
   }
 
   return (
