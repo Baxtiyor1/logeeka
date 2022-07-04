@@ -25,7 +25,7 @@ function Login() {
             formData.append("user_name", username.value.trim());
             formData.append("password", password.value.trim());
             
-            axios.post('https://logeekascience.com/api/auth/login', formData, {
+            axios.post('http://logeekascience.com/api/auth/login', formData, {
                 headers: {
                     "type": "formData",
                     "Content-Type": "form-data",
