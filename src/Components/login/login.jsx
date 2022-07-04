@@ -24,7 +24,7 @@ function Login() {
 
             formData.append("user_name", username.value.trim());
             formData.append("password", password.value.trim());
-
+            
             axios.post('https://logeekascience.com/api/auth/login', formData, {
                 headers: {
                     "type": "formData",
@@ -48,9 +48,7 @@ function Login() {
         }
 
     }
-    //login farruhbek
-    //parol far45
-
+    
     if (result === 'Login successful!' && token) {
         setTimeout(navigate('/admin'), 3000)
     } else {

@@ -6,10 +6,10 @@ import useToken from "../Hook/useToken";
 function Private() {
 
     let [token] = useToken()
-
-    if (token.length > 20) {
-        return <Outlet />
-    }
+    
+    // if (token.length > 20) {
+    //     return <Outlet />
+    // }
     return <Navigate to='/login' />
 }
 
