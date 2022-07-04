@@ -25,10 +25,8 @@ function ArticleCards({ searchvalue }) {
         setArticleData(res.data.data)
         setPageLimit(Math.ceil(res.data.count_selected / 6))
       })
-      .catch(err => alert(err.req))
     axios.get('https://logeekascience.com/api/category')
       .then(res => setCategoryData(res.data.data))
-      .catch(err => alert(err.req))
   }, [])
 
   useEffect(() => {
@@ -38,7 +36,6 @@ function ArticleCards({ searchvalue }) {
           setArticleData(res.data.data);
           setPageLimit(Math.ceil(res.data.count_selected / 6));
         })
-        .catch(err => alert(err.request.statusText))
     }
   }, [searchvalue])
 
@@ -61,7 +58,6 @@ function ArticleCards({ searchvalue }) {
         })
         .catch(err => {
           setArticleData(false)
-          alert(err.req)
         })
     }
     next_btn.current.dataset.page = 2

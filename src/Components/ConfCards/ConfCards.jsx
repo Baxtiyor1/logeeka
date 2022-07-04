@@ -87,7 +87,7 @@ function ConfCards() {
                             !confData && <h2 style={{ "width": "1450px", "maxWidth": "100%", "textAlign": "center" }}>No internet connection...</h2>
                         }
                         {
-                            confData.length < 1  && <h2 style={{ "width": "1450px", "maxWidth": "100%", "textAlign": "center" }}>Conferences not found</h2>
+                            confData && confData.length < 1  && <h2 style={{ "width": "1450px", "maxWidth": "100%", "textAlign": "center" }}>Conferences not found</h2>
                         }
                     </ul>
                     {

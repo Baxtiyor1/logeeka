@@ -14,7 +14,6 @@ function HomeArticle() {
   useEffect(() => {
     axios.get('https://logeekascience.com/api/posts/allArticle?limit=4')
       .then(res => setArticleData(res.data.data))
-      .catch(err => alert(err.message))
   }, [])
 
   return (
@@ -22,7 +21,7 @@ function HomeArticle() {
       <div className="container">
         <div className="harticle__wrapper">
           {
-            articleData && <Link className="harticle__title" to={"/articles"}>Articles</Link>
+            articleData.length > 1 && <Link className="harticle__title" to={"/articles"}>Articles</Link>
           }
           <ul className="harticle__list">
             {
@@ -43,7 +42,7 @@ function HomeArticle() {
             }
           </ul>
           {
-            articleData && <Link className="more__link" to={"/articles"}>
+            articleData.length > 1 && <Link className="more__link" to={"/articles"}>
             More...{" "}
             <img className="more__link-img" src={ArrowRight} alt="ArroowRight" />
           </Link>
