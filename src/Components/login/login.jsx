@@ -19,23 +19,41 @@ function Login() {
         e.preventDefault()
         let { username, password } = e.target.elements
 
-        axios.post('https://logeekascience.com/api/auth/login', {
-            'user_name': username.value.trim(),
-            'password': password.value.trim()
-        })
-            .then(function (response) {
-                setToken(response.data.data[0].token)
-                setResult(response.data.message);
+        if (username.value.trim() && password.value.trim().length > 4) {
+            var formData = new FormData();
+
+            formData.append("user_name", username.value.trim());
+            formData.append("password", password.value.trim());
+
+            axios.post('https://logeekascience.com/api/auth/login', formData, {
+                headers: {
+                    "type": "formData",
+                    "Content-Type": "form-data",
+                    "Accept": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                }
             })
-            .catch(function (error) {
-                bad.current && bad.current.classList.add('login__bad-active')
-            });
+                .then(response => {
+                    setToken(response.data.data[0].token)
+                    setResult(response.data.message);
+                    console.log(response);
+                })
+                .catch(error => {
+                    bad.current && bad.current.classList.add('login__bad-active')
+                    console.log(error.message);
+                });
+        } else {
+            if (!username.value.trim()) alert("Enter username")
+            if (!password.value.trim().length <= 4 && password.value.trim()) alert("Password must be more than 4 charakter")
+        }
+
     }
     //login farruhbek
     //parol far45
-    if(result === 'Login successful!' && token){
+
+    if (result === 'Login successful!' && token) {
         setTimeout(navigate('/admin'), 3000)
-    }else{
+    } else {
     }
 
     return (
