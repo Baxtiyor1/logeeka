@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import useToken from '../../../Hook/useToken'
 
 //SASS
 import './ArticleForm.scss'
+import './ArticleCat.scss'
 
 //IMAGES
 import file_icon from '../../../Assets/img/file_upload.svg'
@@ -19,12 +20,14 @@ function ArticleForm() {
     let [token] = useToken()
     const [categoryData, setCategoryData] = useState([])
     let [selectFile, setSelectFile] = useState()
+    let catModal = useRef()
+    let catList = useRef()
 
     useEffect(() => {
         axios.get('https://logeekascience.com/api/category')
             .then(res => setCategoryData(res.data.data))
             .catch(err => alert(err.response.data.message))
-    })
+    }, [token])
 
     const handleFileSelect = e => {
         setSelectFile(e.target.value)
@@ -33,7 +36,7 @@ function ArticleForm() {
     function articleValues(e) {
         e.preventDefault()
         const { category, name, profession, title, keyword, anastasiya, file } = e.target.elements
-        var formData = new FormData();
+        let formData = new FormData();
 
         formData.append("category_id", category.value);
         formData.append("profession", profession.value);
@@ -63,11 +66,64 @@ function ArticleForm() {
         file.value = null
     }
 
+    const openCatlist = e => {
+        catList.current && catList.current.classList.toggle('acat__wrapper--active')
+    }
+
+    const openCatModal = e => {
+        catModal.current && catModal.current.classList.toggle('acat__modal--active')
+    }
+
+    const closeCatModal = e => {
+        catModal.current && catModal.current.classList.remove('acat__modal--active')
+    }
+
+    const addCategory = e => {
+        e.preventDefault()
+        const { category } = e.target.elements
+
+        if (category.value.length <= 1) alert("Category name must be more than 1 characters")
+
+        if (category.value.length > 1) {
+            let formData = new FormData();
+
+            formData.append("category_name", category.value.trim());
+
+            axios.post("https://logeekascience.com/api/category", formData, {
+                headers: {
+                    token: token,
+                    "type": "formData",
+                    "Content-Type": "form-data",
+                    "Accept": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                }
+            }).then(res => { alert(res.data.message) })
+                .catch(err => alert(err.message))
+
+            category.value = null
+        }
+    }
+
+    const deleteCategory = e => {
+        e.preventDefault()
+        let id = e.target.dataset.id
+
+        axios.delete(`https://logeekascience.com/api/category/${id}`, {
+            headers: {
+                token: token,
+                "type": "formData",
+                "Content-Type": "form-data",
+                "Accept": "application/json",
+                "Access-Control-Allow-Origin": "*"
+            }
+        }).then(res => alert("Category " + res.data.message + " deleted"))
+            .catch(err => err.response && err.response.data.message && alert("You must first delete the article belong to this category"));
+    }
     return (
         <>
             <section className="admin">
                 <div className="admin__wrapper">
-                    <AdminAside active={'add'}/>
+                    <AdminAside active={'add'} />
                     <div className="admin__bside">
                         <div className="admin__bside--header">
                             <img className='admin__bside--header-icon' src={Logo} alt="Logo" />
@@ -78,6 +134,32 @@ function ArticleForm() {
                         </div>
                         <div className="admin__area">
                             <AdminNav route={'add'} />
+                            <div>
+                                <button onClick={openCatlist} className='acat__open'>Add new category</button>
+                                <button onClick={openCatModal} className='acat__open'>All categories</button>
+                            </div>
+                            <div ref={catList} className='acat__wrapper'>
+                                <form className='acat__form' onSubmit={addCategory}>
+                                    <label className='article__form--label'>
+                                        Add new Category
+                                        <input name="category" className='article__form--input' type="text" placeholder='Enter Category name' />
+                                    </label>
+                                    <button className='acat__btn' type='submit'>Save Category</button>
+                                </form>
+                            </div>
+                            <div ref={catModal} className='acat__modal'>
+                                <button onClick={closeCatModal} className='acat__modal--close'>X</button>
+                                <ul className='acat__list'>
+                                    {
+                                        categoryData && categoryData.map((e, i) => (
+                                            <li key={i} className='acat__item'>
+                                                <p className='acat__text'>{e.category_name}</p>
+                                                <button onClick={deleteCategory} data-id={e.category_id} className='acat__del'>Delete</button>
+                                            </li>
+                                        ))
+                                    }
+                                </ul>
+                            </div>
                             <div className='article__wrapper'>
                                 <form onSubmit={articleValues} className='article__form' method='multipart/form-data'>
                                     <label className='article__form--label'>
@@ -91,7 +173,6 @@ function ArticleForm() {
                                                     )
                                                 })
                                             }
-                                            <option className='article__form--option' value="Kimyo">Kimyo</option>
                                         </select>
                                     </label>
                                     <div className='article__form--box'>

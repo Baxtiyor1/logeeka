@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 //SASS
 import "./ContactsMain.scss";
 
@@ -16,10 +15,12 @@ function ContactsMain() {
   function sendMessage(e) {
     e.preventDefault()
     var formData = new FormData();
-
+    
     let { name, email, phone, text } = e.target.elements
 
-    if (name.value.length > 2 && name.value.length < 20 && email.value && phone.value && text.value < 300) {
+    if(text.value.length > 300) alert("Message must be less than 300 caracters")
+    
+    if (name.value.length > 2 && name.value.length < 20 && email.value && phone.value && text.value.length < 300) {
       formData.append("full_name", name.value);
       formData.append("email", email.value);
       formData.append("phone", phone.value);
@@ -33,8 +34,8 @@ function ContactsMain() {
           "Access-Control-Allow-Origin": "*"
         }
       })
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
+        .then(res => res.data.message === "Succes" && alert("Your request has been accepted"))
+        .catch(err => alert(err.response));
 
       name.value = null
       email.value = null
@@ -114,7 +115,7 @@ function ContactsMain() {
                 <input name="email" className="contacts__input" placeholder="Email address" type="email" />
               </div>
               <div className="contacts__inputbox">
-                <input name="phone" className="contacts__input" placeholder="Phone number" type="tel" />
+                <input name="phone" className="contacts__input" placeholder="Phone Number (**) *** ** **" type="tel" />
               </div>
               <textarea name="text" className="contacts__input contacts__textarea" placeholder="Message" />
               <button type="submit" className="contacts__btn">Send message</button>

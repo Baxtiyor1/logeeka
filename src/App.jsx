@@ -22,6 +22,7 @@ import StaffForm from './Components/Admin/StaffForm/StaffForm';
 import AdminStaff from './Components/Admin/AdminStaff/AdminStaff';
 import AdminPartner from './Components/Admin/AdminPartner/AdminPartner';
 import PartnerForm from './Components/Admin/PartnerForm/PartnerForm';
+import AdminMessage from './Components/Admin/AdminMessage/AdminMessage';
 //public
 import Home from './Pages/Home';
 import Conference from './Pages/Conference';
@@ -74,6 +75,7 @@ function App() {
         <Route path='/admin/staff/form' element={<StaffForm />} />
         <Route path='/admin/partner' element={<AdminPartner />} />
         <Route path='/admin/partner/form' element={<PartnerForm />} />
+        <Route path='/admin/message' element={<AdminMessage />} />
       </Route>
     </Routes>
   )

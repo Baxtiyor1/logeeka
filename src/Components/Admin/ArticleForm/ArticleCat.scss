@@ -1,0 +1,116 @@
+.acat {
+    &__wrapper {
+        transition: 0.5s;
+        margin-top: 20px;
+        padding: 20px 15px 20px;
+        border-radius: 8px;
+        background-color: rgba(209, 209, 204, 0.158);
+        display: none;
+
+        & .article__form--label {
+            margin: 0;
+        }
+
+        &--active {
+            display: block;
+        }
+    }
+
+    &__open {
+        margin-right: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #ffffff;
+        border: none;
+        font-weight: 600;
+        background-color: #0450a1;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: 0.3s;
+
+        &:hover {
+            box-shadow: 0 0 3px 3px #ffffff;
+        }
+    }
+
+    &__btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 18px;
+        font-weight: 600;
+        background-color: #007AFF;
+        color: #ffffff;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        transition: 0.5s;
+
+        &:hover {
+            box-shadow: 0 0 4px 4px #ffffff;
+        }
+    }
+    &__list{
+        padding: 20px;
+        padding-top: 100px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__item{
+        width: 500px;
+        margin-bottom: 15px;
+        padding: 0 10px 10px;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #f1f1f1;
+    }
+    &__text{
+        font-size: 18px;
+        font-weight: 600;
+        color: #ffffff;
+    }
+    &__del{
+        padding: 5px 15px;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 600;
+        border: 1px solid rgba(255, 0, 0, 0.507);
+        border-radius: 6px;
+        background-color: rgba(255, 0, 0, 0.507);
+        cursor: pointer;
+        transition: 0.5s;
+        &:hover{
+            background-color: #ffffff;
+            color: rgba(255, 0, 0, 0.507);
+        }
+    }
+    &__modal{
+        position: absolute;
+        background-color: rgba(92, 91, 91, 0.7);
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: none;
+        &--active{
+            display: block;
+        }
+        &--close{
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            font-size: 24px;
+            background-color: transparent;
+            color: #ffffff;
+            border: 1px solid #f1f1f1;
+            padding: 10px 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            &:hover{
+                box-shadow: 0 0 3px 3px #ffffff;
+            }
+        }
+    }
+}

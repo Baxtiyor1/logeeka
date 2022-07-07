@@ -14,14 +14,21 @@ function AdminAside(props) {
     let [ , setToken] = useToken()
     let homeElem = useRef()
     let addElem = useRef()
+    let messageElem = useRef()
 
     useEffect(() => {
         if (props.active === "home") {
             homeElem.current && homeElem.current.classList.add('admin__aside--item-active')
+            messageElem.current && messageElem.current.classList.remove('admin__aside--item-active')
             addElem.current && addElem.current.classList.remove('admin__aside--item-active')
         } else if (props.active === "add") {
             addElem.current && addElem.current.classList.add('admin__aside--item-active')
+            messageElem.current && messageElem.current.classList.remove('admin__aside--item-active')
             homeElem.current && homeElem.current.classList.remove('admin__aside--item-active')
+        }else if(props.active === "message"){
+            messageElem.current && messageElem.current.classList.add('admin__aside--item-active')
+            homeElem.current && homeElem.current.classList.remove('admin__aside--item-active')
+            addElem.current && addElem.current.classList.remove('admin__aside--item-active')
         }
     }, [props.active])
 
@@ -43,6 +50,10 @@ function AdminAside(props) {
                     <Link ref={addElem} to={'/admin/add'} className='admin__aside--item'>
                         <img className='admin__aside--icon' src={plus_icon} alt="plus_icon" />
                         <p className='admin__aside--text'>Add</p>
+                    </Link>
+                    <Link ref={messageElem} to={'/admin/message'} className='admin__aside--item'>
+                        <img className='admin__aside--icon' src={plus_icon} alt="plus_icon" />
+                        <p className='admin__aside--text'>Messages</p>
                     </Link>
                 </div>
             </div>
