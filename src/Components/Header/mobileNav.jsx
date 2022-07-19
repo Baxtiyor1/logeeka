@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function MobileNav() {
     return (
         <>
-            <Link className='header__link header__mobile--link' to='/conference'>Conference</Link>
+            <Link className='header__link header__mobile--link' to='/conference'>Conferences</Link>
             <Link className='header__link header__mobile--link' to='/articles'>Articles</Link>
             <Link className='header__link header__mobile--link' to='/certificates'>Certificates</Link>
             <Link className='header__link header__mobile--link' to='/pricing'>Pricing</Link>

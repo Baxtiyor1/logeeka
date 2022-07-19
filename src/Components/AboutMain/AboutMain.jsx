@@ -4,6 +4,7 @@ import axios from "axios";
 
 //SASS
 import "./AboutMain.scss";
+import "./AboutStaff.scss";
 
 // import Swiper core and required modules
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -23,13 +24,16 @@ import Linkedin from "../../Assets/img/linkedin.svg";
 import LOGEEKA_LOGO from '../../Assets/img/logeeka_about_logo.png'
 
 function AboutMain() {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   let [staffData, setStaffData] = useState([])
 
-
-  useEffect(()=> {
+  useEffect(() => {
     axios.get('https://logeekascience.com/api/utils/get_staff?page=1&limit=1000')
-    .then(res => setStaffData(res.data.data))
-    .catch(err => alert(err.req.data.message))
+      .then(res => setStaffData(res.data.data))
+      .catch(err => alert(err.req.data.message))
   }, [])
 
 
@@ -58,7 +62,7 @@ function AboutMain() {
           </div>
           <div className="about__staff">
             {
-              staffData.length > 1 && <h3 className="about__subtitle">Our staff</h3>
+              staffData.length >= 1 && <h3 className="about__subtitle">Our staff</h3>
             }
             <Swiper
               modules={[Navigation, A11y]}
@@ -77,7 +81,7 @@ function AboutMain() {
                         <div className="staffs__subbox">
                           <img className="staffs__subimg" src={Twitter} alt="twitter" />
                           <a href={e.facebook} rel="noreferrer" target={'_blank'}>
-                          <img className="staffs__subimg" src={Facebook} alt="facebook" />
+                            <img className="staffs__subimg" src={Facebook} alt="facebook" />
                           </a>
                           <img
                             className="staffs__subimg"
@@ -94,7 +98,7 @@ function AboutMain() {
           </div>
           <div className="about__staff">
             {
-              staffData.length > 1 && <h3 className="about__subtitle">Editorial team</h3>
+              staffData.length >= 1 && <h3 className="about__subtitle">Editorial team</h3>
             }
             <Swiper
               modules={[Navigation, A11y]}
@@ -113,7 +117,7 @@ function AboutMain() {
                         <div className="staffs__subbox">
                           <img className="staffs__subimg" src={Twitter} alt="twitter" />
                           <a href={e.facebook} target={'_blank'} rel="noreferrer">
-                          <img className="staffs__subimg" src={Facebook} alt="facebook" />
+                            <img className="staffs__subimg" src={Facebook} alt="facebook" />
                           </a>
                           <img
                             className="staffs__subimg"
@@ -130,7 +134,7 @@ function AboutMain() {
             <HomePartner />
             <div className="about__document">
               {
-                staffData.length > 1 && <h3 className="about__document--title">Documents</h3>
+                staffData.length >= 1 && <h3 className="about__document--title">Documents</h3>
               }
               <Swiper
                 modules={[Navigation, A11y]}
@@ -141,11 +145,11 @@ function AboutMain() {
                     slidesPerView: 3,
                   },
                   960: {
-                    spaceBetween:40,
+                    spaceBetween: 40,
                     slidesPerView: 4
                   },
-                  1150:{
-                    spaceBetween:50,
+                  1150: {
+                    spaceBetween: 50,
                   }
                 }}
               >

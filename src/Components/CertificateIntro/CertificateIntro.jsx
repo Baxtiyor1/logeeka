@@ -15,12 +15,10 @@ function CertificateIntro(props) {
       <div className="container">
         <div className="certintro__wrapper">
           <h1 className="certintro__title">Certificates</h1>
-          {/* <h2 className="certintro__subtitle">Matbaa va matn terish sanoatining oddiygina soxta matnidir. Lorem
-            Ipsum 1500-yillardan beri{" "}</h2> */}
           <form onSubmit={searchCertificate} className="artintro__form">
             <div className="artintro__box">
               <img className="artintro__icon" src={Lupa} alt="lupa" />
-              <input name="ccid" className="artintro__input" type="number" placeholder="Enter CCID or JCID number" />
+              <input name="ccid" className="artintro__input" type="text" placeholder="Enter CCID or JCID number" />
             </div>
             <button className="artintro__btn">Search</button>
           </form>

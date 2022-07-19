@@ -46,7 +46,7 @@ function Header({bgColor}) {
                     </Link>
                     <div className='header__list'>
                         <Link className='header__link' to='/journal'>Journal</Link>
-                        <Link className='header__link' to='/conference'>Conference</Link>
+                        <Link className='header__link' to='/conference'>Conferences</Link>
                         <Link className='header__link' to='/articles'>Articles</Link>
                         <Link className='header__link' to='/certificates'>Certificates</Link>
                         <Link className='header__link' to='/pricing'>Pricing</Link>

@@ -10,7 +10,7 @@ import ArrowRight from "../../Assets/img/arrow-right.svg";
 import Download from "../../Assets/img/download.svg";
 
 function HomeJournal() {
-  let [journalData, setjournalData] = useState()
+  let [journalData, setjournalData] = useState([])
 
   useEffect(() => {
     axios.get('https://logeekascience.com/api/journal?limit=4')
@@ -22,7 +22,7 @@ function HomeJournal() {
       <div className="container">
         <div className="hjournal__wrapper">
           {
-            journalData && <Link className="hjournal__title" to={"/journal"}>Journal</Link>
+            journalData.length >= 1 && <Link className="hjournal__title" to={"/journal"}>Journal</Link>
           }
           <ul className="hjournal__list">
             {

@@ -19,6 +19,15 @@
         line-height: 112px;
         color: #FFFFFF;
     }
+    &__banner{
+        margin: 20px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__img{
+        border-radius: 10px;
+    }
 }
 @media screen and (max-width: 900px) {
     .cintro{

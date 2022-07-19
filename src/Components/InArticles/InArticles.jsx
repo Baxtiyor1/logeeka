@@ -60,8 +60,8 @@ function InArticles() {
               <div className="news__right inarticles__right">
                 <h1 className="news__right-title">{e.title}</h1>
                 <p className="news__right-text">
-                  <span className="news__right-text--bold">keyword : </span>{e.keyword}</p>
-                <h4 className="inarticles__subtitle">Anastasiya</h4>
+                  <span className="news__right-text--bold">Key words : </span>{e.keyword}</p>
+                <h4 className="inarticles__subtitle">Annotation</h4>
                 <p className="news__right-text">{e.annastatsiya}</p>
                 <div className="inarticles__box">
                   <button className="news__btn">

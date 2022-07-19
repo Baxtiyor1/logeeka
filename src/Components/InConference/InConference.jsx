@@ -17,7 +17,6 @@ import "swiper/css/scrollbar";
 
 // Import Images
 import Calendar from "../../Assets/img/calendar.svg";
-// import Eye from "../../Assets/img/eye.svg";
 import Clock from "../../Assets/img/clock.svg";
 import Phone from "../../Assets/img/phone.svg";
 import Mappin from "../../Assets/img/map-pin.svg";
@@ -27,10 +26,6 @@ import Telegram from "../../Assets/img/telegram-white.svg";
 import Whatsapp from "../../Assets/img/Whatsapp.svg";
 import Facebook from "../../Assets/img/facebook.svg";
 import Instagram from "../../Assets/img/insta.svg";
-// import Computer from "../../Assets/img/computer.png";
-// import Abdusattor from "../../Assets/img/Abdusattor.png";
-// import CardImg from '../../Assets/img/conf-cards.png';
-// import Avatar from '../../Assets/img/Avatars.png'
 import arrow_icon from '../../Assets/img/chevron-right.svg'
 
 function InConference() {
@@ -43,9 +38,10 @@ function InConference() {
       .then(res => setConfData(res.data.data))
   }, [id])
 
-  function openLinks(){
+  function openLinks() {
     linkBox.current && linkBox.current.classList.toggle('inconference__list--active')
   }
+  
   return (
     <section className="inconference">
       <div className="container">
@@ -72,22 +68,22 @@ function InConference() {
                     <ul className="inconference__menu">
                       <li className="inconference__item">
                         <img className="inconference__icon" src={Calendar} alt="Calendar" width={20} height={20} />
-                        <p className="news__left-text inconference__left-text">Sana : </p>
+                        <p className="news__left-text inconference__left-text">Date : </p>
                         <p className="inconference__name">{year}</p>
                       </li>
                       <li className="inconference__item">
                         <img className="inconference__icon" src={Clock} alt="Clock" width={20} height={20} />
-                        <p className="news__left-text inconference__left-text">Vaqt : </p>
+                        <p className="news__left-text inconference__left-text">Time : </p>
                         <p className="inconference__name">{time}</p>
                       </li>
                       <li className="inconference__item">
                         <img className="inconference__icon" src={Phone} alt="Phone" width={20} height={20} />
-                        <p className="news__left-text inconference__left-text">Telefon : </p>
+                        <p className="news__left-text inconference__left-text">Phone number : </p>
                         <p className="inconference__name">{e.phone}</p>
                       </li>
                       <li className="inconference__item">
                         <img className="inconference__icon" src={Mappin} alt="Mappin" width={20} height={20} />
-                        <p className="news__left-text inconference__left-text">Manzil:</p>
+                        <p className="news__left-text inconference__left-text">Adress:</p>
                         <p className="inconference__name--simple">{e.location}</p>
                       </li>
                     </ul>
@@ -101,28 +97,28 @@ function InConference() {
                     </button>
                     <ul ref={linkBox} className="inconference__list">
                       <li className="inconference__link">
-                        <a href="/" target='_blank' className="inconference__btn">
-                          <img src={Smth} alt="Smth" width={24} height={24} />
+                        <button  className="inconference__btn">
+                          <img style={{ "pointerEvents": "none" }} src={Smth} alt="Smth" width={24} height={24} />
+                        </button>
+                      </li>
+                      <li className="inconference__link">
+                        <a href={`https://telegram.me/share/url?url=${window.location.href}&text=${e.title}`} target='_blank' title className="inconference__btn">
+                          <img style={{ "pointerEvents": "none" }} src={Telegram} alt="Telegram" width={24} height={24} />
+                        </a>
+                      </li>
+                      <li className="inconference__link">
+                        <a href={`http://www.facebook.com/sharer/sharer.php?u=https://logeekascience.com${window.location.pathname}&t=${e.title}`} target='_blank' className="inconference__btn">
+                          <img style={{ "pointerEvents": "none" }} src={Facebook} alt="Facebook" width={24} height={24} />
+                        </a>
+                      </li>
+                      <li className="inconference__link">
+                        <a href={`whatsapp://send?text=${window.location.href}`} target='_blank' className="inconference__btn">
+                          <img style={{ "pointerEvents": "none" }} src={Whatsapp} alt="Whatsapp" width={24} height={24} />
                         </a>
                       </li>
                       <li className="inconference__link">
                         <a href="/" target='_blank' className="inconference__btn">
-                          <img src={Telegram} alt="Telegram" width={24} height={24} />
-                        </a>
-                      </li>
-                      <li className="inconference__link">
-                        <a href="/" target='_blank' className="inconference__btn">
-                          <img src={Facebook} alt="Facebook" width={24} height={24} />
-                        </a>
-                      </li>
-                      <li className="inconference__link">
-                        <a href="/" target='_blank' className="inconference__btn">
-                          <img src={Whatsapp} alt="Whatsapp" width={24} height={24} />
-                        </a>
-                      </li>
-                      <li className="inconference__link">
-                        <a href="/" target='_blank' className="inconference__btn">
-                          <img src={Instagram} alt="Instagram" width={24} height={24} />
+                          <img style={{ "pointerEvents": "none" }} src={Instagram} alt="Instagram" width={24} height={24} />
                         </a>
                       </li>
                     </ul>

@@ -31,7 +31,6 @@ import Journal from './Pages/Journal';
 import Certificates from './Pages/Certificates';
 import Contacts from './Pages/Contacts';
 import Aboutus from './Pages/Aboutus';
-import AboutStaff from './Pages/AboutStaff';
 import Pricing from './Pages/Pricing';
 import InnerConference from './Pages/InnerConference';
 import InnerArticles from './Pages/InnerArticles';
@@ -51,7 +50,6 @@ function App() {
         <Route path="/journal" element={<Journal />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/about" element={<Aboutus />} />
-        <Route path="/about/staff" element={<AboutStaff />} />
         <Route path="/certificates" element={<Certificates />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/login" element={<Login />} />

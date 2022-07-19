@@ -4,11 +4,11 @@ import axios from "axios";
 //sass
 import './CertCards.scss'
 
-function CertCards({searchValue}) {
+function CertCards({ searchValue }) {
   let [certifData, setCertifData] = useState()
 
-  useEffect(()=> {
-    if(searchValue){
+  useEffect(() => {
+    if (searchValue) {
       axios.get(`https://logeekascience.com/api/certificate?search=${searchValue}&limit=1000`)
         .then(res => setCertifData(res.data.data))
     }
@@ -18,7 +18,7 @@ function CertCards({searchValue}) {
     axios.get('https://logeekascience.com/api/certificate?limit=9')
       .then(res => setCertifData(res.data.data))
   }, [])
-
+  
   return (
     <section className="certcards">
       <div className="container">
@@ -27,8 +27,10 @@ function CertCards({searchValue}) {
             {
               certifData && certifData.map((e, i) => (
                 <li key={i} className="certcards__item">
-                  <img className="certcards__img" src={'https://logeekascience.com/api' + e.image_url} alt="certificate" />
-                  <h4 className="certcards__title">CCID : {e.ccid}</h4>
+                  <a href={'https://logeekascience.com/api' + e.image_url} target={"_blank"} download>
+                    <img className="certcards__img" src={'https://logeekascience.com/api' + e.image_url} alt="certificate" />
+                    <h4 className="certcards__title">CCID : {e.ccid}</h4>
+                  </a>
                 </li>
               ))
             }

@@ -32,7 +32,7 @@ function HomeConfirence() {
       <div className="container">
         <div className="hnwes__wrapper">
           {
-            confirenceData.length > 1 && <div ref={arrowBox} className="hnews__box">
+            confirenceData.length >= 1 && <div ref={arrowBox} className="hnews__box">
             <Link className="hnews__title" to={"conference# "}>Conference</Link>
           </div>
           }
